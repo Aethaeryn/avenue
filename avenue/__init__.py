@@ -11,3 +11,5 @@ different themes and a JSON API for external applications to access.
 from flask import Flask
 
 app = Flask(__name__)
+
+from avenue import web
