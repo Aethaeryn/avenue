@@ -1,0 +1,6 @@
+# Ignore compiled files.
+*.pyc
+*.js
+
+# Ignore hidden directories and files.
+.*
