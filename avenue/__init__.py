@@ -13,3 +13,13 @@ from flask import Flask
 app = Flask(__name__)
 
 from avenue import web
+
+import federation
+game = federation.Federation()
+
+def setup():
+    for page in game.website:
+        page[0] = '%s%s' % ('/federation', page[0])
+        app.add_url_rule(*page)
+
+setup()
