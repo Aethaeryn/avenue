@@ -1,5 +1,5 @@
 # Copyright (c) 2012 Michael Babich
-# See LICENSE.txt or http://www.opensource.org/licenses/mit-license.php
+# See LICENSE.txt or http://opensource.org/licenses/MIT
 
 '''Acts as an interface between what Flask serves and what goes on in
 the rest of the application.
