@@ -1,4 +1,5 @@
 * Posts
+
   * author(s)
 
   * content
@@ -12,6 +13,7 @@
   * tags
 
 * Content
+
   * email
 
   * link
@@ -25,6 +27,7 @@
   * title + text
 
 * Modes
+
   * blog
 
   * forum
@@ -38,6 +41,7 @@
   * wiki
 
 * Displays
+
   * threaded
 
   * flat
@@ -45,6 +49,7 @@
 * Permissions and Accounts
 
 * Tagging
+
   * restricted (only one tag)
 
   * public (global, multi-tag)
