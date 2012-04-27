@@ -4,8 +4,7 @@
 '''Acts as an interface between what Flask serves and what goes on in
 the rest of the application.
 '''
-from avenue import app
-from flask import render_template
+from avenue import app, api
 
 @app.route('/')
 def index():
@@ -13,5 +12,4 @@ def index():
     '''
     words = 'Hello, world!'
 
-    #### TODO: Themes: mobile/desktop, dark/light, pretty/useful/plain
-    return render_template('basic.html', style='dark-plain', body=words)
+    return api.make_page(style='static/dark-plain', body=words)
