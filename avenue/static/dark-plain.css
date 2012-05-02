@@ -1,13 +1,35 @@
-body { font-family: "DejaVu Sans", "Helvetica", "Arial";
+body { font-family: "Open Sans", sans-serif;
        color: #ffffff;
        background-color: #000000;
-       font-size: 12pt;}
-h1   { font-size:14pt; }
+       font-size: 10pt;
+       margin-top: 10px;
+       margin-bottom: 10px;
+       margin-left: auto;
+       margin-right: auto;
+       width: 955px;
+     }
 
-a:link    { text-decoration: none;
-            font-weight: bold;
-            color: #ffffff }
+h1 { font-size:17pt;
+     font-family: "Yanone Kaffeesatz", sans-serif;
+     font-weight: normal;
+     margin: 0px;
+     background-color: #00040f;
+
+   }
+
+p { background-color: #00040f;
+    margin: 0px;
+  }
+
+a:link { text-decoration: none;
+         font-weight: bold;
+         color: #ffffff;
+       }
+
 a:visited { text-decoration: none;
-            color: #ffffff }
-a:hover   { text-decoration: none;
-            color: #aaaaaa }
+            color: #ffffff;
+          }
+
+a:hover { text-decoration: none;
+          color: #aaaaaa;
+        }
