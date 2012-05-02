@@ -12,13 +12,14 @@ body { font-family: "Open Sans", sans-serif;
 h1 { font-size:17pt;
      font-family: "Yanone Kaffeesatz", sans-serif;
      font-weight: normal;
-     margin: 0px;
      background-color: #00040f;
-
+     margin: 0px;
+     padding-bottom: 5px;
    }
 
 p { background-color: #00040f;
     margin: 0px;
+    padding-bottom: 10px;
   }
 
 a:link { text-decoration: none;

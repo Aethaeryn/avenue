@@ -18,14 +18,14 @@ def index():
     'privileged than another. With Avenue, you\'re not forced to use an '\
     'application for something that it\'s not designed for. You don\'t get a '\
     'good user experience if you try to discuss in a wiki application or '\
-    'blog in a forum application.<br><br>Everything fits together in one '\
+    'blog in a forum application.</p><p>Everything fits together in one '\
     'website with a shared theme set and a unified account system. The '\
     'entire site just works out of the box without having to hand-modify or '\
     'install any plugins to get different apps, intended for different '\
     'purposes, to talk to each other. There\'s a consistent user interface, '\
     'too. Of course, if you want to extend Avenue, it is designed to handle '\
     'that. It should be able to support browser-based HTML 5 games, web '\
-    'email, and possibly even IRC clients!<br><br>Avenue is convergence for '\
+    'email, and possibly even IRC clients!</p><p>Avenue is convergence for '\
     'web apps. Why handle text a dozen different ways if you don\'t have '\
     'to?</p>'
 
