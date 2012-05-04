@@ -5,16 +5,17 @@
 the rest of the application.
 '''
 from avenue import app, api
+from flask import render_template
 
 @app.route('/')
 def index():
     '''Serves the main page of the website.
     '''
-    heading = '<h1 id="title-heading">This is My Home Page</h1>'
+    heading = 'This is My Home Page'
 
-    bar = '<div id="sidebar"><h2>Navigation</h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada rhoncus velit vitae interdum. Nam varius augue orci. Aliquam non quam vel lorem feugiat mattis quis ac velit. Aenean volutpat condimentum lorem, non tincidunt neque interdum in. Vestibulum orci diam, luctus ornare dapibus vitae, placerat at turpis. Nullam leo elit, aliquet mollis facilisis vel, imperdiet ac nulla. Pellentesque ut lacus nunc.</div>'
+    bar = '<h2>Navigation</h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada rhoncus velit vitae interdum. Nam varius augue orci. Aliquam non quam vel lorem feugiat mattis quis ac velit. Aenean volutpat condimentum lorem, non tincidunt neque interdum in. Vestibulum orci diam, luctus ornare dapibus vitae, placerat at turpis. Nullam leo elit, aliquet mollis facilisis vel, imperdiet ac nulla. Pellentesque ut lacus nunc.'
 
-    words = '<article><h1>Welcome to Avenue</h1><p>Avenue is a new way to run a ' \
+    words = '<h1>Welcome to Avenue</h1><p>Avenue is a new way to run a ' \
     'website. Don\'t run many independent web applications that are designed '\
     ' for their own, isolated ecosystems! Avenue makes your life simple by '\
     'providing minimalist content systems that integrate seamlessly into one '\
@@ -31,10 +32,11 @@ def index():
     'that. It should be able to support browser-based HTML 5 games, web '\
     'email, and possibly even IRC clients!</p><p>Avenue is convergence for '\
     'web apps. Why handle text a dozen different ways if you don\'t have '\
-    'to?</p></article>'
+    'to?</p>'
 
-    words = heading + bar + words
-
-    return api.make_page(style='static/dark-plain',
-                         body=words,
-                         title='Welcome :: Avenue')
+    return render_template('article.html',
+                           style='static/dark-plain',
+                           main_title=heading,
+                           body=words,
+                           sidebar=bar,
+                           title='Welcome :: Avenue')

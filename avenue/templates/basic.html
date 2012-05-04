@@ -12,9 +12,11 @@
   </head>
 
   <body>
-  {% if body %}
-    {{ body|safe }}
-  {% endif %}
+  {% block content %}
+      {% if body %}
+          {{ body|safe }}
+      {% endif %}
+  {% endblock %}
   </body>
   {% if javascript %}
   {% for file in javascript %}<script src="static/script/{{ file }}"></script> {% endfor %}
