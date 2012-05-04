@@ -50,6 +50,7 @@ nav { float: right;
           background-color: #1a1123;
           font-size: 10pt;
           font-weight: normal;
+          text-align: justify;
 }
 
 #title-heading { font-size: 28pt;
