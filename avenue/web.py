@@ -11,7 +11,9 @@ from flask import render_template
 def index():
     '''Serves the main page of the website.
     '''
-    heading = 'This is My Home Page'
+    heading = 'Zombie Raptor'
+
+    page_title = '%s :: %s' % ('Welcome to Avenue', heading)
 
     navbar = []
     navbar.append({'title'   : 'Federation',
@@ -45,4 +47,4 @@ def index():
                            main_title=heading,
                            post=words,
                            sidebar=navbar,
-                           title='Welcome :: Avenue')
+                           title=page_title)

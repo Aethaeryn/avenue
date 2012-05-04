@@ -52,9 +52,6 @@ nav { float: right;
           text-align: justify;
 }
 
-#title-heading { font-size: 28pt;
-               }
-
 a:link { text-decoration: none;
          font-weight: bold;
          color: #ffffff;
@@ -67,3 +64,17 @@ a:visited { text-decoration: none;
 a:hover { text-decoration: none;
           color: #aaaaaa;
         }
+
+.title-heading { font-size: 28pt;
+               }
+
+.title-heading:link { color: #ff7f24;
+                      font-weight: normal;
+                    }
+
+.title-heading:visited { color: #ff7f24;
+                       }
+
+.title-heading:hover { color: #df4f14;
+                     }
+
