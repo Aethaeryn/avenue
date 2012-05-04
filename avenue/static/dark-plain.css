@@ -37,7 +37,7 @@ nav { float: right;
       padding: 5px;
     }
 
-#navbox { width: 180px;
+.navbox { width: 180px;
           margin: 0px;
           padding-top: 5px;
           padding-left: 10px;
