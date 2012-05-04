@@ -13,7 +13,13 @@ def index():
     '''
     heading = 'This is My Home Page'
 
-    bar = '<div id="navbox"><h1>Federation</h1>Form federations with your friends and plot to take over the galaxy!</div><div id="navbox"><h1>Zombie Raptor Blog</h1>Read new updates from the Zombie Raptor team!</div><div id="navbox"><h1>Forums</h1>Visit the official forums!</div>'
+    navbar = []
+    navbar.append({'title'   : 'Federation',
+                   'content' : 'Form federations with your friends and plot to take over the galaxy!'})
+    navbar.append({'title'   : 'Zombie Raptor Blog',
+                   'content' : 'Read new updates from the Zombie Raptor team!'})
+    navbar.append({'title'   : 'Forums',
+                   'content' : 'Visit the official forums!'})
 
     words = '<h1>Welcome to Avenue</h1><p>Avenue is a new way to run a ' \
     'website. Don\'t run many independent web applications that are designed '\
@@ -37,6 +43,6 @@ def index():
     return render_template('article.html',
                            style='static/dark-plain',
                            main_title=heading,
-                           body=words,
-                           sidebar=bar,
+                           post=words,
+                           sidebar=navbar,
                            title='Welcome :: Avenue')

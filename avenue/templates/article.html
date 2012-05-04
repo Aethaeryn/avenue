@@ -2,10 +2,18 @@
 
 {% block content %}
     {% if main_title %}<h1 id="title-heading">{{ main_title }}</h1>{% endif %}
-    <nav id="sidebar">
-      {{sidebar|safe}}
+    {% if body %} {{body|safe}} {% endif %}
+    <nav>
+      {% for navbox in sidebar %}
+      <a href="/">
+        <div id="navbox">
+          <h1> {{ navbox.title }} </h1>
+          {{ navbox.content }}
+        </div>
+      </a>
+      {% endfor %}
     </nav>
     <article>
-      {{body|safe}}
+      {{post|safe}}
     </article>
 {% endblock %}
