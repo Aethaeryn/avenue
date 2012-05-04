@@ -6,22 +6,43 @@ the rest of the application.
 '''
 from avenue import app, api
 from flask import render_template
+from copy import copy
+
+heading = 'Zombie Raptor'
+navbar = []
+navbar.append({'title'   : 'Federation',
+               'content' : 'Form federations with your friends and plot to take over the galaxy!',
+               'link'    : '/'})
+navbar.append({'title'   : 'Zombie Raptor Blog',
+               'content' : 'Read new updates from the Zombie Raptor team!',
+               'link'    : '/'})
+navbar.append({'title'   : 'Forums',
+               'content' : 'Visit the official forums!',
+               'link'    : '/'})
 
 @app.route('/')
 def index():
-    '''Serves the main page of the website.
+    navtile = copy(navbar)
+    navtile.insert(0, {'title'    : 'Avenue',
+                       'content'  : 'Read about Avenue.',
+                       'link'     : '/about'})
+
+    page_title = heading
+
+    print 'ugh'
+
+    return render_template('tiles.html', 
+                           style='static/dark-plain',
+                           main_title=heading,
+                           title=page_title,
+                           tiles=navtile)
+
+
+@app.route('/about')
+def about():
+    '''Serves a page describing Avenue.
     '''
-    heading = 'Zombie Raptor'
-
     page_title = '%s :: %s' % ('Welcome to Avenue', heading)
-
-    navbar = []
-    navbar.append({'title'   : 'Federation',
-                   'content' : 'Form federations with your friends and plot to take over the galaxy!'})
-    navbar.append({'title'   : 'Zombie Raptor Blog',
-                   'content' : 'Read new updates from the Zombie Raptor team!'})
-    navbar.append({'title'   : 'Forums',
-                   'content' : 'Visit the official forums!'})
 
     words = '<h1>Welcome to Avenue</h1><p>Avenue is a new way to run a ' \
     'website. Don\'t run many independent web applications that are designed '\

@@ -37,6 +37,10 @@ nav { float: right;
       padding: 5px;
     }
 
+.tile-field { background-color: #00041f;
+              padding: 10px;
+            }
+
 .navbox { width: 180px;
           margin: 0px;
           padding-top: 5px;
@@ -51,6 +55,23 @@ nav { float: right;
           font-weight: normal;
           text-align: justify;
 }
+
+.tile-navbox { width: 120px;
+               height: 70px;
+               margin: 0px;
+               padding-top: 5px;
+               padding-left: 10px;
+               padding-right: 10px;
+               padding-bottom: 15px;
+               margin-bottom: 10px;
+               margin-top: 5px;
+               padding-bottom: 10px;
+               background-color: #1a1123;
+               font-size: 10pt;
+               font-weight: normal;
+               text-align: center;
+             }
+
 
 a:link { text-decoration: none;
          font-weight: bold;

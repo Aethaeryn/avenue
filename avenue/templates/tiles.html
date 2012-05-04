@@ -3,17 +3,13 @@
 {% block content %}
     {% if main_title %}<h1><a href="/" class="title-heading">{{ main_title }}</a></h1>{% endif %}
     {% if body %} {{body|safe}} {% endif %}
-    <nav>
-      {% for navbox in sidebar %}
+    <div class="tile-field">
+      {% for navbox in tiles %}
       <a href={{ navbox.link }}>
-        <div class="navbox">
+        <div class="tile-navbox">
           <h1> {{ navbox.title }} </h1>
-          {{ navbox.content }}
         </div>
       </a>
       {% endfor %}
     </nav>
-    <article>
-      {{post|safe}}
-    </article>
 {% endblock %}
