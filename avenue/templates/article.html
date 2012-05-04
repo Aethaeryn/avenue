@@ -2,9 +2,9 @@
 
 {% block content %}
     {% if main_title %}<h1 id="title-heading">{{ main_title }}</h1>{% endif %}
-    <div id="sidebar">
+    <nav id="sidebar">
       {{sidebar|safe}}
-    </div>
+    </nav>
     <article>
       {{body|safe}}
     </article>

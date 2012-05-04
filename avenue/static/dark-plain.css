@@ -1,7 +1,7 @@
 body { font-family: "Open Sans", sans-serif;
        color: #ffffff;
        background-color: #000000;
-       font-size: 10pt;
+       font-size: 11pt;
        margin-top: 10px;
        margin-bottom: 10px;
        margin-left: auto;
@@ -9,7 +9,7 @@ body { font-family: "Open Sans", sans-serif;
        width: 955px;
      }
 
-h1 { font-size:17pt;
+h1 { font-size:20pt;
      font-family: "Yanone Kaffeesatz", sans-serif;
      font-weight: normal;
      margin: 0px;
@@ -31,14 +31,29 @@ article { background-color: #00041f;
           padding: 5px;
         }
 
+nav { text-align:justify
+    }
+
 #sidebar { float: right;
            width: 200px;
-           margin-left: 5px;
-           background-color: #661100;
+           margin-left: 15px;
            padding: 5px;
          }
 
-#title-heading { font-size: 24pt;
+#navbox { width: 180px;
+          margin: 0px;
+          padding-top: 5px;
+          padding-left: 10px;
+          padding-right: 10px;
+          padding-bottom: 15px;
+          margin-bottom: 10px;
+          margin-top: 5px;
+          padding-bottom: 10px;
+          background-color: #1a1123;
+          font-size: 10pt;
+}
+
+#title-heading { font-size: 28pt;
                }
 
 a:link { text-decoration: none;

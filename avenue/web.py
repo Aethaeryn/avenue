@@ -13,7 +13,7 @@ def index():
     '''
     heading = 'This is My Home Page'
 
-    bar = '<h2>Navigation</h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada rhoncus velit vitae interdum. Nam varius augue orci. Aliquam non quam vel lorem feugiat mattis quis ac velit. Aenean volutpat condimentum lorem, non tincidunt neque interdum in. Vestibulum orci diam, luctus ornare dapibus vitae, placerat at turpis. Nullam leo elit, aliquet mollis facilisis vel, imperdiet ac nulla. Pellentesque ut lacus nunc.'
+    bar = '<div id="navbox"><h1>Federation</h1>Form federations with your friends and plot to take over the galaxy!</div><div id="navbox"><h1>Zombie Raptor Blog</h1>Read new updates from the Zombie Raptor team!</div><div id="navbox"><h1>Forums</h1>Visit the official forums!</div>'
 
     words = '<h1>Welcome to Avenue</h1><p>Avenue is a new way to run a ' \
     'website. Don\'t run many independent web applications that are designed '\
