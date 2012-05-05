@@ -29,8 +29,6 @@ def index():
 
     page_title = heading
 
-    print 'ugh'
-
     return render_template('tiles.html', 
                            style='static/dark-plain',
                            main_title=heading,
