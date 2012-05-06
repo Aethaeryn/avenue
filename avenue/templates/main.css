@@ -31,6 +31,7 @@ article { background-color: {{ background.post }};
           padding: 5px;
           border-radius: 10px;
           width: 730px;
+          padding-bottom: 0px;
           margin-bottom: 10px;
         }
 
@@ -106,3 +107,7 @@ a:hover { text-decoration: none;
 .tile-navbox:visited { color: {{ text.nav }}; }
 
 .tile-navbox:hover { color: {{ text.nav_hover }}; }
+
+.author { text-align: right;
+          font-size: 8pt;
+        }

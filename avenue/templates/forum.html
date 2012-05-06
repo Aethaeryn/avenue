@@ -6,6 +6,7 @@
   {% for post in posts %}
     <article>
       {{  post|safe  }}
+      <p class="author">{{  author  }}</p>
     </article>
   {% endfor %}
 {% endblock %}
