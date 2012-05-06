@@ -30,7 +30,7 @@ def index():
     page_title = heading
 
     return render_template('tiles.html', 
-                           style='night',
+                           style='sunset',
                            main_title=heading,
                            title=page_title,
                            tiles=navtile)
@@ -61,7 +61,7 @@ def about():
     'to?</p>'
 
     return render_template('article.html',
-                           style='night',
+                           style='sunset',
                            main_title=heading,
                            post=words,
                            sidebar=navbar,
@@ -70,10 +70,44 @@ def about():
 @app.route('/night.css')
 def night():
     text = {'plain' : '#ffffff',
-            'hover' : '#aaaaaa'}
+            'hover' : '#aaaaaa',
+            'heading' : '#ff7f24',
+            'head_hover' : '#df4f14'}
+
+
     background = {'plain' : '#000000',
                   'post'  : '#00041f',
                   'box1'  : '#1a1123'}
+
+    response = make_response(render_template('main.css', text=text, background=background))
+    response.mimetype = 'text/css'
+    return response
+
+@app.route('/day.css')
+def night():
+    text = {'plain' : '#000000',
+            'hover' : '#444444',
+            'heading' : '#ff7f24',
+            'head_hover' : '#df4f14'}
+
+    background = {'plain' : '#f8fffe',
+                  'post'  : '#e1e7e6',
+                  'box1'  : '#b1977d'}
+
+    response = make_response(render_template('main.css', text=text, background=background))
+    response.mimetype = 'text/css'
+    return response
+
+@app.route('/sunset.css')
+def night():
+    text = {'plain' : '#000000',
+            'hover' : '#444444',
+            'heading' : '#ff7f24',
+            'head_hover' : '#df4f14'}
+
+    background = {'plain' : '#f4cf71',
+                  'post'  : '#fba063',
+                  'box1'  : '#ff9363'}
 
     response = make_response(render_template('main.css', text=text, background=background))
     response.mimetype = 'text/css'

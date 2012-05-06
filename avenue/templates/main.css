@@ -85,12 +85,12 @@ a:hover { text-decoration: none;
 .title-heading { font-size: 28pt;
                }
 
-.title-heading:link { color: #ff7f24;
+.title-heading:link { color: {{ text.heading }};
                       font-weight: normal;
                     }
 
-.title-heading:visited { color: #ff7f24;
+.title-heading:visited { color: {{ text.heading }};
                        }
 
-.title-heading:hover { color: #df4f14;
+.title-heading:hover { color: {{ text.head_hover }};
                      }
