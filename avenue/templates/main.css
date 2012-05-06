@@ -31,6 +31,7 @@ article { background-color: {{ background.post }};
           padding: 5px;
           border-radius: 10px;
           width: 730px;
+          margin-bottom: 10px;
         }
 
 nav { float: right;

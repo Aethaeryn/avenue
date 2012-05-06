@@ -8,4 +8,4 @@ server at server.wsgi, which is included in the parent directory.
 '''
 from avenue import app as application
 
-application.run(host='0.0.0.0', port=8080)
+application.run(host='0.0.0.0', port=8080, debug=True)

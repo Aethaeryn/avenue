@@ -1,0 +1,9 @@
+{% extends "article.html" %}
+
+{% block content %}
+  {{ super() }}
+  <article>
+      {{  post|safe  }}
+  </article>
+
+{% endblock %}
