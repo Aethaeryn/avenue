@@ -5,7 +5,7 @@
 the rest of the application.
 '''
 from avenue import app, api
-from flask import render_template
+from flask import render_template, make_response
 from copy import copy
 
 heading = 'Zombie Raptor'
@@ -30,11 +30,10 @@ def index():
     page_title = heading
 
     return render_template('tiles.html', 
-                           style='static/dark-plain',
+                           style='night',
                            main_title=heading,
                            title=page_title,
                            tiles=navtile)
-
 
 @app.route('/about')
 def about():
@@ -62,8 +61,20 @@ def about():
     'to?</p>'
 
     return render_template('article.html',
-                           style='static/dark-plain',
+                           style='night',
                            main_title=heading,
                            post=words,
                            sidebar=navbar,
                            title=page_title)
+
+@app.route('/night.css')
+def night():
+    text = {'plain' : '#ffffff',
+            'hover' : '#aaaaaa'}
+    background = {'plain' : '#000000',
+                  'post'  : '#00041f',
+                  'box1'  : '#1a1123'}
+
+    response = make_response(render_template('main.css', text=text, background=background))
+    response.mimetype = 'text/css'
+    return response
