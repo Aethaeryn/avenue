@@ -28,9 +28,9 @@ p { margin: 0px;
   }
 
 article { background-color: {{ background.post }};
-          padding: 5px;
+          padding: 10px;
           border-radius: 10px;
-          width: 730px;
+          width: 720px;
           padding-bottom: 0px;
           margin-bottom: 10px;
         }
