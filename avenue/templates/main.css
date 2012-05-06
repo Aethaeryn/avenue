@@ -40,9 +40,10 @@ nav { float: right;
       padding: 5px;
     }
 
-.tile-field { -moz-column-count: 6;
-              -webkit-column-count: 6;
-              column-count: 6;
+.tile-field { width: 670px;
+              -moz-column-count: 4;
+              -webkit-column-count: 4;
+              column-count: 4;
               padding: 10px;
               height: 95px;
             }
