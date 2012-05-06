@@ -29,7 +29,7 @@ def index():
 
     page_title = heading
 
-    return render_template('tiles.html', 
+    return render_template('tiles.html',
                            style='night',
                            main_title=heading,
                            title=page_title,
@@ -59,6 +59,19 @@ def about():
     'email, and possibly even IRC clients!</p><p>Avenue is convergence for '\
     'web apps. Why handle text a dozen different ways if you don\'t have '\
     'to?</p><p>This text needs to be significantly expanded in order to fully test out all of the styling features that are present because I need to be able to test out everything and this requires long paragraphs and stuff.</p>'
+
+    return render_template('wiki.html',
+                           style='night',
+                           main_title=heading,
+                           post=words,
+                           sidebar=navbar,
+                           title=page_title)
+
+@app.route('/micro')
+def micro():
+    page_title = '%s :: %s' % ('Micro', 'Zombe Raptr')
+
+    words = '<h1>This is a message that\'s exactly 140 characters long, which is a good size for a micro post for some strange reason that I don\'t understand!</h1>'
 
     return render_template('wiki.html',
                            style='night',
