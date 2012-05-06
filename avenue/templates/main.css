@@ -84,6 +84,7 @@ a:hover { text-decoration: none;
                font-weight: normal;
                text-align: center;
                color: {{ text.nav }};
+               border-radius: 30px;
              }
 
 .title-heading { font-size: 28pt; }
