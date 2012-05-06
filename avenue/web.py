@@ -30,7 +30,7 @@ def index():
     page_title = heading
 
     return render_template('tiles.html', 
-                           style='sunset',
+                           style='night',
                            main_title=heading,
                            title=page_title,
                            tiles=navtile)
@@ -41,7 +41,7 @@ def about():
     '''
     page_title = '%s :: %s' % ('Welcome to Avenue', heading)
 
-    words = '<h1>Welcome to Avenue</h1><p>Avenue is a new way to run a ' \
+    words = '<h1>Welcome to Avenue</h1><p><a href="/">Avenue</a> is a new way to run a ' \
     'website. Don\'t run many independent web applications that are designed '\
     ' for their own, isolated ecosystems! Avenue makes your life simple by '\
     'providing minimalist content systems that integrate seamlessly into one '\
@@ -61,7 +61,7 @@ def about():
     'to?</p>'
 
     return render_template('article.html',
-                           style='sunset',
+                           style='night',
                            main_title=heading,
                            post=words,
                            sidebar=navbar,
@@ -69,46 +69,18 @@ def about():
 
 @app.route('/night.css')
 def night():
-    text = {'plain' : '#ffffff',
-            'hover' : '#aaaaaa',
-            'heading' : '#ff7f24',
-            'head_hover' : '#df4f14'}
+    text1 = {'plain' : '#111111',
+             'link'  : '#0438a0',
+             'hover' : '#0853e1',
+             'heading' : '#ff7f24',
+             'head_hover' : '#df4f14',
+             'nav' : '#d6d9d9',
+             'nav_hover' : '#aaaaaa'}
 
+    background1 = {'plain' : '#000000',
+                   'post'  : '#d6d9d9',
+                   'box1'  : '#1a1123'}
 
-    background = {'plain' : '#000000',
-                  'post'  : '#00041f',
-                  'box1'  : '#1a1123'}
-
-    response = make_response(render_template('main.css', text=text, background=background))
-    response.mimetype = 'text/css'
-    return response
-
-@app.route('/day.css')
-def night():
-    text = {'plain' : '#000000',
-            'hover' : '#444444',
-            'heading' : '#ff7f24',
-            'head_hover' : '#df4f14'}
-
-    background = {'plain' : '#f8fffe',
-                  'post'  : '#e1e7e6',
-                  'box1'  : '#b1977d'}
-
-    response = make_response(render_template('main.css', text=text, background=background))
-    response.mimetype = 'text/css'
-    return response
-
-@app.route('/sunset.css')
-def night():
-    text = {'plain' : '#000000',
-            'hover' : '#444444',
-            'heading' : '#ff7f24',
-            'head_hover' : '#df4f14'}
-
-    background = {'plain' : '#f4cf71',
-                  'post'  : '#fba063',
-                  'box1'  : '#ff9363'}
-
-    response = make_response(render_template('main.css', text=text, background=background))
+    response = make_response(render_template('main.css', text=text1, background=background1))
     response.mimetype = 'text/css'
     return response

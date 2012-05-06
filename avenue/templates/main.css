@@ -29,11 +29,12 @@ p { margin: 0px;
 
 article { background-color: {{ background.post }};
           padding: 5px;
+          border-radius: 10px;
+          width: 730px;
         }
 
 nav { float: right;
       width: 200px;
-      margin-left: 15px;
       padding: 5px;
     }
 
@@ -43,6 +44,18 @@ nav { float: right;
               padding: 10px;
               height: 95px;
             }
+
+a:link { text-decoration: none;
+         color: {{ text.link }};
+       }
+
+a:visited { text-decoration: none;
+            color: {{ text.link }};
+          }
+
+a:hover { text-decoration: none;
+          color: {{ text.hover }};
+        }
 
 .navbox { width: 180px;
           margin: 0px;
@@ -56,6 +69,7 @@ nav { float: right;
           font-size: 10pt;
           font-weight: normal;
           text-align: justify;
+          color: {{ text.nav }};
         }
 
 .tile-navbox { font-family: "Yanone Kaffeesatz", sans-serif;
@@ -67,30 +81,27 @@ nav { float: right;
                font-size: 20pt;
                font-weight: normal;
                text-align: center;
+               color: {{ text.nav }};
              }
 
-a:link { text-decoration: none;
-         font-weight: bold;
-         color: {{ text.plain }};
-       }
-
-a:visited { text-decoration: none;
-            color: {{ text.plain }};
-          }
-
-a:hover { text-decoration: none;
-          color: {{ text.hover }};
-        }
-
-.title-heading { font-size: 28pt;
-               }
+.title-heading { font-size: 28pt; }
 
 .title-heading:link { color: {{ text.heading }};
                       font-weight: normal;
                     }
 
-.title-heading:visited { color: {{ text.heading }};
-                       }
+.title-heading:visited { color: {{ text.heading }}; }
 
-.title-heading:hover { color: {{ text.head_hover }};
-                     }
+.title-heading:hover { color: {{ text.head_hover }}; }
+
+.navbox:link { color: {{ text.nav }}; }
+
+.navbox:visited { color: {{ text.nav }}; }
+
+.navbox:hover { color: {{ text.nav_hover }}; }
+
+.tile-navbox:link { color: {{ text.nav }}; }
+
+.tile-navbox:visited { color: {{ text.nav }}; }
+
+.tile-navbox:hover { color: {{ text.nav_hover }}; }
