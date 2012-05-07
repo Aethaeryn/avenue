@@ -3,10 +3,13 @@
 {% block content %}
   {{ super() }}
 
+  <article>
+  <h1> {{ thread_title }} </h1>
   {% for post in posts %}
-    <article>
+    <div class="post">
       {{  post|safe  }}
       <p class="author">{{  author  }}</p>
-    </article>
+    </div>
   {% endfor %}
+  </article>
 {% endblock %}
