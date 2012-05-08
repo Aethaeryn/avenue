@@ -108,7 +108,10 @@ def forums():
     posts[7]['level'] = 2
     posts[8]['level'] = 3
 
-    post_author = 'Michael | -1 year ago | reply'
+    post_author = 'Michael | -1 year ago'
+
+    #### TODO: On the other end of the post, buttons:
+    # reply + - #
 
     return render_template('forum.html', style='night', main_title=heading, posts=posts, sidebar=navbar, title=page_title, author=post_author, thread_title=thread_title)
 
@@ -126,6 +129,8 @@ def night():
                    'post'    : '#c6c9c9',
                    'article' : '#d6d9d9',
                    'box1'    : '#1a1123'}
+
+    #### TODO: mobile narrow css, moving the navboxes to the bottom when the browser window is narrow
 
     response = make_response(render_template('main.css', text=text1, background=background1))
     response.mimetype = 'text/css'

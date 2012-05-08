@@ -133,7 +133,6 @@ a:hover { text-decoration: none;
 
 .tile-navbox:hover { color: {{ text.nav_hover }}; }
 
-.author { text-align: right;
-          font-size: 8pt;
+.author { font-size: 8pt;
           padding-bottom: 5px;
         }
