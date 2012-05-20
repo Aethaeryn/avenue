@@ -6,6 +6,7 @@ things that Avenue imports (e.g. Federation) so that they use the same
 Flask instance as Avenue.
 '''
 from flask import json, request, make_response, render_template
+from docutils.core import publish_parts
 from os import path, listdir
 
 def make_json(dictionary):
@@ -48,3 +49,15 @@ def get_header():
 
     else:
         return ''
+
+def markup_to_html(string):
+    '''Use docutils to turn the reStructuredText markup language into
+    HTML that can be used elsewhere. Less than and greater than signs
+    are properly escaped so the returned unicode string can be trusted
+    in the HTML templates. Unicode is always returned, even if an
+    ordinary string is passed in.
+    '''
+    #### TODO: The way headings are handled is currently not ideal and
+    #### sometimes headings will need 'html_body' instead of 'body' to
+    #### even show up here at all!
+    return publish_parts(string, writer_name='html')['body']
