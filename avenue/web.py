@@ -33,6 +33,25 @@ background1 = {'plain'   : '#000000',
                'article' : '#d6d9d9',
                'box1'    : '#1a1123'}
 
+words = '<h1>Welcome to Avenue</h1><p><a href="/">Avenue</a> is a new way to run a ' \
+    'website. Don\'t run many independent web applications that are designed '\
+    ' for their own, isolated ecosystems! Avenue makes your life simple by '\
+    'providing minimalist content systems that integrate seamlessly into one '\
+    'Python web application with one database. No content mode is more '\
+    'privileged than another. With Avenue, you\'re not forced to use an '\
+    'application for something that it\'s not designed for. You don\'t get a '\
+    'good user experience if you try to discuss in a wiki application or '\
+    'blog in a forum application.</p><p>Everything fits together in one '\
+    'website with a shared theme set and a unified account system. The '\
+    'entire site just works out of the box without having to hand-modify or '\
+    'install any plugins to get different apps, intended for different '\
+    'purposes, to talk to each other. There\'s a consistent user interface, '\
+    'too. Of course, if you want to extend Avenue, it is designed to handle '\
+    'that. It should be able to support browser-based HTML 5 games, web '\
+    'email, and possibly even IRC clients!</p><p>Avenue is convergence for '\
+    'web apps. Why handle text a dozen different ways if you don\'t have '\
+    'to?</p>'
+
 @app.route('/')
 def index():
     '''The main page.
@@ -51,7 +70,7 @@ def index():
     return render_template('wiki.html',
                            style=css,
                            main_title=heading,
-                           post='Hello, world!',
+                           post=words,
                            title=page_title,
                            sidebar=nav2,
                            head='<meta name="viewport" content="width=320,user-scalable=false" />')
@@ -61,25 +80,6 @@ def about():
     '''Serves a page describing Avenue.
     '''
     page_title = '%s :: %s' % ('Welcome to Avenue', heading)
-
-    words = '<h1>Welcome to Avenue</h1><p><a href="/">Avenue</a> is a new way to run a ' \
-    'website. Don\'t run many independent web applications that are designed '\
-    ' for their own, isolated ecosystems! Avenue makes your life simple by '\
-    'providing minimalist content systems that integrate seamlessly into one '\
-    'Python web application with one database. No content mode is more '\
-    'privileged than another. With Avenue, you\'re not forced to use an '\
-    'application for something that it\'s not designed for. You don\'t get a '\
-    'good user experience if you try to discuss in a wiki application or '\
-    'blog in a forum application.</p><p>Everything fits together in one '\
-    'website with a shared theme set and a unified account system. The '\
-    'entire site just works out of the box without having to hand-modify or '\
-    'install any plugins to get different apps, intended for different '\
-    'purposes, to talk to each other. There\'s a consistent user interface, '\
-    'too. Of course, if you want to extend Avenue, it is designed to handle '\
-    'that. It should be able to support browser-based HTML 5 games, web '\
-    'email, and possibly even IRC clients!</p><p>Avenue is convergence for '\
-    'web apps. Why handle text a dozen different ways if you don\'t have '\
-    'to?</p>'
 
     desktop = True
 
