@@ -20,6 +20,20 @@ navbar.append({'title'   : 'Forums',
                'content' : 'Visit the official forums!',
                'link'    : '/f'})
 
+text1 = {'plain' : '#111111',
+         'link'  : '#0438a0',
+         'hover' : '#0853e1',
+         'heading' : '#ff7f24',
+         'head_hover' : '#df4f14',
+         'nav' : '#d6d9d9',
+         'nav_hover' : '#aaaaaa'}
+
+background1 = {'plain'   : '#000000',
+               'post'    : '#c6c9c9',
+               'article' : '#d6d9d9',
+               'box1'    : '#1a1123'}
+
+
 @app.route('/')
 def index():
     '''The main page.
@@ -31,10 +45,12 @@ def index():
 
     page_title = heading
 
+    desktop = False
 
+    css = 'night' if desktop else 'night-mobile'
 
     return render_template('wiki.html',
-                           style='night',
+                           style=css,
                            main_title=heading,
                            post='Hello, world!',
                            title=page_title,
@@ -65,12 +81,15 @@ def about():
     'web apps. Why handle text a dozen different ways if you don\'t have '\
     'to?</p>'
 
+    desktop = True
+
     return render_template('wiki.html',
-                           style='night',
+                           style=css,
                            main_title=heading,
                            post=words,
                            sidebar=navbar,
-                           title=page_title)
+                           title=page_title,
+                           desktop=desktop)
 
 @app.route('/micro')
 def micro():
@@ -122,21 +141,12 @@ def forums():
 
 @app.route('/night.css')
 def night():
-    text1 = {'plain' : '#111111',
-             'link'  : '#0438a0',
-             'hover' : '#0853e1',
-             'heading' : '#ff7f24',
-             'head_hover' : '#df4f14',
-             'nav' : '#d6d9d9',
-             'nav_hover' : '#aaaaaa'}
+    response = make_response(render_template('main.css', text=text1, background=background1, desktop=True))
+    response.mimetype = 'text/css'
+    return response
 
-    background1 = {'plain'   : '#000000',
-                   'post'    : '#c6c9c9',
-                   'article' : '#d6d9d9',
-                   'box1'    : '#1a1123'}
-
-    #### TODO: mobile narrow css, moving the navboxes to the bottom when the browser window is narrow
-
-    response = make_response(render_template('main.css', text=text1, background=background1))
+@app.route('/night-mobile.css')
+def mobile_night():
+    response = make_response(render_template('main.css', text=text1, background=background1, desktop=False))
     response.mimetype = 'text/css'
     return response
