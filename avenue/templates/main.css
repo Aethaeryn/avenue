@@ -64,14 +64,6 @@ nav { float: right;
       padding: 5px;
     }
 
-.tile-field { width: 670px;
-              -moz-column-count: 4;
-              -webkit-column-count: 4;
-              column-count: 4;
-              padding: 10px;
-              height: 95px;
-            }
-
 a:link { text-decoration: none;
          color: {{ text.link }};
        }
@@ -98,19 +90,6 @@ a:hover { text-decoration: none;
           text-align: justify;
           color: {{ text.nav }};
         }
-
-.tile-navbox { font-family: "Yanone Kaffeesatz", sans-serif;
-               width: 120px;
-               height: 70px;
-               margin: 5px;
-               padding: 10px;
-               background-color: {{ background.box1 }};
-               font-size: 20pt;
-               font-weight: normal;
-               text-align: center;
-               color: {{ text.nav }};
-               border-radius: 30px;
-             }
 
 .title-heading { font-size: 28pt;
                  margin-left: 5px;

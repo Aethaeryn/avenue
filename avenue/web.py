@@ -22,18 +22,23 @@ navbar.append({'title'   : 'Forums',
 
 @app.route('/')
 def index():
-    navtile = copy(navbar)
-    navtile.insert(0, {'title'    : 'Avenue',
-                       'content'  : 'Read about Avenue.',
+    '''The main page.
+    '''
+    nav2 = copy(navbar)
+    nav2.insert(0, {'title'    : 'Avenue',
+                       'content'  : 'Read about the Avenue platform that runs this website.',
                        'link'     : '/about'})
 
     page_title = heading
 
-    return render_template('tiles.html',
+
+
+    return render_template('wiki.html',
                            style='night',
                            main_title=heading,
+                           post='Hello, world!',
                            title=page_title,
-                           tiles=navtile)
+                           sidebar=nav2)
 
 @app.route('/about')
 def about():
