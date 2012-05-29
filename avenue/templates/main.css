@@ -6,7 +6,7 @@ body { font-family: "Open Sans", sans-serif;
        margin-bottom: 10px;
        margin-left: auto;
        margin-right: auto;
-       {% if desktop %}width: 955px;{% endif %}
+       {% if desktop %}width: 955px;{% else %} width: auto;{% endif %}
      }
 
 h1 { font-size:20pt;

@@ -33,7 +33,6 @@ background1 = {'plain'   : '#000000',
                'article' : '#d6d9d9',
                'box1'    : '#1a1123'}
 
-
 @app.route('/')
 def index():
     '''The main page.
@@ -54,7 +53,8 @@ def index():
                            main_title=heading,
                            post='Hello, world!',
                            title=page_title,
-                           sidebar=nav2)
+                           sidebar=nav2,
+                           head='<meta name="viewport" content="width=320,user-scalable=false" />')
 
 @app.route('/about')
 def about():
@@ -82,6 +82,8 @@ def about():
     'to?</p>'
 
     desktop = True
+
+    css = 'night' if desktop else 'night-mobile'    
 
     return render_template('wiki.html',
                            style=css,
