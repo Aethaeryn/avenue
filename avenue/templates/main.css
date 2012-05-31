@@ -6,7 +6,7 @@ body { font-family: "Open Sans", sans-serif;
        margin-bottom: 10px;
        margin-left: auto;
        margin-right: auto;
-       {% if desktop %}width: 955px;{% else %} width: auto;{% endif %}
+       max-width: 955px;
      }
 
 h1 { font-size:20pt;
@@ -31,7 +31,7 @@ article { background-color: {{ background.article }};
           padding: 10px;
           padding-top: 5px;
           border-radius: 10px;
-          {% if desktop %}width: 717px;{% endif %}
+          max-width: 717px;
           margin-left: 5px;
           margin-right: 5px;
           margin-bottom: 10px;

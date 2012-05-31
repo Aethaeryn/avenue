@@ -20,7 +20,7 @@ navbar.append({'title'   : 'Forums',
                'content' : 'Visit the official forums!',
                'link'    : '/f'})
 
-text1 = {'plain' : '#111111',
+text1 = {'plain' : '#000000',
          'link'  : '#0438a0',
          'hover' : '#0853e1',
          'heading' : '#ff7f24',
@@ -58,40 +58,19 @@ def index():
     '''
     nav2 = copy(navbar)
     nav2.insert(0, {'title'    : 'Avenue',
-                       'content'  : 'Read about the Avenue platform that runs this website.',
-                       'link'     : '/about'})
+                    'content'  : 'Read about the Avenue platform that runs this website.',
+                    'link'     : '/about'})
 
     page_title = heading
 
-    desktop = False
-
-    css = 'night' if desktop else 'night-mobile'
+    css = 'night'
 
     return render_template('wiki.html',
                            style=css,
                            main_title=heading,
                            post=words,
                            title=page_title,
-                           sidebar=nav2,
-                           head='<meta name="viewport" content="width=320,user-scalable=false" />')
-
-@app.route('/about')
-def about():
-    '''Serves a page describing Avenue.
-    '''
-    page_title = '%s :: %s' % ('Welcome to Avenue', heading)
-
-    desktop = True
-
-    css = 'night' if desktop else 'night-mobile'    
-
-    return render_template('wiki.html',
-                           style=css,
-                           main_title=heading,
-                           post=words,
-                           sidebar=navbar,
-                           title=page_title,
-                           desktop=desktop)
+                           sidebar=nav2)
 
 @app.route('/micro')
 def micro():
@@ -143,12 +122,6 @@ def forums():
 
 @app.route('/night.css')
 def night():
-    response = make_response(render_template('main.css', text=text1, background=background1, desktop=True))
-    response.mimetype = 'text/css'
-    return response
-
-@app.route('/night-mobile.css')
-def mobile_night():
-    response = make_response(render_template('main.css', text=text1, background=background1, desktop=False))
+    response = make_response(render_template('main.css', text=text1, background=background1))
     response.mimetype = 'text/css'
     return response
