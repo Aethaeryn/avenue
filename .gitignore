@@ -2,5 +2,8 @@
 *.pyc
 *.js
 
+# Ignore downloaded files.
+avenue/static/dl/*
+
 # Ignore hidden directories and files.
 .*
