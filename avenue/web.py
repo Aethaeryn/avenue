@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Copyright (c) 2012 Michael Babich
 # See LICENSE.txt or http://opensource.org/licenses/MIT
 
@@ -21,6 +22,11 @@ navbar.append({'title'   : 'Forums',
                'link'    : '/f'})
 
 browser_upgrade = '<p><img src="static/dl/firefox-g.png"></img><img src="static/dl/chrome-g.png"></img><img src="static/dl/safari-g.png"></img><img src="static/dl/opera-g.png"></img></p>'
+
+def button(text):
+    return '<div class="button">%s</div>' % text
+
+buttons = '<p>%s%s%s%s&nbsp</p>' % (button(u'↳'), button('+'), button('-'), button('#'))
 
 text1 = {'plain' : '#000000',
          'link'  : '#0438a0',
@@ -71,9 +77,6 @@ def micro():
                            sidebar=navbar,
                            title=page_title)
 
-def button(text):
-    return '<div class="button">%s</div>' % text
-
 @app.route('/f')
 def forums():
     page_title = '%s :: %s' % ('Forums', heading)
@@ -92,7 +95,7 @@ def forums():
     posts = []
 
     for post in post_list:
-        posts.append({'content' : '%s<p>%s%s%s%s&nbsp</p>' % (post, button('&nbsp;reply&nbsp;'), button('+'), button('-'), button('#')), 'level' : 1})
+        posts.append({'content' : post, 'level' : 1})
 
     posts[0]['level'] = 0
     posts[1]['level'] = 1
@@ -103,9 +106,6 @@ def forums():
     posts[8]['level'] = 3
 
     post_author = 'Michael | -1 year ago'
-
-    #### TODO: On the other end of the post, buttons:
-    # reply + - #
 
     return render_template('forum.html', style='night', main_title=heading, posts=posts, sidebar=navbar, title=page_title, author=post_author, thread_title=thread_title)
 
