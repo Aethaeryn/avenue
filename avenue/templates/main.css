@@ -89,6 +89,7 @@ a:hover { text-decoration: none;
           font-weight: normal;
           text-align: justify;
           color: {{ text.nav }};
+          float: left;
         }
 
 .button { border-radius: 15px;

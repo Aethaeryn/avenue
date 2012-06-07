@@ -7,10 +7,10 @@
     <nav>
       {% for navbox in sidebar %}
       <a href={{ navbox.link }}>
-        <div class="navbox">
+        <span class="navbox">
           <h1> {{ navbox.title }} </h1>
           {{ navbox.content }}
-        </div>
+        </span>
       </a>
       {% endfor %}
     </nav>
