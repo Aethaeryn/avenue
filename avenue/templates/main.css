@@ -24,7 +24,7 @@ h2 { font-size:15pt;
    }
 
 p { margin: 0px;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
   }
 
 article { background-color: {{ background.article }};
@@ -92,11 +92,14 @@ a:hover { text-decoration: none;
         }
 
 .button { border-radius: 15px;
-          background-color: {{ background.box1 }};
-          color: {{ text.nav }};
-          padding: 5px;
-          width: 20px;
+          background-color: {{ background.box2 }};
+          color: {{ text.link }};
           text-align: center;
+          float: left;
+          min-width: 20px;
+          margin: 2px;
+          padding: 2px;
+          font-size: 9pt;
         }
 
 .title-heading { font-size: 28pt;
