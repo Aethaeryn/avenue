@@ -20,6 +20,8 @@ navbar.append({'title'   : 'Forums',
                'content' : 'Visit the official forums!',
                'link'    : '/f'})
 
+browser_upgrade = '<p><img src="static/dl/firefox-g.png"></img><img src="static/dl/chrome-g.png"></img><img src="static/dl/safari-g.png"></img><img src="static/dl/opera-g.png"></img></p>'
+
 text1 = {'plain' : '#000000',
          'link'  : '#0438a0',
          'hover' : '#0853e1',
@@ -75,7 +77,7 @@ def forums():
     thread_title = 'This is a Sample Thread'
 
     post_list = ['<p>The forums will go here eventually. I\'m just testing things out now. As you can see, the first post in a thread gets special treatment.</p>',
-                 '<p>Well, I could\'ve just put a note explaining that this website is just full of static filler stuff as I finalize the design aspect of Avenue, but then I realized that this site\'s purpose is to render text. So, I can simply write that explanation here in a verbose way. That way, I can test out posts of all different sizes to see how the theme renders.</p>', '<p>Fortunately, this is easier than it looks.</p>',
+                 '<p>Well, I could\'ve just put a note explaining that this website is just full of static filler stuff as I finalize the design aspect of Avenue, but then I realized that this site\'s purpose is to render text. So, I can simply write that explanation here in a verbose way. That way, I can test out posts of all different sizes to see how the theme renders.</p>', '<p>Fortunately, this is easier than it looks.</p><div class="button">+</div>',
                  '<p>So a typical forum thread would look like this, except hopefully people would put lengthier posts here. The site and the software this site is built on top of are still being written, so this is just placeholder text. That means that this site doesn\'t actually work yet. Please don\'t be angry if one of the links doesn\'t work because nothing really works here yet. It\'s just sample text.</p>',
                  '<p>The thing is, I need to have a lot of text and a lot of posts in order to fully test out how everything is going to work or else I will not be able to account for all situations. I could put nonsense here or just some section from a public domain work, but to be honest, writing nonsense text is actually pretty easy.</p><p>Besides, this way I can try to think of all of the typical use cases that a forum might see in terms of posts and try to write as many different types of posts here. This will provide variety in testing.</p>', '<p>So, hopefully any style bugs will show up now before this is used by other people in a production environment.</p>',
                  '<p>Almost there! I just need to fill up an entire page!</p>',

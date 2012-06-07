@@ -91,6 +91,14 @@ a:hover { text-decoration: none;
           color: {{ text.nav }};
         }
 
+.button { border-radius: 15px;
+          background-color: {{ background.box1 }};
+          color: {{ text.nav }};
+          padding: 5px;
+          width: 20px;
+          text-align: center;
+        }
+
 .title-heading { font-size: 28pt;
                  margin-left: 5px;
                }
