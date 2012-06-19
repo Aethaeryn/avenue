@@ -7,17 +7,21 @@
 from sqlalchemy import Table, Integer, ForeignKey, DateTime, Column, String
 
 def get_tables(metadata):
-    # Store parent/children/revisions/tags/content-type
-    posts = Table('posts', metadata,
-                  Column('id', Integer, primary_key=True),
-                  Column('author', ForeignKey('users.username')),
-                  Column('karma', Integer),
-                  Column('content', String),
-                  Column('parent', ForeignKey('posts.id')))
+    table = {}
 
-    users = Table('users', metadata,
-                  Column('id', Integer, primary_key=True),
-                  Column('username', String, unique=True),
-                  Column('joined', DateTime),
-                  Column('email', String),
-                  Column('karma', Integer))
+    # Store parent/children/revisions/tags/content-type
+    table['posts'] = Table('posts', metadata,
+                           Column('id', Integer, primary_key=True),
+                           Column('author', ForeignKey('users.username')),
+                           Column('karma', Integer),
+                           Column('content', String),
+                           Column('parent', ForeignKey('posts.id')))
+
+    table['users'] = Table('users', metadata,
+                           Column('id', Integer, primary_key=True),
+                           Column('username', String, unique=True),
+                           Column('joined', DateTime),
+                           Column('email', String),
+                           Column('karma', Integer))
+
+    return table

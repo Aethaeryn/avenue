@@ -10,11 +10,16 @@ from avenue.database.tables import get_tables
 LOCATION = 'sqlite:///:memory:'
 #LOCATION = 'sqlite:////home/mbabich/foo.sqlite'
 
-def start_engine(location):
-    engine = create_engine(location, echo=True)
-    metadata = MetaData()
-    get_tables(metadata)
-    metadata.create_all(engine)
-    return engine.connect()
+engine = create_engine(LOCATION, echo=True)
+metadata = MetaData()
+table = get_tables(metadata)
+metadata.create_all(engine)
+connection = engine.connect()
 
-connection = start_engine(LOCATION)
+print table
+
+def debug():
+    ins = table['users'].insert().values(username='michael')
+    connection.execute(ins)
+
+debug()
