@@ -8,15 +8,23 @@ the rest of the application.
 from avenue import app, api
 from flask import render_template, make_response
 from copy import copy
+import yaml
+from os import path
 
 heading = 'Zombie Raptor'
 navbar = []
+navbar.append({'title'    : 'Avenue',
+               'content'  : 'Read about the Avenue platform that runs this website.',
+               'link'     : '/about'})
+
 navbar.append({'title'   : 'Federation',
                'content' : 'Form federations with your friends and plot to take over the galaxy!',
                'link'    : '/'})
+
 navbar.append({'title'   : 'Zombie Raptor Blog',
                'content' : 'Read new updates from the Zombie Raptor team!',
                'link'    : '/'})
+
 navbar.append({'title'   : 'Forums',
                'content' : 'Visit the official forums!',
                'link'    : '/f'})
@@ -28,30 +36,11 @@ def button(text):
 
 buttons = '<p>%s%s%s%s&nbsp</p>' % (button(u'↳'), button('+'), button('-'), button('#'))
 
-text1 = {'plain' : '#000000',
-         'link'  : '#0438a0',
-         'hover' : '#0853e1',
-         'heading' : '#ff7f24',
-         'head_hover' : '#df4f14',
-         'nav' : '#d6d9d9',
-         'nav_hover' : '#aaaaaa'}
-
-background1 = {'plain'   : '#000000',
-               'post'    : '#c6c9c9',
-               'article' : '#d6d9d9',
-               'box1'    : '#1a1123',
-               'box2'    : '#a6a9a9'}
-
-words = '<h1>Zombie Raptor Launches on August 20th</h1><p>Expect awesome games from Zombie Raptor in the near future.</p>'
-
 @app.route('/')
 def index():
     '''The main page.
     '''
-    nav2 = copy(navbar)
-    nav2.insert(0, {'title'    : 'Avenue',
-                    'content'  : 'Read about the Avenue platform that runs this website.',
-                    'link'     : '/about'})
+    words = '<h1>Zombie Raptor Launches on August 20th</h1><p>Expect awesome games from Zombie Raptor in the near future.</p>'
 
     page_title = heading
 
@@ -62,7 +51,7 @@ def index():
                            main_title=heading,
                            post=words,
                            title=page_title,
-                           sidebar=nav2)
+                           sidebar=navbar)
 
 @app.route('/micro')
 def micro():
@@ -111,6 +100,12 @@ def forums():
 
 @app.route('/night.css')
 def night():
-    response = make_response(render_template('main.css', text=text1, background=background1))
+    conf = open(path.join(path.dirname(__file__), 'data', 'style.yml'))
+    style = yaml.load(conf)
+    conf.close()
+
+    response = make_response(render_template('main.css',
+                                             text=style['text'],
+                                             background=style['background']))
     response.mimetype = 'text/css'
     return response

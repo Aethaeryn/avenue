@@ -1,0 +1,15 @@
+text:
+  plain      : '#000000'
+  link       : '#0438a0'
+  hover      : '#0853e1'
+  heading    : '#ff7f24'
+  head_hover : '#df4f14'
+  nav        : '#d6d9d9'
+  nav_hover  : '#aaaaaa'
+
+background:
+  plain   : '#000000'
+  post    : '#c6c9c9'
+  article : '#d6d9d9'
+  box1    : '#1a1123'
+  box2    : '#a6a9a9'
