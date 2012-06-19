@@ -4,27 +4,17 @@
 '''This submodule manages the database.
 '''
 
-from sqlalchemy import create_engine, Table, MetaData, Integer, ForeignKey, DateTime, Column, String
+from sqlalchemy import create_engine, MetaData
+from avenue.database.tables import get_tables
 
 LOCATION = 'sqlite:///:memory:'
+#LOCATION = 'sqlite:////home/mbabich/foo.sqlite'
 
-engine = create_engine(LOCATION, echo=False)
-metadata = MetaData()
-metadata.create_all(engine)
+def start_engine(location):
+    engine = create_engine(location, echo=True)
+    metadata = MetaData()
+    get_tables(metadata)
+    metadata.create_all(engine)
+    return engine.connect()
 
-# Store parent/children/revisions/tags/content-type
-posts = Table('posts', metadata,
-              Column('id', Integer, primary_key=True),
-              Column('author', None, ForeignKey('users.username')),
-              Column('karma', Integer),
-              Column('content', String),
-              Column('parent', None, ForeignKey('posts.id')))
-
-users = Table('users', metadata,
-              Column('id', Integer, primary_key=True),
-              Column('username', String, unique=True),
-              Column('joined', DateTime),
-              Column('email', String),
-              Column('karma', Integer))
-
-connection = engine.connect()
+connection = start_engine(LOCATION)
