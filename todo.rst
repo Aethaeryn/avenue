@@ -53,13 +53,6 @@
 
     * /mail
 
-  * micro
-
-    * Forum-like section designed for short title-only postings,
-      similar to microblogging services.
-
-    * /micro
-
   * news
 
     * Focused on stories (links, posts, or micros) and threaded

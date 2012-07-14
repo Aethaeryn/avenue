@@ -53,19 +53,6 @@ def index():
                            title=page_title,
                            sidebar=navbar)
 
-@app.route('/micro')
-def micro():
-    page_title = '%s :: %s' % ('Micro', 'Zombe Raptr')
-
-    words = '<h2>This is a message that\'s exactly 140 characters long, which is a good size for a micro post for some strange reason that I don\'t understand!</h2>'
-
-    return render_template('wiki.html',
-                           style='night',
-                           main_title=heading,
-                           post=words,
-                           sidebar=navbar,
-                           title=page_title)
-
 @app.route('/f')
 def forums():
     page_title = '%s :: %s' % ('Forums', heading)
