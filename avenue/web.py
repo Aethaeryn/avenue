@@ -81,7 +81,7 @@ def forums():
     posts[7]['level'] = 2
     posts[8]['level'] = 3
 
-    post_author = 'Michael | -1 year ago'
+    post_author = 'Michael :: -1 year ago'
 
     return render_template('forum.html', style='night', main_title=heading, posts=posts, sidebar=navbar, title=page_title, author=post_author, thread_title=thread_title)
 
