@@ -9,7 +9,6 @@ text:
 
 background:
   plain   : '#090000'
-  post    : '#d2cdaf'
-  article : '#dfdfc0'
+  article : '#dfdfc6'
   box1    : '#1a1123'
   box2    : '#a6a9a9'

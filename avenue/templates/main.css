@@ -38,8 +38,7 @@ article { background-color: {{ background.article }};
           padding-bottom: 3px;
         }
 
-.post { background-color: {{ background.post }};
-        margin: 0px;
+.post { margin: 0px;
         margin-bottom: 7px;
         border-radius: 3px 3px 3px 3px;
         padding-top: 5px;
@@ -51,13 +50,11 @@ article { background-color: {{ background.article }};
 .level0 { margin-left: 0px;
           margin: 0px;
           padding: 0px;
-/*          border-radius: 0px; */
-          background-color: {{ background.article }};
         }
 
-.level1 { margin-left: 0px;  }
-.level2 { margin-left: 25px; }
-.level3 { margin-left: 50px; }
+.level1 { margin-left: 5px;  }
+.level2 { margin-left: 30px; }
+.level3 { margin-left: 55px; }
 
 nav { float: right;
       width: 200px;
