@@ -40,7 +40,6 @@ article { background-color: {{ background.article }};
 
 .post { margin: 0px;
         margin-bottom: 7px;
-        border-radius: 3px 3px 3px 3px;
         padding-top: 5px;
         padding-left: 8px;
         padding-right: 8px;
