@@ -93,6 +93,7 @@ def night():
 
     response = make_response(render_template('main.css',
                                              text=style['text'],
-                                             background=style['background']))
+                                             background=style['background'],
+                                             post=style['post']))
     response.mimetype = 'text/css'
     return response

@@ -8,7 +8,15 @@ text:
   nav_hover  : '#aaaaaa'
 
 background:
-  plain   : '#090000'
+  plain   : '#000000'
   article : '#dfdfc6'
   box1    : '#1a1123'
   box2    : '#a6a9a9'
+
+post:
+  level0 : '#ffffff'
+  level1 : '#001ab5'
+  level2 : '#0073b5'
+  level3 : '#ede500'
+  level4 : '#ed7500'
+  level5 : '#c70000'
