@@ -66,7 +66,13 @@ def forums():
                  '<p>Almost there! I just need to fill up an entire page!</p>',
                  '<p>Now, I am going to cheat a bit and have a bunch of one-liners.</p>',
                  '<p>Alright!</p>',
-                 '<p>So this is what a page looks like when you have more posts than can fit on a typical screen. This is the threaded view, too!</p>']
+                 '<p>So this is what a page looks like when you have more posts than can fit on a typical screen. This is the threaded view, too!</p>',
+                 '<p>Now</p>',
+                 '<p>let\'s</p>',
+                 '<p>go</p>',
+                 '<p>max</p>',
+                 '<p>depth.</p>',
+                 '<p>The tests are now over.</p>']
 
     posts = []
 
@@ -74,12 +80,15 @@ def forums():
         posts.append({'content' : post, 'level' : 1})
 
     posts[0]['level'] = 0
-    posts[1]['level'] = 1
     posts[2]['level'] = 2
     posts[4]['level'] = 2
     posts[5]['level'] = 3
     posts[7]['level'] = 2
     posts[8]['level'] = 3
+    posts[11]['level'] = 2
+    posts[12]['level'] = 3
+    posts[13]['level'] = 4
+    posts[14]['level'] = 5
 
     post_author = 'Michael :: -1 year ago'
 
