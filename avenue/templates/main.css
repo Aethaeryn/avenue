@@ -46,17 +46,12 @@ article { background-color: {{ background.article }};
         padding-bottom: 0px;
       }
 
-.levelbox { float: left;
-            width: 10px;
-            min-height: 50px;
-            margin-right: 5px; }
-
-.level0 { background-color: {{ post.level0 }}; }
-.level1 { background-color: {{ post.level1 }}; }
-.level2 { background-color: {{ post.level2 }}; }
-.level3 { background-color: {{ post.level3 }}; }
-.level4 { background-color: {{ post.level4 }}; }
-.level5 { background-color: {{ post.level5 }}; }
+.level0 { border-left: 10px solid {{ post.level0 }}; }
+.level1 { border-left: 10px solid {{ post.level1 }}; }
+.level2 { border-left: 10px solid {{ post.level2 }}; }
+.level3 { border-left: 10px solid {{ post.level3 }}; }
+.level4 { border-left: 10px solid {{ post.level4 }}; }
+.level5 { border-left: 10px solid {{ post.level5 }}; }
 
 nav { float: right;
       width: 200px;
