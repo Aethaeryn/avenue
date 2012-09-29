@@ -26,7 +26,7 @@ h2 { font-size:15pt;
    }
 
 p { margin: 0px;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
   }
 
 article { background-color: {{ background.article }};
@@ -42,10 +42,8 @@ article { background-color: {{ background.article }};
 
 .post { margin: 0px;
         margin-bottom: 7px;
-        padding-top: 5px;
         padding-left: 8px;
         padding-right: 8px;
-        padding-bottom: 0px;
       }
 
 .level0 { border-left: 10px solid {{ post.level0 }}; }
@@ -123,6 +121,4 @@ a:hover { text-decoration: none;
 
 .tile-navbox:hover { color: {{ text.nav_hover }}; }
 
-.author { font-size: 8pt;
-          padding-bottom: 5px;
-        }
+.author { font-size: 8pt; }
