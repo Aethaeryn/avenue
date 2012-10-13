@@ -44,6 +44,8 @@ article { background-color: {{ background.article }};
         margin-bottom: 7px;
         padding-left: 8px;
         padding-right: 8px;
+        border-bottom: 1px solid #888888;
+        border-right: 7px solid {{ post.level5 }};
       }
 
 .level0 { border-left: 7px solid {{ post.level0 }}; }
