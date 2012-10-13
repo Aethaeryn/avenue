@@ -23,8 +23,8 @@ posts:
   - level: 1
     content: "<p>Almost there! I just need to fill up an entire page!</p>"
 
-  - level: 1
-    content: "<p>Now, I am going to cheat a bit and have a bunch of one-liners.</p>"
+  - level: 2
+    content: "<p>Now, let's have two replies at the same level.</p>"
 
   - level: 2
     content: "<p>Alright!</p>"

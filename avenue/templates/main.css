@@ -53,6 +53,32 @@ article { background-color: {{ background.article }};
 .level4 { border-left: 10px solid {{ post.level4 }}; }
 .level5 { border-left: 10px solid {{ post.level5 }}; }
 
+.levelbox { height: 2px; }
+
+.lbox0 { background-color: {{ post.level0 }};
+         width: 0px;
+       }
+
+.lbox1 { background-color: {{ post.level1 }};
+         width: 20px;
+       }
+
+.lbox2 { background-color: {{ post.level2 }};
+         width: 40px;
+       }
+
+.lbox3 { background-color: {{ post.level3 }};
+         width: 60px;
+       }
+
+.lbox4 { background-color: {{ post.level4 }};
+         width: 80px;
+       }
+
+.lbox5 { background-color: {{ post.level5 }};
+         width: 100px;
+       }
+
 nav { float: right;
       width: 200px;
       padding: 5px;
