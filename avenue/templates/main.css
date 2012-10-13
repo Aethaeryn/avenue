@@ -46,12 +46,12 @@ article { background-color: {{ background.article }};
         padding-right: 8px;
       }
 
-.level0 { border-left: 10px solid {{ post.level0 }}; }
-.level1 { border-left: 10px solid {{ post.level1 }}; }
-.level2 { border-left: 10px solid {{ post.level2 }}; }
-.level3 { border-left: 10px solid {{ post.level3 }}; }
-.level4 { border-left: 10px solid {{ post.level4 }}; }
-.level5 { border-left: 10px solid {{ post.level5 }}; }
+.level0 { border-left: 7px solid {{ post.level0 }}; }
+.level1 { border-left: 7px solid {{ post.level1 }}; }
+.level2 { border-left: 7px solid {{ post.level2 }}; }
+.level3 { border-left: 7px solid {{ post.level3 }}; }
+.level4 { border-left: 7px solid {{ post.level4 }}; }
+.level5 { border-left: 7px solid {{ post.level5 }}; }
 
 .levelbox { height: 2px; }
 
