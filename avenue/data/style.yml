@@ -15,8 +15,8 @@ background:
 
 post:
   level0 : '#dfdfc6'
-  level1 : '#001ab5'
-  level2 : '#0073b5'
-  level3 : '#bdad00'
-  level4 : '#ed7500'
+  level1 : '#bdad00'
+  level2 : '#d59100'
+  level3 : '#ed7500'
+  level4 : '#da3a00'
   level5 : '#c70000'
