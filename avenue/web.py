@@ -61,9 +61,7 @@ def forums():
     thread = yaml.load(sample)
     sample.close()
 
-    post_author = 'Michael :: -1 year ago'
-
-    return render_template('forum.html', style='night', main_title=heading, posts=thread['posts'], sidebar=navbar, title=page_title, author=post_author, thread_title=thread['title'])
+    return render_template('forum.html', style='night', main_title=heading, posts=thread['posts'], sidebar=navbar, title=page_title, thread_title=thread['title'])
 
 @app.route('/night.css')
 def night():
