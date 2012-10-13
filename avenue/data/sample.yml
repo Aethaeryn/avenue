@@ -78,6 +78,11 @@ posts:
     date: "30 minutes ago"
 
   - level: 1
-    content: "<p>The tests are now over.</p>"
+    content: "<p>The tests are now over. I've got blisters on my fingers.</p>"
     author: "Ringo"
     date: "47 minutes ago"
+
+  - level: 2
+    content: "<p>Don't post in this thread anymore, guys.</p>"
+    author: "Yoko"
+    date: "5 minutes ago"
