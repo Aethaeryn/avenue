@@ -106,18 +106,18 @@
 
   * example.com/submission_id
 
-     * Redirects to the full path to the submission id.
+    * Redirects to the full path to the submission id.
 
   * example.com/tag/tag_name
 
-     * Shows all content on all forums with the tag called tag_name.
+    * Shows all content on all forums with the tag called tag_name.
 
-     * Note that this is a meta-category since each tag is run
-       independently in each forum, so no one can actually moderate
-       this. People who moderate particular tags do so under a
-       particular forum, so content here can be under the supervision
-       of multiple different moderator sets. Thus, it needs to be
-       clear which forum it is under.
+    * Note that this is a meta-category since each tag is run
+      independently in each forum, so no one can actually moderate
+      this. People who moderate particular tags do so under a
+      particular forum, so content here can be under the supervision
+      of multiple different moderator sets. Thus, it needs to be
+      clear which forum it is under.
 
   * example.com/content_type
 
