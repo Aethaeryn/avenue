@@ -1,3 +1,6 @@
+Basic
+-----
+
 * Posts
 
   * author(s)
@@ -72,16 +75,45 @@
 
     * Show post/submission history?
 
+* Permissions and Accounts
+
+* Tagging
+
+  * public (global, multi-tag)
+
+  * private (visible only you, such as tagging users or posts with a
+    certain label)
+
+  * Tags allow 'inheritance' from parent tags, so if tagged as a child
+    tag it is automatically tagged as its parent tag(s) as well.
+
+* Forum Types
+
+  * public
+
+  * open only to members
+
+* Repost Interface
+
+  * After three months, the ability is given to repost something
+    already posted (if not wiki). The first/top reply in this case is
+    a special meta post that links to previous discussions.
+
 * Forums
 
   * Independently run sections of the site with global moderators and
     moderators for various content or tag types.
 
+URLS
+----
+
+* Forum URL Structure:
+
   * URL structure: example.com/f/forum_name/
 
     * The default forum_name is main.
 
-* Additional URL possibilities:
+* Basic URL possibilities:
 
   * example.com/f/forum_name/tag/tag_name
 
@@ -185,27 +217,3 @@
 
     * Is the profile for a particular user (see above, under the
       section Special Content Types).
-
-* Permissions and Accounts
-
-* Tagging
-
-  * public (global, multi-tag)
-
-  * private (visible only you, such as tagging users or posts with a
-    certain label)
-
-  * Tags allow 'inheritance' from parent tags, so if tagged as a child
-    tag it is automatically tagged as its parent tag(s) as well.
-
-* Forum Types
-
-  * public
-
-  * open only to members
-
-* Repost Interface
-
-  * After three months, the ability is given to repost something
-    already posted (if not wiki). The first/top reply in this case is
-    a special meta post that links to previous discussions.
