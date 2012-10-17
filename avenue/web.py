@@ -59,7 +59,7 @@ def f():
 
 @app.route('/f/main/')
 def main_forum():
-    test = [{'level' : 0, 'content' : '<h1><a href="/f/main/post/1">This is a Sample Thread</a></h1>', 'author' : 'John', 'date' : 'recently'},
+    test = [{'level' : 0, 'content' : '<h1><a href="/f/main/post/1">This is a Sample Thread</a></h1>', 'author' : 'John', 'date' : '1 day ago'},
             {'level' : 0, 'content' : '<h1><a href="http://example.com/">test post please ignore</a></h1>', 'author' : 'obviously_original_content', 'date' : '3 years ago'},
             {'level' : 0, 'content' : '<h1><a href="http://example.com/">Hey guys, I think I might have discovered a new continent!</a></h1>', 'author' : 'christopher', 'date' : '520 years ago'}]
 
@@ -77,7 +77,7 @@ def sample_post():
     thread = yaml.load(sample)
     sample.close()
 
-    return render_template('forum.html', style='night', main_title=heading, posts=thread['posts'], sidebar=navbar, title=page_title, thread_title=thread['title'])
+    return render_template('forum.html', style='night', main_title=heading, posts=thread['posts'], sidebar=navbar, title=page_title, thread_title=thread['title'], threaded=True)
 
 @app.route('/night.css')
 def night():
