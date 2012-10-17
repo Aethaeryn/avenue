@@ -26,7 +26,7 @@ navbar.append({'title'   : 'Zombie Raptor Blog',
                'link'    : '/'})
 
 navbar.append({'title'   : 'Forums',
-               'content' : 'Visit the official forums!',
+               'content' : 'Visit the forums!',
                'link'    : '/f'})
 
 browser_upgrade = '<p><img src="static/dl/firefox-g.png"></img><img src="static/dl/chrome-g.png"></img><img src="static/dl/safari-g.png"></img><img src="static/dl/opera-g.png"></img></p>'
@@ -40,7 +40,7 @@ buttons = '<p>%s%s%s%s&nbsp</p>' % (button(u'↳'), button('+'), button('-'), bu
 def index():
     '''The main page.
     '''
-    words = '<h1>Zombie Raptor Launches on August 20th</h1><p>Expect awesome games from Zombie Raptor in the near future.</p>'
+    words = '<h1>Zombie Raptor Launches... at some point.</h1><p>Expect stuff from Zombie Raptor in the near future.</p>'
 
     page_title = heading
 
@@ -53,7 +53,7 @@ def index():
                            title=page_title,
                            sidebar=navbar)
 
-@app.route('/f')
+@app.route('/f/main/post/1')
 def forums():
     page_title = '%s :: %s' % ('Forums', heading)
 
