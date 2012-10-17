@@ -53,8 +53,24 @@ def index():
                            title=page_title,
                            sidebar=navbar)
 
+@app.route('/f/')
+def f():
+    return ''
+
+@app.route('/f/main/')
+def main_forum():
+    test = [{'level' : 0, 'content' : '<h1><a href="/f/main/post/1">This is a Sample Thread</a></h1>', 'author' : 'John', 'date' : 'recently'},
+            {'level' : 0, 'content' : '<h1><a href="http://example.com/">test post please ignore</a></h1>', 'author' : 'obviously_original_content', 'date' : '3 years ago'},
+            {'level' : 0, 'content' : '<h1><a href="http://example.com/">Hey guys, I think I might have discovered a new continent!</a></h1>', 'author' : 'christopher', 'date' : '520 years ago'}]
+
+    return render_template('forum.html', style='night', main_title=heading, thread_title='Main Forum', posts=test)
+
+@app.route('/f/main/post/')
+def post():
+    return ''
+
 @app.route('/f/main/post/1')
-def forums():
+def sample_post():
     page_title = '%s :: %s' % ('Forums', heading)
 
     sample = open(path.join(path.dirname(__file__), 'data', 'sample.yml'))
