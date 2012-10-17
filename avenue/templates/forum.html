@@ -7,7 +7,7 @@
   <h1> {{ thread_title }} </h1>
   {% for post in posts %}
     <div class="post level{{ post['level'] }}">
-      <span class="author">  {% if threaded %}({{ post['level'] }}) {% endif %}{{ post['author'] }} :: {{ post ['date'] }} :: <a href="/">(reply)</a></span>
+      <span class="author">  {% if threaded %}({{ post['level'] }}) {% endif %}{{ post['author'] }} :: <a href="/f">{{ post ['date'] }}</a> :: <a href="/f/main">(reply)</a> :: <a href="/">(rate)</a></span>
       <div class="levelbox lbox{{ post['level'] }}"></div>
       {{  post["content"]|safe  }}</div>
   {% endfor %}
