@@ -13,21 +13,13 @@ from os import path
 
 heading = 'Zombie Raptor'
 navbar = []
-navbar.append({'title'    : 'Avenue',
-               'content'  : 'Read about the Avenue platform that runs this website.',
-               'link'     : '/about'})
-
-navbar.append({'title'   : 'Federation',
-               'content' : 'Form federations with your friends and plot to take over the galaxy!',
-               'link'    : '/'})
-
 navbar.append({'title'   : 'Zombie Raptor Blog',
                'content' : 'Read new updates from the Zombie Raptor team!',
                'link'    : '/'})
 
-navbar.append({'title'   : 'Forums',
-               'content' : 'Visit the forums!',
-               'link'    : '/f'})
+navbar.append({'title'   : 'Main Forum',
+               'content' : 'Visit the main forum!',
+               'link'    : '/f/main'})
 
 browser_upgrade = '<p><img src="static/dl/firefox-g.png"></img><img src="static/dl/chrome-g.png"></img><img src="static/dl/safari-g.png"></img><img src="static/dl/opera-g.png"></img></p>'
 
