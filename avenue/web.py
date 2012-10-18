@@ -63,7 +63,7 @@ def main_forum():
             {'level' : 0, 'content' : '<h1><a href="http://example.com/">test post please ignore</a></h1>', 'author' : 'obviously_original_content', 'date' : '3 years ago'},
             {'level' : 0, 'content' : '<h1><a href="http://example.com/">Hey guys, I think I might have discovered a new continent!</a></h1>', 'author' : 'christopher', 'date' : '520 years ago'}]
 
-    return render_template('forum.html', style='night', main_title=heading, thread_title='Main Forum', posts=test)
+    return render_template('forum.html', style='night', main_title=heading, thread_title='Main Forum', posts=test, sidebar=navbar)
 
 @app.route('/f/main/post/')
 def post():
