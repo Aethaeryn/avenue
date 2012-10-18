@@ -2,8 +2,7 @@
 
 {% block content %}
     {% if main_title %}<h1><a href="/" class="title-heading">{{ main_title }}</a></h1>{% endif %}
-    {% if body %} {{body|safe}} {% endif %}
-    {% if desktop %}
+    {% if True %}
     <nav>
       {% for navbox in sidebar %}
       <a href={{ navbox.link }}>
