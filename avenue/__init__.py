@@ -14,6 +14,6 @@ app = Flask(__name__)
 
 from avenue import web
 
-import federation
+#import federation
 
-app.register_blueprint(federation.app)
+#app.register_blueprint(federation.app)
