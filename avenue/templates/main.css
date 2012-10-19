@@ -1,5 +1,24 @@
 html { overflow-y: scroll; }
 
+@media all and (min-width:927px) {
+    article {
+        margin-right: 220px;
+    }
+
+    nav {
+        position:fixed;
+        right: 20px;
+        top: 60px;
+        width: 200px;
+        margin: 5px;
+    }
+}
+
+@media all and (max-width:926px) {
+    nav { margin: 10px;
+        }
+}
+
 body { font-family: "Open Sans", sans-serif;
        color: {{ text.plain }};
        background-color: {{ background.plain }};
@@ -37,7 +56,6 @@ article { background-color: {{ background.article }};
           margin-right: 5px;
           margin-bottom: 10px;
           padding-bottom: 3px;
-          float: left;
           max-width: 717px;
         }
 
@@ -82,9 +100,8 @@ article { background-color: {{ background.article }};
          width: 100px;
        }
 
-nav { float: left;
-      width: 200px;
-      padding: 5px;
+nav { padding: 0px;
+      align: bottom;
     }
 
 a:link { text-decoration: none;
@@ -99,7 +116,7 @@ a:hover { text-decoration: none;
           color: {{ text.hover }};
         }
 
-.navbox { width: 180px;
+.navbox { width: 99%;
           margin: 0px;
           padding-top: 5px;
           padding-left: 10px;
