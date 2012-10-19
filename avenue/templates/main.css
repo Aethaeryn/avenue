@@ -6,9 +6,13 @@ html { overflow-y: scroll; }
         left:50px;
     }
 
+    article {
+        width: 717px;
+    }
+
     nav {
-        position:fixed;
-        left:810px;
+        position:absolute;
+        left:750px;
         top: 60px;
         width: 200px;
         margin: 5px;
@@ -16,8 +20,9 @@ html { overflow-y: scroll; }
 }
 
 @media all and (max-width:1059px) {
-    nav { margin: 10px;
-        }
+    nav { margin: 10px; }
+
+    article { max-width: 717px; }
 }
 
 body { font-family: "Open Sans", sans-serif;
@@ -52,7 +57,6 @@ article { background-color: {{ background.article }};
           margin-right: 5px;
           margin-bottom: 10px;
           padding-bottom: 3px;
-          max-width: 717px;
         }
 
 .post { margin: 0px;
