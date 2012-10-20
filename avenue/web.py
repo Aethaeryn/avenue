@@ -38,10 +38,12 @@ def index():
 
     css = 'night'
 
-    return render_template('wiki.html',
+    post = {'level' : 0, 'content' : words, 'author' : 'admin', 'date' : 'now'}
+
+    return render_template('forum.html',
                            style=css,
                            main_title=heading,
-                           post=words,
+                           posts=[post],
                            title=page_title,
                            sidebar=navbar)
 
