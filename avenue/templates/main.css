@@ -22,7 +22,7 @@ html { overflow-y: scroll; }
 @media all and (max-width:1059px) {
     nav { margin: 10px; }
 
-    article { max-width: 717px; }
+    article { max-width: 100%; }
 }
 
 body { font-family: "Open Sans", sans-serif;
