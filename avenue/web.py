@@ -23,6 +23,12 @@ navbar.append({'title'   : 'Main Forum',
 
 browser_upgrade = '<p><img src="static/dl/firefox-g.png"></img><img src="static/dl/chrome-g.png"></img><img src="static/dl/safari-g.png"></img><img src="static/dl/opera-g.png"></img></p>'
 
+tags = { 'post'  : ['post', '#aabbcc', '/'],
+         'test'  : ['test', '#ffbb99', '/'],
+         'micro' : ['micro', '#aabbcc', '/'],
+         'link'  : ['link', '#aabbcc', '/'],
+         'news'  : ['news', '#bbeebb', '/']}
+
 def button(text):
     return '<div class="button">%s</div>' % text
 
@@ -55,9 +61,9 @@ def f():
 
 @app.route('/f/main/')
 def main_forum():
-    test = [{'level' : 0, 'content' : '<h1 class="post-link"><a href="/f/main/post/1">This is a Sample Thread</a></h1>', 'author' : 'John', 'date' : '1 day ago', 'tags' : [['post', '#aabbcc', '/'], ['test', '#ffbb99', '/']]},
-            {'level' : 0, 'content' : '<h1 class="post-link"><a href="http://example.com/">test post please ignore</a></h1>', 'author' : 'obviously_original_content', 'date' : '3 years ago', 'tags' : [['micro', '#aabbcc', '/'], ['test', '#ffbb99', '/']]},
-            {'level' : 0, 'content' : '<h1 class="post-link"><a href="http://example.com/">Hey guys, I think I might have discovered a new continent!</a></h1>', 'author' : 'christopher', 'date' : '520 years ago', 'tags' : [['link', '#aabbcc', '/'], ['news', '#bbeebb', '/']]}]
+    test = [{'level' : 0, 'content' : '<h1 class="post-link"><a href="/f/main/post/1">This is a Sample Thread</a></h1>', 'author' : 'John', 'date' : '1 day ago', 'tags' : [tags['post'], tags['test']]},
+            {'level' : 0, 'content' : '<h1 class="post-link"><a href="http://example.com/">test post please ignore</a></h1>', 'author' : 'obviously_original_content', 'date' : '3 years ago', 'tags' : [tags['micro'], tags['test']]},
+            {'level' : 0, 'content' : '<h1 class="post-link"><a href="http://example.com/">Hey guys, I think I might have discovered a new continent!</a></h1>', 'author' : 'christopher', 'date' : '520 years ago', 'tags' : [tags['link'], tags['news']]}]
 
     return render_template('forum.html',
                            style='night',
