@@ -55,7 +55,7 @@ def f():
 
 @app.route('/f/main/')
 def main_forum():
-    test = [{'level' : 0, 'content' : '<h1 class="post-link"><a href="/f/main/post/1">This is a Sample Thread</a></h1><div class="tags">&nbsp;<span class="tag-content" style="background-color: #aabbcc">&nbsp;post&nbsp;</span> <span class="tag-content" style="background-color:#ffbb99">&nbsp;test&nbsp;</span></div>', 'author' : 'John', 'date' : '1 day ago'},
+    test = [{'level' : 0, 'content' : '<h1 class="post-link"><a href="/f/main/post/1">This is a Sample Thread</a></h1>', 'author' : 'John', 'date' : '1 day ago', 'tags' : ['<span class="tag-content" style="background-color: #aabbcc">&nbsp;post&nbsp;</span>', '<span class="tag-content" style="background-color:#ffbb99">&nbsp;test&nbsp;</span>']},
             {'level' : 0, 'content' : '<h1><a href="http://example.com/">test post please ignore</a></h1>', 'author' : 'obviously_original_content', 'date' : '3 years ago'},
             {'level' : 0, 'content' : '<h1><a href="http://example.com/">Hey guys, I think I might have discovered a new continent!</a></h1>', 'author' : 'christopher', 'date' : '520 years ago'}]
 

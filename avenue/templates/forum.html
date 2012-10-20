@@ -9,7 +9,9 @@
     <div class="post level{{ post['level'] }}">
       <span class="author">  {% if threaded %}({{ post['level'] }}) {% endif %}{{ post['author'] }} :: <a href="/f">{{ post ['date'] }}</a> :: <a href="/f/main">(reply)</a> :: <a href="/">(rate)</a></span>
       <div class="levelbox lbox{{ post['level'] }}"></div>
-      {{  post["content"]|safe  }}</div>
+      {{  post["content"]|safe  }}
+      <div class="tags">&nbsp;{% for tag in post['tags'] %}{{tag|safe}}&nbsp;{% endfor %}</div>
+    </div>
   {% endfor %}
   </article>
 
