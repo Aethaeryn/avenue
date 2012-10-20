@@ -32,7 +32,7 @@ buttons = '<p>%s%s%s%s&nbsp</p>' % (button(u'↳'), button('+'), button('-'), bu
 def index():
     '''The main page.
     '''
-    words = '<h1>Zombie Raptor Launches... at some point.</h1><p>Expect stuff from Zombie Raptor in the near future.</p>'
+    words = '<p>Expect stuff from Zombie Raptor in the near future.</p>'
 
     page_title = heading
 
@@ -45,7 +45,7 @@ def index():
                            main_title=heading,
                            posts=[post],
                            title=page_title,
-                           thread_title="The Official Zombie Raptor Blog",
+                           thread_title="Zombie Raptor Launches... at some point.",
                            sidebar=navbar)
 
 @app.route('/f/')
@@ -58,7 +58,7 @@ def main_forum():
             {'level' : 0, 'content' : '<h1><a href="http://example.com/">test post please ignore</a></h1>', 'author' : 'obviously_original_content', 'date' : '3 years ago'},
             {'level' : 0, 'content' : '<h1><a href="http://example.com/">Hey guys, I think I might have discovered a new continent!</a></h1>', 'author' : 'christopher', 'date' : '520 years ago'}]
 
-    return render_template('forum.html', style='night', main_title=heading, thread_title='Main Forum', posts=test, sidebar=navbar)
+    return render_template('forum.html', style='night', main_title=heading + ' -- Main Forum', thread_title='Active Threads', posts=test, sidebar=navbar)
 
 @app.route('/f/main/post/')
 def post():
@@ -72,7 +72,7 @@ def sample_post():
     thread = yaml.load(sample)
     sample.close()
 
-    return render_template('forum.html', style='night', main_title=heading, posts=thread['posts'], sidebar=navbar, title=page_title, thread_title=thread['title'], threaded=True)
+    return render_template('forum.html', style='night', main_title=heading + ' -- Main Forum', posts=thread['posts'], sidebar=navbar, title=page_title, thread_title=thread['title'], threaded=True)
 
 @app.route('/night.css')
 def night():
