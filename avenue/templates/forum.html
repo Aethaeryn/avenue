@@ -16,10 +16,10 @@
     <nav>
       {% for navbox in sidebar %}
       <a href={{ navbox.link }}>
-        <span class="navbox">
+        <div class="navbox">
           <h1> {{ navbox.title }} </h1>
           {{ navbox.content }}
-        </span>
+        </div>
       </a>
       {% endfor %}
     </nav>
