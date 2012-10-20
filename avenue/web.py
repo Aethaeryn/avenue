@@ -46,7 +46,8 @@ def index():
                            posts=[post],
                            title=page_title,
                            thread_title="Zombie Raptor Launches... at some point.",
-                           sidebar=navbar)
+                           sidebar=navbar,
+                           content='blog')
 
 @app.route('/f/')
 def f():
@@ -58,7 +59,13 @@ def main_forum():
             {'level' : 0, 'content' : '<h1><a href="http://example.com/">test post please ignore</a></h1>', 'author' : 'obviously_original_content', 'date' : '3 years ago'},
             {'level' : 0, 'content' : '<h1><a href="http://example.com/">Hey guys, I think I might have discovered a new continent!</a></h1>', 'author' : 'christopher', 'date' : '520 years ago'}]
 
-    return render_template('forum.html', style='night', main_title=heading + ' -- Main Forum', thread_title='Active Threads', posts=test, sidebar=navbar)
+    return render_template('forum.html',
+                           style='night',
+                           main_title=heading + ' -- Main Forum',
+                           thread_title='Active Threads',
+                           posts=test,
+                           sidebar=navbar,
+                           content='index')
 
 @app.route('/f/main/post/')
 def post():
@@ -72,7 +79,15 @@ def sample_post():
     thread = yaml.load(sample)
     sample.close()
 
-    return render_template('forum.html', style='night', main_title=heading + ' -- Main Forum', posts=thread['posts'], sidebar=navbar, title=page_title, thread_title=thread['title'], threaded=True)
+    return render_template('forum.html',
+                           style='night',
+                           main_title=heading + ' -- Main Forum',
+                           posts=thread['posts'],
+                           sidebar=navbar,
+                           title=page_title,
+                           thread_title=thread['title'],
+                           threaded=True,
+                           content='post')
 
 @app.route('/night.css')
 def night():

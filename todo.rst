@@ -39,6 +39,12 @@ Basic
 
     * Links to an external site that is not a picture or video link.
 
+  * blog
+
+    * Thread that is like a post, but with comments hidden by default
+      like a wiki. Restricted to certain users or locations, and
+      handled specially in the indexes.
+
   * wiki
 
     * Collaborative editing of the first post, with public history
