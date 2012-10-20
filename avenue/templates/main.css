@@ -38,6 +38,8 @@ body { font-family: "Open Sans", sans-serif;
        color: {{ text.plain }};
        background-color: {{ background.plain }};
        font-size: 11pt;
+       margin: 0px;
+       margin-top: 5px;
      }
 
 h1 { font-size:20pt;
