@@ -8,10 +8,12 @@ text:
   nav_hover  : '#aaaaaa'
 
 background:
-  plain   : '#000000'
-  article : '#dfdfc6'
-  box1    : '#1a1123'
-  box2    : '#a6a9a9'
+  plain    : '#000000'
+  article  : '#dfdfc6'
+  post_1   : '#dfdfcd'
+  post_2   : '#dfdfbe'
+  box1     : '#1a1123'
+  box2     : '#a6a9a9'
 
 post:
   level0 : '#dfdfc6'

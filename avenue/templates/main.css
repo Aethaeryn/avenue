@@ -77,11 +77,27 @@ article { background-color: {{ background.article }};
       }
 
 .level0 { border-left: 7px solid {{ post.level0 }}; }
-.level1 { border-left: 7px solid {{ post.level1 }}; }
-.level2 { border-left: 7px solid {{ post.level2 }}; }
-.level3 { border-left: 7px solid {{ post.level3 }}; }
-.level4 { border-left: 7px solid {{ post.level4 }}; }
-.level5 { border-left: 7px solid {{ post.level5 }}; }
+
+.level1 { border-left: 7px solid {{ post.level1 }};
+          background: {{ background.post_1 }};
+        }
+
+.level2 { border-left: 7px solid {{ post.level2 }};
+          background: {{ background.post_2 }};
+        }
+
+.level3 { border-left: 7px solid {{ post.level3 }};
+          background: {{ background.post_1 }};
+        }
+
+.level4 { border-left: 7px solid {{ post.level4 }};
+          background: {{ background.post_2 }};
+        }
+
+.level5 { border-left: 7px solid {{ post.level5 }};
+          background: {{ background.post_1 }};
+        }
+
 
 .levelbox { height: 2px; }
 
