@@ -45,6 +45,7 @@ def index():
                            main_title=heading,
                            posts=[post],
                            title=page_title,
+                           thread_title="The Official Zombie Raptor Blog",
                            sidebar=navbar)
 
 @app.route('/f/')
