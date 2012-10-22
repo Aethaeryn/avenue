@@ -25,7 +25,7 @@ def url_generator():
         response.mimetype = 'text/css'
         return response
 
-    def forum_generator(site, forum):
+    def forum_generator():
         '''Reads in data files representing static forum states. Returns a
         function that accesses forum pages.
         '''
@@ -46,8 +46,11 @@ def url_generator():
             '''
             thread = threads[name]
 
-            html_title = '%s :: %s :: %s' % (thread['title'], forum, site)
-            main_title = '%s -- %s' % (site, forum)
+            html_title = '%s :: %s :: %s' % (thread['title'],
+                                             data['forum'],
+                                             data['site'])
+
+            main_title = '%s -- %s' % (data['site'], data['forum'])
 
             return render_template('forum.html',
                                    style='night',
@@ -80,7 +83,7 @@ def url_generator():
         for url in urls:
             app.add_url_rule(url, url, url_page_function(urls[url]))
 
-    make_page = forum_generator('Zombie Raptor', 'Main Forum')
+    make_page = forum_generator()
 
     action_list = [('redirect', redirect),
                    ('forum_urls', make_page),

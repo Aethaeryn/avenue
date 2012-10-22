@@ -1,3 +1,6 @@
+site: "Zombie Raptor"
+forum: "Main Forum"
+
 urls:
   redirect:
     '/f/': '/'
