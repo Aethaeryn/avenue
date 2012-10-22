@@ -23,6 +23,14 @@ def read_data(filename):
 def forum_generator(site_name, forum_name):
     navbar = read_data('navbar')
     tags = read_data('tags')
+    threads = read_data('threads')
+
+    def set_tags():
+        for thread in threads:
+            for post in threads[thread]['posts']:
+                if 'tags' in post:
+                    for i in range(len(post['tags'])):
+                        post['tags'][i] = tags[post['tags'][i]]
 
     def render_forum(thread_title='', main_title='', html_title='', posts=[], threaded=False, content=''):
         return render_template('forum.html',
@@ -35,16 +43,11 @@ def forum_generator(site_name, forum_name):
                                threaded=threaded,
                                content=content)
 
-    def forum_page(filename, content):
-        thread = read_data(filename)
+    def forum_page(name, content):
+        thread = threads[name]
 
         html_title = '%s :: %s :: %s' % (thread['title'], forum_name, site_name)
         main_title = '%s -- %s' % (site_name, forum_name)
-
-        for post in thread['posts']:
-            if 'tags' in post:
-                for i in range(len(post['tags'])):
-                    post['tags'][i] = tags[post['tags'][i]]
 
         return render_forum(main_title=main_title,
                             thread_title=thread['title'],
@@ -52,6 +55,8 @@ def forum_generator(site_name, forum_name):
                             posts=thread['posts'],
                             threaded=thread['threaded'],
                             content=content)
+
+    set_tags()
 
     return forum_page
 
