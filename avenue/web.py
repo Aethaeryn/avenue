@@ -85,20 +85,10 @@ def url_generator():
 
     urls = read_data('urls')
 
-    def set_redirect(destination):
-        '''Returns a function that redirects to a given URL.
-        '''
-        return lambda: redirect(destination)
-
     make_page = forum_generator('Zombie Raptor', 'Main Forum')
 
-    def serve_forum_page(page):
-        '''Returns a function that serves a given forum page.
-        '''
-        return lambda: make_page(page)
-
-    setup_url_rule(urls['redirect'], set_redirect)
-    setup_url_rule(urls['forum_urls'], serve_forum_page)
+    setup_url_rule(urls['redirect'], lambda x: lambda: redirect(x))
+    setup_url_rule(urls['forum_urls'],lambda x: lambda: make_page(x))
 
 url_generator()
 
