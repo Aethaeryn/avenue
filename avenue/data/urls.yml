@@ -1,0 +1,8 @@
+redirect:
+  '/f/': '/'
+  '/f/main/post/' : '/f/main/'
+
+forum_urls:
+  '/f/main/' : 'main'
+  '/f/main/post/1' : '1'
+  '/' : 'front_page'

@@ -83,12 +83,7 @@ def url_generator():
         for url in urls:
             app.add_url_rule(url, url, action(urls[url]))
 
-    redirect_urls = { '/f/' : '/',
-                      '/f/main/post/' : '/f/main/'}
-
-    forum_urls = { '/f/main/' : 'main',
-                   '/f/main/post/1' : '1',
-                   '/' : 'front_page' }
+    urls = read_data('urls')
 
     def set_redirect(destination):
         '''Returns a function that redirects to a given URL.
@@ -102,8 +97,8 @@ def url_generator():
         '''
         return lambda: make_page(page)
 
-    setup_url_rule(redirect_urls, set_redirect)
-    setup_url_rule(forum_urls, serve_forum_page)
+    setup_url_rule(urls['redirect'], set_redirect)
+    setup_url_rule(urls['forum_urls'], serve_forum_page)
 
 url_generator()
 
