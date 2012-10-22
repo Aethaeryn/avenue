@@ -5,9 +5,8 @@
 '''Acts as an interface between what Flask serves and what goes on in
 the rest of the application.
 '''
-from avenue import app, api
+from avenue import app
 from flask import render_template, make_response, redirect
-from copy import copy
 import yaml
 from os import path
 
