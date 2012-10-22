@@ -75,25 +75,26 @@ def forum_generator(site, forum):
 
     return forum_page
 
-def make_css(style):
-    '''Reads style rules from a file and applies them to a css
-    template to generate a css file.
-    '''
-    style = read_data(style)
-
-    response = make_response(render_template('main.css',
-                                             text=style['text'],
-                                             background=style['background'],
-                                             post=style['post']))
-    response.mimetype = 'text/css'
-    return response
-
 def url_generator():
     '''This function acts on a list of URLs, a text rule for each URL,
     and a function that says what to do to that text rule to serve a
     page. The action_list associates a subset of URLs with a
     particular function to be used as the action for that group.
     '''
+
+    def make_css(style):
+        '''Reads style rules from a file and applies them to a css
+        template to generate a css file.
+        '''
+        style = read_data(style)
+
+        response = make_response(render_template('main.css',
+                                                 text=style['text'],
+                                                 background=style['background'],
+                                                 post=style['post']))
+        response.mimetype = 'text/css'
+        return response
+
     urls = read_data('urls')
 
     make_page = forum_generator('Zombie Raptor', 'Main Forum')
