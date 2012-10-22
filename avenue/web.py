@@ -20,12 +20,12 @@ def url_generator():
         '''Reads style rules from a file and applies them to a css
         template to generate a css file.
         '''
-        style = data['style']
+        css = data['style'][style]
 
         response = make_response(render_template('main.css',
-                                                 text=style['text'],
-                                                 background=style['background'],
-                                                 post=style['post']))
+                                                 text=css['text'],
+                                                 background=css['background'],
+                                                 post=css['post']))
         response.mimetype = 'text/css'
         return response
 
