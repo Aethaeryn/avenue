@@ -11,24 +11,24 @@ from copy import copy
 import yaml
 from os import path
 
-def read_data(filename):
-    '''Reads in data from a given YML file and returns it in a form
-    usable by Python.
-    '''
-    filename = '%s.yml' % filename
-
-    data_file = open(path.join(path.dirname(__file__), 'data', filename))
-    data = yaml.load(data_file)
-    data_file.close()
-
-    return data
-
 def url_generator():
     '''This function acts on a list of URLs, a text rule for each URL,
     and a function that says what to do to that text rule to serve a
     page. The action_list associates a subset of URLs with a
     particular function to be used as the action for that group.
     '''
+    def read_data(filename):
+        '''Reads in data from a given YML file and returns it in a form
+        usable by Python.
+        '''
+        filename = '%s.yml' % filename
+
+        data_file = open(path.join(path.dirname(__file__), 'data', filename))
+        data = yaml.load(data_file)
+        data_file.close()
+
+        return data
+
     def make_css(style):
         '''Reads style rules from a file and applies them to a css
         template to generate a css file.
