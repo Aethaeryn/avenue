@@ -11,59 +11,62 @@ from copy import copy
 import yaml
 from os import path
 
-site_name = 'Zombie Raptor'
-forum_name = 'Main Forum'
-navbar = []
-navbar.append({'title'   : 'Zombie Raptor Blog',
-               'content' : 'Read new updates from the Zombie Raptor team!',
-               'link'    : '/'})
-
-navbar.append({'title'   : 'Main Forum',
-               'content' : 'Visit the main forum!',
-               'link'    : '/f/main'})
-
 browser_upgrade = '<p><img src="static/dl/firefox-g.png"></img><img src="static/dl/chrome-g.png"></img><img src="static/dl/safari-g.png"></img><img src="static/dl/opera-g.png"></img></p>'
 
-tags = { 'post'  : ['post', '#aabbcc', '/'],
-         'test'  : ['test', '#ffbb99', '/'],
-         'micro' : ['micro', '#aabbcc', '/'],
-         'link'  : ['link', '#aabbcc', '/'],
-         'news'  : ['news', '#bbeebb', '/']}
+def forum_generator(site_name, forum_name):
+    navbar = []
+    navbar.append({'title'   : 'Zombie Raptor Blog',
+                   'content' : 'Read new updates from the Zombie Raptor team!',
+                   'link'    : '/'})
 
-def render_forum(thread_title='', main_title='', html_title='', posts=[], threaded=False, content=''):
-    return render_template('forum.html',
-                           style='night',
-                           sidebar=navbar,
-                           thread_title=thread_title,
-                           main_title=main_title,
-                           html_title=html_title,
-                           posts=posts,
-                           threaded=threaded,
-                           content=content)
+    navbar.append({'title'   : 'Main Forum',
+                   'content' : 'Visit the main forum!',
+                   'link'    : '/f/main'})
 
-def forum_page(filename, content):
-    data = open(path.join(path.dirname(__file__), 'data', filename))
-    thread = yaml.load(data)
-    data.close()
+    tags = { 'post'  : ['post', '#aabbcc', '/'],
+             'test'  : ['test', '#ffbb99', '/'],
+             'micro' : ['micro', '#aabbcc', '/'],
+             'link'  : ['link', '#aabbcc', '/'],
+             'news'  : ['news', '#bbeebb', '/']}
 
-    html_title = '%s :: %s :: %s' % (thread['title'], forum_name, site_name)
-    main_title = '%s -- %s' % (site_name, forum_name)
+    def render_forum(thread_title='', main_title='', html_title='', posts=[], threaded=False, content=''):
+        return render_template('forum.html',
+                               style='night',
+                               sidebar=navbar,
+                               thread_title=thread_title,
+                               main_title=main_title,
+                               html_title=html_title,
+                               posts=posts,
+                               threaded=threaded,
+                               content=content)
 
-    for post in thread['posts']:
-        if 'tags' in post:
-            for i in range(len(post['tags'])):
-                post['tags'][i] = tags[post['tags'][i]]
+    def forum_page(filename, content):
+        data = open(path.join(path.dirname(__file__), 'data', filename))
+        thread = yaml.load(data)
+        data.close()
 
-    return render_forum(main_title=main_title,
-                        thread_title=thread['title'],
-                        html_title=html_title,
-                        posts=thread['posts'],
-                        threaded=thread['threaded'],
-                        content=content)
+        html_title = '%s :: %s :: %s' % (thread['title'], forum_name, site_name)
+        main_title = '%s -- %s' % (site_name, forum_name)
+
+        for post in thread['posts']:
+            if 'tags' in post:
+                for i in range(len(post['tags'])):
+                    post['tags'][i] = tags[post['tags'][i]]
+
+        return render_forum(main_title=main_title,
+                            thread_title=thread['title'],
+                            html_title=html_title,
+                            posts=thread['posts'],
+                            threaded=thread['threaded'],
+                            content=content)
+
+    return forum_page
+
+make_page = forum_generator('Zombie Raptor', 'Main Forum')
 
 @app.route('/')
 def index():
-    return forum_page('front_page.yml', 'blog')
+    return make_page('front_page.yml', 'blog')
 
 @app.route('/f/')
 def f():
@@ -71,7 +74,7 @@ def f():
 
 @app.route('/f/main/')
 def main_forum():
-    return forum_page('main_forum.yml', 'index')
+    return make_page('main_forum.yml', 'index')
 
 @app.route('/f/main/post/')
 def post():
@@ -79,7 +82,7 @@ def post():
 
 @app.route('/f/main/post/1')
 def sample_post():
-    return forum_page('sample.yml', 'post')
+    return make_page('sample.yml', 'post')
 
 
 @app.route('/night.css')
