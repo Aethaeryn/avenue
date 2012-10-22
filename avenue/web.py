@@ -12,6 +12,7 @@ import yaml
 from os import path
 
 site_name = 'Zombie Raptor'
+forum_name = 'Main Forum'
 navbar = []
 navbar.append({'title'   : 'Zombie Raptor Blog',
                'content' : 'Read new updates from the Zombie Raptor team!',
@@ -71,15 +72,16 @@ def main_forum():
     test = yaml.load(main_forum_)
     main_forum_.close()
 
-    page_title = '%s :: %s :: %s' % (test['title'], 'Main Forum', site_name)
+    html_title = '%s :: %s :: %s' % (test['title'], forum_name, site_name)
+    main_title = '%s -- %s' % (site_name, forum_name)
 
     for post in test['posts']:
         for i in range(len(post['tags'])):
             post['tags'][i] = tags[post['tags'][i]]
 
-    return render_forum(main_title=site_name + ' -- Main Forum',
+    return render_forum(main_title=main_title,
                         thread_title=test['title'],
-                        html_title=page_title,
+                        html_title=html_title,
                         posts=test['posts'],
                         content='index')
 
@@ -93,11 +95,12 @@ def sample_post():
     thread = yaml.load(sample)
     sample.close()
 
-    page_title = '%s :: %s :: %s' % (thread['title'], 'Main Forum', site_name)
+    html_title = '%s :: %s :: %s' % (thread['title'], forum_name, site_name)
+    main_title = '%s -- %s' % (site_name, forum_name)
 
-    return render_forum(main_title=site_name + ' -- Main Forum',
+    return render_forum(main_title=main_title,
                         thread_title=thread['title'],
-                        html_title=page_title,
+                        html_title=html_title,
                         posts=thread['posts'],
                         threaded=True,
                         content='post')
