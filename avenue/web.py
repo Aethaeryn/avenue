@@ -65,13 +65,16 @@ def main_forum():
             {'level' : 0, 'content' : '<h1 class="post-link"><a href="http://example.com/">test post please ignore</a></h1>', 'author' : 'obviously_original_content', 'date' : '3 years ago', 'tags' : [tags['micro'], tags['test']]},
             {'level' : 0, 'content' : '<h1 class="post-link"><a href="http://example.com/">Hey guys, I think I might have discovered a new continent!</a></h1>', 'author' : 'christopher', 'date' : '520 years ago', 'tags' : [tags['link'], tags['news']]}]
 
+    page_title = '%s :: %s' % ('Main Forum', heading)
+
     return render_template('forum.html',
                            style='night',
                            main_title=heading + ' -- Main Forum',
                            thread_title='Active Threads',
                            posts=test,
                            sidebar=navbar,
-                           content='index')
+                           content='index',
+                           title=page_title)
 
 @app.route('/f/main/post/')
 def post():
@@ -79,11 +82,11 @@ def post():
 
 @app.route('/f/main/post/1')
 def sample_post():
-    page_title = '%s :: %s' % ('Forums', heading)
-
     sample = open(path.join(path.dirname(__file__), 'data', 'sample.yml'))
     thread = yaml.load(sample)
     sample.close()
+
+    page_title = '%s :: %s :: %s' % (thread['title'], 'Main Forum', heading)
 
     return render_template('forum.html',
                            style='night',
