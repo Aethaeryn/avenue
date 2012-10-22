@@ -12,14 +12,9 @@ import yaml
 from os import path
 
 def forum_generator(site_name, forum_name):
-    navbar = []
-    navbar.append({'title'   : 'Zombie Raptor Blog',
-                   'content' : 'Read new updates from the Zombie Raptor team!',
-                   'link'    : '/'})
-
-    navbar.append({'title'   : 'Main Forum',
-                   'content' : 'Visit the main forum!',
-                   'link'    : '/f/main'})
+    navbar_file = open(path.join(path.dirname(__file__), 'data', 'navbar.yml'))
+    navbar = yaml.load(navbar_file)
+    navbar_file.close()
 
     tag_file = open(path.join(path.dirname(__file__), 'data', 'tags.yml'))
     tags = yaml.load(tag_file)
