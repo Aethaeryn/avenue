@@ -91,8 +91,8 @@ def make_css(style):
 def url_generator():
     '''This function acts on a list of URLs, a text rule for each URL,
     and a function that says what to do to that text rule to serve a
-    page. The scary lambdas convert the function, the text rule, and
-    the URL into a form recognized by Flask.
+    page. The action_list associates a subset of URLs with a
+    particular function to be used as the action for that group.
     '''
     urls = read_data('urls')
 
@@ -102,24 +102,26 @@ def url_generator():
                    ('forum_urls', make_page),
                    ('css', make_css)]
 
-    def setup_url_rule(url_subset, function):
+    def setup_url_rule(url_subset, action):
         '''Sets up URL rules, given a dictionary of urls and a function
         that they will act on.
         '''
         url_group = urls[url_subset]
 
-        for url in url_group:
-            app.add_url_rule(url, url, function(url_group[url]))
+        def url_page_function(text):
+            '''Returns a function that is associated with the URL
+            page. This function is called when the URL page is
+            requested. The anonymous (lambda) function does a
+            particular action given a particular string, text. It's
+            set up this way because the text fed into the action
+            function is always the same for a particular web page.
+            '''
+            return lambda: action(text)
 
-    def subset_conversion(subset_name, subset_function):
-        '''Feeds setup_url_rule the proper function that Flask looks
-        for. Each URL request will then be able to call the right
-        subset_function with the appropriate string and return the
-        right page.
-        '''
-        setup_url_rule(subset_name, lambda x: lambda: subset_function(x))
+        for url in url_group:
+            app.add_url_rule(url, url, url_page_function(url_group[url]))
 
     for action in action_list:
-        subset_conversion(action[0], action[1])
+        setup_url_rule(action[0], action[1])
 
 url_generator()
