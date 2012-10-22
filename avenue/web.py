@@ -84,31 +84,30 @@ def setup_redirects():
     def set_redirect(destination):
         '''Returns a function that redirects to a given URL.
         '''
-        def redirect_url():
-            '''Redirects to another URL.
-            '''
-            return redirect(destination)
-
-        return redirect_url
+        return lambda: redirect(destination)
 
     for url in urls:
         app.add_url_rule(url, url, set_redirect(urls[url]))
 
-make_page = forum_generator('Zombie Raptor', 'Main Forum')
+def setup_forum_pages():
+    '''Sets up the forum web pages.
+    '''
+    urls = { '/f/main/' : 'main',
+             '/f/main/post/1' : '1',
+             '/' : 'front_page' }
+
+    make_page = forum_generator('Zombie Raptor', 'Main Forum')
+
+    def serve_forum_page(page):
+        '''Returns a function that serves a given forum page.
+        '''
+        return lambda: make_page(page)
+
+    for url in urls:
+        app.add_url_rule(url, url, serve_forum_page(urls[url]))
 
 setup_redirects()
-
-@app.route('/')
-def index():
-    return make_page('front_page')
-
-@app.route('/f/main/')
-def main_forum():
-    return make_page('main')
-
-@app.route('/f/main/post/1')
-def sample_post():
-    return make_page('1')
+setup_forum_pages()
 
 @app.route('/night.css')
 def night():
