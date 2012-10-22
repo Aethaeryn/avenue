@@ -20,7 +20,7 @@ def read_data(filename):
 
     return data
 
-def forum_generator(site_name, forum_name):
+def forum_generator(site, forum):
     navbar = read_data('navbar')
     tags = read_data('tags')
     threads = read_data('threads')
@@ -32,7 +32,9 @@ def forum_generator(site_name, forum_name):
                     for i in range(len(post['tags'])):
                         post['tags'][i] = tags[post['tags'][i]]
 
-    def render_forum(thread_title='', main_title='', html_title='', posts=[], threaded=False, content=''):
+    def render_forum(thread_title='', main_title='', html_title='',
+                     posts=[], threaded=False, content=''):
+
         return render_template('forum.html',
                                style='night',
                                sidebar=navbar,
@@ -46,8 +48,8 @@ def forum_generator(site_name, forum_name):
     def forum_page(name, content):
         thread = threads[name]
 
-        html_title = '%s :: %s :: %s' % (thread['title'], forum_name, site_name)
-        main_title = '%s -- %s' % (site_name, forum_name)
+        html_title = '%s :: %s :: %s' % (thread['title'], forum, site)
+        main_title = '%s -- %s' % (site, forum)
 
         return render_forum(main_title=main_title,
                             thread_title=thread['title'],
