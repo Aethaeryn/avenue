@@ -16,16 +16,14 @@ def url_generator():
     '''
     data = api.read_data('forum')
 
-    def make_css(style):
+    def make_css(theme_name):
         '''Reads style rules from a file and applies them to a css
         template to generate a css file.
         '''
-        css = data['style'][style]
+        theme = data['style'][theme_name]
 
-        response = make_response(render_template('main.css',
-                                                 text=css['text'],
-                                                 background=css['background'],
-                                                 post=css['post']))
+        response = make_response(render_template('main.css', theme=theme))
+
         response.mimetype = 'text/css'
         return response
 

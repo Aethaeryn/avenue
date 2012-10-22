@@ -35,8 +35,8 @@ html { overflow-y: scroll; }
 }
 
 body { font-family: "Open Sans", sans-serif;
-       color: {{ text.plain }};
-       background-color: {{ background.plain }};
+       color: {{ theme.text.plain }};
+       background-color: {{ theme.background.plain }};
        font-size: 11pt;
        margin: 0px;
        margin-top: 5px;
@@ -65,7 +65,7 @@ p { margin: 0px;
     padding-bottom: 10px;
   }
 
-article { background-color: {{ background.article }};
+article { background-color: {{ theme.background.article }};
           padding: 10px;
           padding-top: 5px;
           border-radius: 15px 15px 1px 1px;
@@ -80,55 +80,55 @@ article { background-color: {{ background.article }};
         padding-left: 8px;
         padding-right: 8px;
         border-bottom: 1px solid #888888;
-        border-right: 7px solid {{ post.level5 }};
+        border-right: 7px solid {{ theme.post.level5 }};
       }
 
-.level0 { border-left: 7px solid {{ post.level0 }}; }
+.level0 { border-left: 7px solid {{ theme.post.level0 }}; }
 
-.level1 { border-left: 7px solid {{ post.level1 }};
-          background: {{ background.post_1 }};
+.level1 { border-left: 7px solid {{ theme.post.level1 }};
+          background: {{ theme.background.post_1 }};
         }
 
-.level2 { border-left: 7px solid {{ post.level2 }};
-          background: {{ background.post_2 }};
+.level2 { border-left: 7px solid {{ theme.post.level2 }};
+          background: {{ theme.background.post_2 }};
         }
 
-.level3 { border-left: 7px solid {{ post.level3 }};
-          background: {{ background.post_1 }};
+.level3 { border-left: 7px solid {{ theme.post.level3 }};
+          background: {{ theme.background.post_1 }};
         }
 
-.level4 { border-left: 7px solid {{ post.level4 }};
-          background: {{ background.post_2 }};
+.level4 { border-left: 7px solid {{ theme.post.level4 }};
+          background: {{ theme.background.post_2 }};
         }
 
-.level5 { border-left: 7px solid {{ post.level5 }};
-          background: {{ background.post_1 }};
+.level5 { border-left: 7px solid {{ theme.post.level5 }};
+          background: {{ theme.background.post_1 }};
         }
 
 
 .levelbox { height: 2px; }
 
-.lbox0 { background-color: {{ post.level0 }};
+.lbox0 { background-color: {{ theme.post.level0 }};
          width: 0px;
        }
 
-.lbox1 { background-color: {{ post.level1 }};
+.lbox1 { background-color: {{ theme.post.level1 }};
          width: 20px;
        }
 
-.lbox2 { background-color: {{ post.level2 }};
+.lbox2 { background-color: {{ theme.post.level2 }};
          width: 40px;
        }
 
-.lbox3 { background-color: {{ post.level3 }};
+.lbox3 { background-color: {{ theme.post.level3 }};
          width: 60px;
        }
 
-.lbox4 { background-color: {{ post.level4 }};
+.lbox4 { background-color: {{ theme.post.level4 }};
          width: 80px;
        }
 
-.lbox5 { background-color: {{ post.level5 }};
+.lbox5 { background-color: {{ theme.post.level5 }};
          width: 100px;
        }
 
@@ -137,15 +137,15 @@ nav { padding: 0px;
     }
 
 a:link { text-decoration: none;
-         color: {{ text.link }};
+         color: {{ theme.text.link }};
        }
 
 a:visited { text-decoration: none;
-            color: {{ text.link }};
+            color: {{ theme.text.link }};
           }
 
 a:hover { text-decoration: none;
-          color: {{ text.hover }};
+          color: {{ theme.text.hover }};
         }
 
 .navbox {
@@ -156,36 +156,36 @@ a:hover { text-decoration: none;
           margin-bottom: 10px;
           margin-top: 5px;
           padding-bottom: 10px;
-          background-color: {{ background.box1 }};
+          background-color: {{ theme.background.box1 }};
           font-size: 10pt;
           font-weight: normal;
           text-align: justify;
-          color: {{ text.nav }};
+          color: {{ theme.text.nav }};
         }
 
 .title-heading { font-size: 28pt;
                  margin-left: 5px;
                }
 
-.title-heading:link { color: {{ text.heading }};
+.title-heading:link { color: {{ theme.text.heading }};
                       font-weight: normal;
                     }
 
-.title-heading:visited { color: {{ text.heading }}; }
+.title-heading:visited { color: {{ theme.text.heading }}; }
 
-.title-heading:hover { color: {{ text.head_hover }}; }
+.title-heading:hover { color: {{ theme.text.head_hover }}; }
 
-.navbox:link { color: {{ text.nav }}; }
+.navbox:link { color: {{ theme.text.nav }}; }
 
-.navbox:visited { color: {{ text.nav }}; }
+.navbox:visited { color: {{ theme.text.nav }}; }
 
-.navbox:hover { color: {{ text.nav_hover }}; }
+.navbox:hover { color: {{ theme.text.nav_hover }}; }
 
-.tile-navbox:link { color: {{ text.nav }}; }
+.tile-navbox:link { color: {{ theme.text.nav }}; }
 
-.tile-navbox:visited { color: {{ text.nav }}; }
+.tile-navbox:visited { color: {{ theme.text.nav }}; }
 
-.tile-navbox:hover { color: {{ text.nav_hover }}; }
+.tile-navbox:hover { color: {{ theme.text.nav_hover }}; }
 
 .author { font-size: 8pt; }
 
