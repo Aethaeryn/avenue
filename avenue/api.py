@@ -8,6 +8,19 @@ Flask instance as Avenue.
 from flask import json, request, make_response, render_template
 from docutils.core import publish_parts
 from os import path, listdir
+import yaml
+
+def read_data(filename):
+    '''Reads in data from a given YML file and returns it in a form
+    usable by Python.
+    '''
+    filename = '%s.yml' % filename
+
+    data_file = open(path.join(path.dirname(__file__), 'data', filename))
+    data = yaml.load(data_file)
+    data_file.close()
+
+    return data
 
 def make_json(dictionary):
     '''Helper function that makes sure that the data served is

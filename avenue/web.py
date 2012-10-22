@@ -5,10 +5,8 @@
 '''Acts as an interface between what Flask serves and what goes on in
 the rest of the application.
 '''
-from avenue import app
+from avenue import app, api
 from flask import render_template, make_response, redirect
-import yaml
-from os import path
 
 def url_generator():
     '''This function acts on a list of URLs, a text rule for each URL,
@@ -16,23 +14,11 @@ def url_generator():
     page. The action_list associates a subset of URLs with a
     particular function to be used as the action for that group.
     '''
-    def read_data(filename):
-        '''Reads in data from a given YML file and returns it in a form
-        usable by Python.
-        '''
-        filename = '%s.yml' % filename
-
-        data_file = open(path.join(path.dirname(__file__), 'data', filename))
-        data = yaml.load(data_file)
-        data_file.close()
-
-        return data
-
     def make_css(style):
         '''Reads style rules from a file and applies them to a css
         template to generate a css file.
         '''
-        style = read_data(style)
+        style = api.read_data(style)
 
         response = make_response(render_template('main.css',
                                                  text=style['text'],
@@ -45,9 +31,9 @@ def url_generator():
         '''Reads in data files representing static forum states. Returns a
         function that accesses forum pages.
         '''
-        navbar = read_data('navbar')
-        tags = read_data('tags')
-        threads = read_data('threads')
+        navbar = api.read_data('navbar')
+        tags = api.read_data('tags')
+        threads = api.read_data('threads')
 
         def set_tags():
             '''Turns strings containing tag names into tag objects that
@@ -110,7 +96,7 @@ def url_generator():
         for url in urls:
             app.add_url_rule(url, url, url_page_function(urls[url]))
 
-    urls = read_data('urls')
+    urls = api.read_data('urls')
 
     make_page = forum_generator('Zombie Raptor', 'Main Forum')
 
