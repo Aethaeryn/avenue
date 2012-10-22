@@ -1,24 +1,24 @@
 post:
   - 'post'
   - '#aabbcc'
-  - '/'
-
-test:
-  - 'test'
-  - '#ffbb99'
-  - '/'
+  - '/f/main/post'
 
 micro:
   - 'micro'
   - '#aabbcc'
-  - '/'
+  - '/f/main/micro'
 
 link:
   - 'link'
   - '#aabbcc'
-  - '/'
+  - '/f/main/link'
 
 news:
   - 'news'
   - '#bbeebb'
-  - '/'
+  - '/f/main/tag/news'
+
+test:
+  - 'test'
+  - '#ffbb99'
+  - '/f/main/tag/test'
