@@ -29,8 +29,6 @@ def url_generator():
         '''Reads in data files representing static forum states. Returns a
         function that accesses forum pages.
         '''
-        navbar = data['navbar']
-        tags = data['tags']
         threads = data['threads']
 
         def set_tags():
@@ -41,7 +39,7 @@ def url_generator():
                 for post in threads[thread]['posts']:
                     if 'tags' in post:
                         for i in range(len(post['tags'])):
-                            post['tags'][i] = tags[post['tags'][i]]
+                            post['tags'][i] = data['tags'][post['tags'][i]]
 
         def forum_page(name):
             '''Makes a forum page of the given thread name.
@@ -53,7 +51,7 @@ def url_generator():
 
             return render_template('forum.html',
                                    style='night',
-                                   sidebar=navbar,
+                                   sidebar=data['navbar'],
                                    main_title=main_title,
                                    thread_title=thread['title'],
                                    html_title=html_title,
@@ -82,8 +80,6 @@ def url_generator():
         for url in urls:
             app.add_url_rule(url, url, url_page_function(urls[url]))
 
-    urls = data['urls']
-
     make_page = forum_generator('Zombie Raptor', 'Main Forum')
 
     action_list = [('redirect', redirect),
@@ -91,4 +87,4 @@ def url_generator():
                    ('css', make_css)]
 
     for action in action_list:
-        setup_url_rule(urls[action[0]], action[1])
+        setup_url_rule(data['urls'][action[0]], action[1])
