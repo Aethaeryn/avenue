@@ -11,8 +11,6 @@ from copy import copy
 import yaml
 from os import path
 
-browser_upgrade = '<p><img src="static/dl/firefox-g.png"></img><img src="static/dl/chrome-g.png"></img><img src="static/dl/safari-g.png"></img><img src="static/dl/opera-g.png"></img></p>'
-
 def forum_generator(site_name, forum_name):
     navbar = []
     navbar.append({'title'   : 'Zombie Raptor Blog',
