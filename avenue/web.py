@@ -11,7 +11,7 @@ from copy import copy
 import yaml
 from os import path
 
-heading = 'Zombie Raptor'
+site_name = 'Zombie Raptor'
 navbar = []
 navbar.append({'title'   : 'Zombie Raptor Blog',
                'content' : 'Read new updates from the Zombie Raptor team!',
@@ -28,11 +28,6 @@ tags = { 'post'  : ['post', '#aabbcc', '/'],
          'micro' : ['micro', '#aabbcc', '/'],
          'link'  : ['link', '#aabbcc', '/'],
          'news'  : ['news', '#bbeebb', '/']}
-
-def button(text):
-    return '<div class="button">%s</div>' % text
-
-buttons = '<p>%s%s%s%s&nbsp</p>' % (button(u'↳'), button('+'), button('-'), button('#'))
 
 def render_forum(thread_title='', main_title='', html_title='', posts=[], threaded=False, content=''):
     return render_template('forum.html',
@@ -51,13 +46,13 @@ def index():
     '''
     words = '<p>Expect stuff from Zombie Raptor in the near future.</p>'
 
-    page_title = heading
+    page_title = site_name
 
     css = 'night'
 
     post = {'level' : 0, 'content' : words, 'author' : 'admin', 'date' : 'now'}
 
-    return render_forum(main_title=heading,
+    return render_forum(main_title=site_name,
                         thread_title="Zombie Raptor Launches... at some point.",
                         html_title=page_title,
                         posts=[post],
@@ -73,13 +68,13 @@ def main_forum():
     test = yaml.load(main_forum_)
     main_forum_.close()
 
-    page_title = '%s :: %s' % ('Main Forum', heading)
+    page_title = '%s :: %s' % ('Main Forum', site_name)
 
     for post in test['posts']:
         for i in range(len(post['tags'])):
             post['tags'][i] = tags[post['tags'][i]]
 
-    return render_forum(main_title=heading + ' -- Main Forum',
+    return render_forum(main_title=site_name + ' -- Main Forum',
                         thread_title='Active Threads',
                         html_title=page_title,
                         posts=test['posts'],
@@ -95,9 +90,9 @@ def sample_post():
     thread = yaml.load(sample)
     sample.close()
 
-    page_title = '%s :: %s :: %s' % (thread['title'], 'Main Forum', heading)
+    page_title = '%s :: %s :: %s' % (thread['title'], 'Main Forum', site_name)
 
-    return render_forum(main_title=heading + ' -- Main Forum',
+    return render_forum(main_title=site_name + ' -- Main Forum',
                         thread_title=thread['title'],
                         html_title=page_title,
                         posts=thread['posts'],
