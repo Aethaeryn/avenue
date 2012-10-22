@@ -6,7 +6,7 @@
 the rest of the application.
 '''
 from avenue import app, api
-from flask import render_template, make_response
+from flask import render_template, make_response, redirect
 from copy import copy
 import yaml
 from os import path
@@ -75,28 +75,40 @@ def forum_generator(site, forum):
 
     return forum_page
 
+def setup_redirects():
+    '''Sets URLs that redirect to other locations.
+    '''
+    urls = { '/f/' : '/',
+             '/f/main/post/' : '/f/main/'}
+
+    def set_redirect(destination):
+        '''Returns a function that redirects to a given URL.
+        '''
+        def redirect_url():
+            '''Redirects to another URL.
+            '''
+            return redirect(destination)
+
+        return redirect_url
+
+    for url in urls:
+        app.add_url_rule(url, url, set_redirect(urls[url]))
+
 make_page = forum_generator('Zombie Raptor', 'Main Forum')
+
+setup_redirects()
 
 @app.route('/')
 def index():
     return make_page('front_page')
 
-@app.route('/f/')
-def f():
-    return ''
-
 @app.route('/f/main/')
 def main_forum():
     return make_page('main')
 
-@app.route('/f/main/post/')
-def post():
-    return ''
-
 @app.route('/f/main/post/1')
 def sample_post():
     return make_page('1')
-
 
 @app.route('/night.css')
 def night():
