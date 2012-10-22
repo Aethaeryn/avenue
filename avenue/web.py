@@ -81,7 +81,6 @@ def url_generator():
     page. The action_list associates a subset of URLs with a
     particular function to be used as the action for that group.
     '''
-
     def make_css(style):
         '''Reads style rules from a file and applies them to a css
         template to generate a css file.
@@ -95,20 +94,10 @@ def url_generator():
         response.mimetype = 'text/css'
         return response
 
-    urls = read_data('urls')
-
-    make_page = forum_generator('Zombie Raptor', 'Main Forum')
-
-    action_list = [('redirect', redirect),
-                   ('forum_urls', make_page),
-                   ('css', make_css)]
-
-    def setup_url_rule(url_subset, action):
+    def setup_url_rule(urls, action):
         '''Sets up URL rules, given a dictionary of urls and a function
         that they will act on.
         '''
-        url_group = urls[url_subset]
-
         def url_page_function(text):
             '''Returns a function that is associated with the URL
             page. This function is called when the URL page is
@@ -119,10 +108,18 @@ def url_generator():
             '''
             return lambda: action(text)
 
-        for url in url_group:
-            app.add_url_rule(url, url, url_page_function(url_group[url]))
+        for url in urls:
+            app.add_url_rule(url, url, url_page_function(urls[url]))
+
+    urls = read_data('urls')
+
+    make_page = forum_generator('Zombie Raptor', 'Main Forum')
+
+    action_list = [('redirect', redirect),
+                   ('forum_urls', make_page),
+                   ('css', make_css)]
 
     for action in action_list:
-        setup_url_rule(action[0], action[1])
+        setup_url_rule(urls[action[0]], action[1])
 
 url_generator()
