@@ -12,6 +12,9 @@ import yaml
 from os import path
 
 def read_data(filename):
+    '''Reads in data from a given YML file and returns it in a form
+    usable by Python.
+    '''
     filename = '%s.yml' % filename
 
     data_file = open(path.join(path.dirname(__file__), 'data', filename))
@@ -21,11 +24,17 @@ def read_data(filename):
     return data
 
 def forum_generator(site, forum):
+    '''Reads in data files representing static forum states. Returns a
+    function that accesses forum pages.
+    '''
     navbar = read_data('navbar')
     tags = read_data('tags')
     threads = read_data('threads')
 
     def set_tags():
+        '''Turns strings containing tag names into tag objects that
+        can be used to generate HTML/CSS renderings of the tag.
+        '''
         for thread in threads:
             for post in threads[thread]['posts']:
                 if 'tags' in post:
@@ -34,7 +43,9 @@ def forum_generator(site, forum):
 
     def render_forum(thread_title='', main_title='', html_title='',
                      posts=[], threaded=False, content=''):
-
+        '''Renders the forum.html template in a particular pattern
+        that's used by all forum pages.
+        '''
         return render_template('forum.html',
                                style='night',
                                sidebar=navbar,
@@ -46,6 +57,8 @@ def forum_generator(site, forum):
                                content=content)
 
     def forum_page(name, content):
+        '''Makes a forum page of the given thread name.
+        '''
         thread = threads[name]
 
         html_title = '%s :: %s :: %s' % (thread['title'], forum, site)
