@@ -17,8 +17,8 @@ navbar:
     link: '/'
 
   - title: 'Main Forum'
-      content: 'Visit the main forum!'
-      link: '/f/main'
+    content: 'Visit the main forum!'
+    link: '/f/main'
 
 tags:
   post:

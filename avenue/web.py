@@ -14,11 +14,13 @@ def url_generator():
     page. The action_list associates a subset of URLs with a
     particular function to be used as the action for that group.
     '''
+    forum_data = api.read_data('forum')
+
     def make_css(style):
         '''Reads style rules from a file and applies them to a css
         template to generate a css file.
         '''
-        style = api.read_data(style)
+        style = forum_data['style']
 
         response = make_response(render_template('main.css',
                                                  text=style['text'],
@@ -31,9 +33,9 @@ def url_generator():
         '''Reads in data files representing static forum states. Returns a
         function that accesses forum pages.
         '''
-        navbar = api.read_data('navbar')
-        tags = api.read_data('tags')
-        threads = api.read_data('threads')
+        navbar = forum_data['navbar']
+        tags = forum_data['tags']
+        threads = forum_data['threads']
 
         def set_tags():
             '''Turns strings containing tag names into tag objects that
@@ -84,7 +86,7 @@ def url_generator():
         for url in urls:
             app.add_url_rule(url, url, url_page_function(urls[url]))
 
-    urls = api.read_data('urls')
+    urls = forum_data['urls']
 
     make_page = forum_generator('Zombie Raptor', 'Main Forum')
 
