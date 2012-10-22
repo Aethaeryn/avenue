@@ -83,10 +83,8 @@ def url_generator():
         for url in urls:
             app.add_url_rule(url, url, url_page_function(urls[url]))
 
-    make_page = forum_generator()
-
     action_list = [('redirect', redirect),
-                   ('forum_urls', make_page),
+                   ('forum_urls', forum_generator()),
                    ('css', make_css)]
 
     for action in action_list:
