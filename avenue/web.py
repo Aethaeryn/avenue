@@ -45,21 +45,6 @@ def url_generator():
                         for i in range(len(post['tags'])):
                             post['tags'][i] = tags[post['tags'][i]]
 
-        def render_forum(thread_title='', main_title='', html_title='',
-                         posts=[], threaded=False, content=''):
-            '''Renders the forum.html template in a particular pattern
-            that's used by all forum pages.
-            '''
-            return render_template('forum.html',
-                                   style='night',
-                                   sidebar=navbar,
-                                   thread_title=thread_title,
-                                   main_title=main_title,
-                                   html_title=html_title,
-                                   posts=posts,
-                                   threaded=threaded,
-                                   content=content)
-
         def forum_page(name):
             '''Makes a forum page of the given thread name.
             '''
@@ -68,12 +53,15 @@ def url_generator():
             html_title = '%s :: %s :: %s' % (thread['title'], forum, site)
             main_title = '%s -- %s' % (site, forum)
 
-            return render_forum(main_title=main_title,
-                                thread_title=thread['title'],
-                                html_title=html_title,
-                                posts=thread['posts'],
-                                threaded=thread['threaded'],
-                                content=thread['content_type'])
+            return render_template('forum.html',
+                                   style='night',
+                                   sidebar=navbar,
+                                   main_title=main_title,
+                                   thread_title=thread['title'],
+                                   html_title=html_title,
+                                   posts=thread['posts'],
+                                   threaded=thread['threaded'],
+                                   content=thread['content_type'])
 
         set_tags()
 
