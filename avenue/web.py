@@ -75,26 +75,25 @@ def forum_generator(site, forum):
 
     return forum_page
 
-def setup_redirects():
-    '''Sets URLs that redirect to other locations.
-    '''
-    urls = { '/f/' : '/',
-             '/f/main/post/' : '/f/main/'}
+def url_generator():
+    def setup_url_rule(urls, action):
+        '''Sets up URL rules, given a dictionary of urls and a function
+        that they will act on.
+        '''
+        for url in urls:
+            app.add_url_rule(url, url, action(urls[url]))
+
+    redirect_urls = { '/f/' : '/',
+                      '/f/main/post/' : '/f/main/'}
+
+    forum_urls = { '/f/main/' : 'main',
+                   '/f/main/post/1' : '1',
+                   '/' : 'front_page' }
 
     def set_redirect(destination):
         '''Returns a function that redirects to a given URL.
         '''
         return lambda: redirect(destination)
-
-    for url in urls:
-        app.add_url_rule(url, url, set_redirect(urls[url]))
-
-def setup_forum_pages():
-    '''Sets up the forum web pages.
-    '''
-    urls = { '/f/main/' : 'main',
-             '/f/main/post/1' : '1',
-             '/' : 'front_page' }
 
     make_page = forum_generator('Zombie Raptor', 'Main Forum')
 
@@ -103,11 +102,10 @@ def setup_forum_pages():
         '''
         return lambda: make_page(page)
 
-    for url in urls:
-        app.add_url_rule(url, url, serve_forum_page(urls[url]))
+    setup_url_rule(redirect_urls, set_redirect)
+    setup_url_rule(forum_urls, serve_forum_page)
 
-setup_redirects()
-setup_forum_pages()
+url_generator()
 
 @app.route('/night.css')
 def night():
