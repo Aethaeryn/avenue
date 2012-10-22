@@ -34,6 +34,17 @@ def button(text):
 
 buttons = '<p>%s%s%s%s&nbsp</p>' % (button(u'↳'), button('+'), button('-'), button('#'))
 
+def render_forum(thread_title='', main_title='', html_title='', posts=[], threaded=False, content=''):
+    return render_template('forum.html',
+                           style='night',
+                           sidebar=navbar,
+                           thread_title=thread_title,
+                           main_title=main_title,
+                           html_title=html_title,
+                           posts=posts,
+                           threaded=threaded,
+                           content=content)
+
 @app.route('/')
 def index():
     '''The main page.
@@ -46,14 +57,11 @@ def index():
 
     post = {'level' : 0, 'content' : words, 'author' : 'admin', 'date' : 'now'}
 
-    return render_template('forum.html',
-                           style=css,
-                           main_title=heading,
-                           posts=[post],
-                           html_title=page_title,
-                           thread_title="Zombie Raptor Launches... at some point.",
-                           sidebar=navbar,
-                           content='blog')
+    return render_forum(main_title=heading,
+                        thread_title="Zombie Raptor Launches... at some point.",
+                        html_title=page_title,
+                        posts=[post],
+                        content='blog')
 
 @app.route('/f/')
 def f():
@@ -67,14 +75,11 @@ def main_forum():
 
     page_title = '%s :: %s' % ('Main Forum', heading)
 
-    return render_template('forum.html',
-                           style='night',
-                           main_title=heading + ' -- Main Forum',
-                           thread_title='Active Threads',
-                           posts=test,
-                           sidebar=navbar,
-                           content='index',
-                           html_title=page_title)
+    return render_forum(main_title=heading + ' -- Main Forum',
+                        thread_title='Active Threads',
+                        html_title=page_title,
+                        posts=test,
+                        content='index')
 
 @app.route('/f/main/post/')
 def post():
@@ -88,15 +93,12 @@ def sample_post():
 
     page_title = '%s :: %s :: %s' % (thread['title'], 'Main Forum', heading)
 
-    return render_template('forum.html',
-                           style='night',
-                           main_title=heading + ' -- Main Forum',
-                           posts=thread['posts'],
-                           sidebar=navbar,
-                           html_title=page_title,
-                           thread_title=thread['title'],
-                           threaded=True,
-                           content='post')
+    return render_forum(main_title=heading + ' -- Main Forum',
+                        thread_title=thread['title'],
+                        html_title=page_title,
+                        posts=thread['posts'],
+                        threaded=True,
+                        content='post')
 
 @app.route('/night.css')
 def night():
