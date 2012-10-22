@@ -1,4 +1,69 @@
-main:
+redirect:
+  '/f/': '/'
+  '/f/main/post/' : '/f/main/'
+
+forum_urls:
+  '/f/main/' : 'main'
+  '/f/main/post/1' : '1'
+  '/' : 'front_page'
+
+css:
+  '/night.css' : 'style'
+- title: 'Zombie Raptor Blog'
+  content: 'Read new updates from the Zombie Raptor team!'
+  link: '/'
+
+- title: 'Main Forum'
+  content: 'Visit the main forum!'
+  link: '/f/main'
+post:
+  - 'post'
+  - '#aabbcc'
+  - '/f/main/post'
+
+micro:
+  - 'micro'
+  - '#aabbcc'
+  - '/f/main/micro'
+
+link:
+  - 'link'
+  - '#aabbcc'
+  - '/f/main/link'
+
+news:
+  - 'news'
+  - '#bbeebb'
+  - '/f/main/tag/news'
+
+test:
+  - 'test'
+  - '#ffbb99'
+  - '/f/main/tag/test'
+text:
+  plain      : '#000000'
+  link       : '#0438a0'
+  hover      : '#0853e1'
+  heading    : '#ff7f24'
+  head_hover : '#df4f14'
+  nav        : '#d6d9d9'
+  nav_hover  : '#aaaaaa'
+
+background:
+  plain    : '#000000'
+  article  : '#dfdfc6'
+  post_1   : '#dfdfcd'
+  post_2   : '#dfdfbe'
+  box1     : '#1a1123'
+  box2     : '#a6a9a9'
+
+post:
+  level0 : '#dfdfc6'
+  level1 : '#bdad00'
+  level2 : '#d59100'
+  level3 : '#ed7500'
+  level4 : '#da3a00'
+  level5 : '#c70000'main:
   title:
     "Active Threads"
 
