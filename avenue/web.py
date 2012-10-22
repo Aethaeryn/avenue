@@ -69,16 +69,20 @@ def f():
 
 @app.route('/f/main/')
 def main_forum():
-    test = [{'level' : 0, 'content' : '<h1 class="post-link"><a href="/f/main/post/1">This is a Sample Thread</a></h1>', 'author' : 'John', 'date' : '1 day ago', 'tags' : [tags['post'], tags['test']]},
-            {'level' : 0, 'content' : '<h1 class="post-link"><a href="http://example.com/">test post please ignore</a></h1>', 'author' : 'obviously_original_content', 'date' : '3 years ago', 'tags' : [tags['micro'], tags['test']]},
-            {'level' : 0, 'content' : '<h1 class="post-link"><a href="http://example.com/">Hey guys, I think I might have discovered a new continent!</a></h1>', 'author' : 'christopher', 'date' : '520 years ago', 'tags' : [tags['link'], tags['news']]}]
+    main_forum_ = open(path.join(path.dirname(__file__), 'data', 'main_forum.yml'))
+    test = yaml.load(main_forum_)
+    main_forum_.close()
 
     page_title = '%s :: %s' % ('Main Forum', heading)
+
+    for post in test['posts']:
+        for i in range(len(post['tags'])):
+            post['tags'][i] = tags[post['tags'][i]]
 
     return render_forum(main_title=heading + ' -- Main Forum',
                         thread_title='Active Threads',
                         html_title=page_title,
-                        posts=test,
+                        posts=test['posts'],
                         content='index')
 
 @app.route('/f/main/post/')
