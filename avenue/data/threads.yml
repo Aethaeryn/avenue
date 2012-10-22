@@ -1,4 +1,4 @@
-main_forum:
+main:
   title:
     "Active Threads"
 
@@ -49,7 +49,7 @@ front_page:
       author: "admin"
       date: "now"
 
-sample:
+'1':
   title:
     "This is a Sample Thread"
 

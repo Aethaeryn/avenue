@@ -87,7 +87,7 @@ def f():
 
 @app.route('/f/main/')
 def main_forum():
-    return make_page('main_forum')
+    return make_page('main')
 
 @app.route('/f/main/post/')
 def post():
@@ -95,7 +95,7 @@ def post():
 
 @app.route('/f/main/post/1')
 def sample_post():
-    return make_page('sample')
+    return make_page('1')
 
 
 @app.route('/night.css')
