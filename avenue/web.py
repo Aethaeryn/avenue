@@ -40,6 +40,9 @@ def render_forum(thread_title='', main_title='', html_title='', posts=[], thread
                            threaded=threaded,
                            content=content)
 
+def forum_page():
+    pass
+
 @app.route('/')
 def index():
     '''The main page.
@@ -68,14 +71,14 @@ def main_forum():
     test = yaml.load(main_forum_)
     main_forum_.close()
 
-    page_title = '%s :: %s' % ('Main Forum', site_name)
+    page_title = '%s :: %s :: %s' % (test['title'], 'Main Forum', site_name)
 
     for post in test['posts']:
         for i in range(len(post['tags'])):
             post['tags'][i] = tags[post['tags'][i]]
 
     return render_forum(main_title=site_name + ' -- Main Forum',
-                        thread_title='Active Threads',
+                        thread_title=test['title'],
                         html_title=page_title,
                         posts=test['posts'],
                         content='index')
