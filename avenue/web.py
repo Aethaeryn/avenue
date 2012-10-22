@@ -41,8 +41,25 @@ def render_forum(thread_title='', main_title='', html_title='', posts=[], thread
                            threaded=threaded,
                            content=content)
 
-def forum_page():
-    pass
+def forum_page(filename):
+    data = open(path.join(path.dirname(__file__), 'data', filename))
+    thread = yaml.load(data)
+    data.close()
+
+    html_title = '%s :: %s :: %s' % (thread['title'], forum_name, site_name)
+    main_title = '%s -- %s' % (site_name, forum_name)
+
+    for post in thread['posts']:
+        if 'tags' in post:
+            for i in range(len(post['tags'])):
+                post['tags'][i] = tags[post['tags'][i]]
+
+    return render_forum(main_title=main_title,
+                        thread_title=thread['title'],
+                        html_title=html_title,
+                        posts=thread['posts'],
+                        threaded=thread['threaded'],
+                        content='post')
 
 @app.route('/')
 def index():
@@ -68,22 +85,7 @@ def f():
 
 @app.route('/f/main/')
 def main_forum():
-    main_forum_ = open(path.join(path.dirname(__file__), 'data', 'main_forum.yml'))
-    test = yaml.load(main_forum_)
-    main_forum_.close()
-
-    html_title = '%s :: %s :: %s' % (test['title'], forum_name, site_name)
-    main_title = '%s -- %s' % (site_name, forum_name)
-
-    for post in test['posts']:
-        for i in range(len(post['tags'])):
-            post['tags'][i] = tags[post['tags'][i]]
-
-    return render_forum(main_title=main_title,
-                        thread_title=test['title'],
-                        html_title=html_title,
-                        posts=test['posts'],
-                        content='index')
+    return forum_page('main_forum.yml')
 
 @app.route('/f/main/post/')
 def post():
@@ -91,19 +93,8 @@ def post():
 
 @app.route('/f/main/post/1')
 def sample_post():
-    sample = open(path.join(path.dirname(__file__), 'data', 'sample.yml'))
-    thread = yaml.load(sample)
-    sample.close()
+    return forum_page('sample.yml')
 
-    html_title = '%s :: %s :: %s' % (thread['title'], forum_name, site_name)
-    main_title = '%s -- %s' % (site_name, forum_name)
-
-    return render_forum(main_title=main_title,
-                        thread_title=thread['title'],
-                        html_title=html_title,
-                        posts=thread['posts'],
-                        threaded=True,
-                        content='post')
 
 @app.route('/night.css')
 def night():
