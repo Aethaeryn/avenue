@@ -43,8 +43,10 @@ def check_cookie():
     else:
         return False
 
-#### TODO: Themes: mobile/desktop, dark/light, pretty/useful/plain
 def make_page(**kwargs):
+    '''Used by plugins to Avenue, such as games, to generate a page
+    integrated into the rest of the website.
+    '''
     return render_template('basic.html', **kwargs)
 
 def get_header():
