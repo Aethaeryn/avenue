@@ -50,7 +50,7 @@ def index():
                            style=css,
                            main_title=heading,
                            posts=[post],
-                           title=page_title,
+                           html_title=page_title,
                            thread_title="Zombie Raptor Launches... at some point.",
                            sidebar=navbar,
                            content='blog')
@@ -74,7 +74,7 @@ def main_forum():
                            posts=test,
                            sidebar=navbar,
                            content='index',
-                           title=page_title)
+                           html_title=page_title)
 
 @app.route('/f/main/post/')
 def post():
@@ -93,7 +93,7 @@ def sample_post():
                            main_title=heading + ' -- Main Forum',
                            posts=thread['posts'],
                            sidebar=navbar,
-                           title=page_title,
+                           html_title=page_title,
                            thread_title=thread['title'],
                            threaded=True,
                            content='post')
