@@ -76,6 +76,11 @@ def forum_generator(site, forum):
     return forum_page
 
 def url_generator():
+    '''This function acts on a list of URLs, a text rule for each URL,
+    and a function that says what to do to that text rule to serve a
+    page. The scary lambdas convert the function, the text rule, and
+    the URL into a form recognized by Flask.
+    '''
     def setup_url_rule(urls, action):
         '''Sets up URL rules, given a dictionary of urls and a function
         that they will act on.
@@ -88,7 +93,7 @@ def url_generator():
     make_page = forum_generator('Zombie Raptor', 'Main Forum')
 
     setup_url_rule(urls['redirect'], lambda x: lambda: redirect(x))
-    setup_url_rule(urls['forum_urls'],lambda x: lambda: make_page(x))
+    setup_url_rule(urls['forum_urls'], lambda x: lambda: make_page(x))
 
 url_generator()
 
