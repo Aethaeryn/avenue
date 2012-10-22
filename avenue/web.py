@@ -75,6 +75,19 @@ def forum_generator(site, forum):
 
     return forum_page
 
+def make_css(style):
+    '''Reads style rules from a file and applies them to a css
+    template to generate a css file.
+    '''
+    style = read_data(style)
+
+    response = make_response(render_template('main.css',
+                                             text=style['text'],
+                                             background=style['background'],
+                                             post=style['post']))
+    response.mimetype = 'text/css'
+    return response
+
 def url_generator():
     '''This function acts on a list of URLs, a text rule for each URL,
     and a function that says what to do to that text rule to serve a
@@ -94,16 +107,6 @@ def url_generator():
 
     setup_url_rule(urls['redirect'], lambda x: lambda: redirect(x))
     setup_url_rule(urls['forum_urls'], lambda x: lambda: make_page(x))
+    setup_url_rule(urls['css'], lambda x: lambda: make_css(x))
 
 url_generator()
-
-@app.route('/night.css')
-def night():
-    style = read_data('style')
-
-    response = make_response(render_template('main.css',
-                                             text=style['text'],
-                                             background=style['background'],
-                                             post=style['post']))
-    response.mimetype = 'text/css'
-    return response
