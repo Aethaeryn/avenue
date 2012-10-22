@@ -41,7 +41,7 @@ def render_forum(thread_title='', main_title='', html_title='', posts=[], thread
                            threaded=threaded,
                            content=content)
 
-def forum_page(filename):
+def forum_page(filename, content):
     data = open(path.join(path.dirname(__file__), 'data', filename))
     thread = yaml.load(data)
     data.close()
@@ -59,25 +59,11 @@ def forum_page(filename):
                         html_title=html_title,
                         posts=thread['posts'],
                         threaded=thread['threaded'],
-                        content='post')
+                        content=content)
 
 @app.route('/')
 def index():
-    '''The main page.
-    '''
-    words = '<p>Expect stuff from Zombie Raptor in the near future.</p>'
-
-    page_title = site_name
-
-    css = 'night'
-
-    post = {'level' : 0, 'content' : words, 'author' : 'admin', 'date' : 'now'}
-
-    return render_forum(main_title=site_name,
-                        thread_title="Zombie Raptor Launches... at some point.",
-                        html_title=page_title,
-                        posts=[post],
-                        content='blog')
+    return forum_page('front_page.yml', 'blog')
 
 @app.route('/f/')
 def f():
@@ -85,7 +71,7 @@ def f():
 
 @app.route('/f/main/')
 def main_forum():
-    return forum_page('main_forum.yml')
+    return forum_page('main_forum.yml', 'index')
 
 @app.route('/f/main/post/')
 def post():
@@ -93,7 +79,7 @@ def post():
 
 @app.route('/f/main/post/1')
 def sample_post():
-    return forum_page('sample.yml')
+    return forum_page('sample.yml', 'post')
 
 
 @app.route('/night.css')
