@@ -1,6 +1,9 @@
 title:
   "This is a Sample Thread"
 
+threaded:
+  True
+
 posts:
   - level: 0
     content: "<p>The forums will go here eventually. I'm just testing things out now. As you can see, the first post in a thread gets special treatment.</p>"

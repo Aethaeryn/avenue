@@ -1,6 +1,9 @@
 title:
   "Active Threads"
 
+threaded:
+  False
+
 posts:
   - level: 0
     content: '<h1 class="post-link"><a href="/f/main/post/1">This is a Sample Thread</a></h1>'
