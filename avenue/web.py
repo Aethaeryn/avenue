@@ -56,7 +56,7 @@ def forum_generator(site, forum):
                                threaded=threaded,
                                content=content)
 
-    def forum_page(name, content):
+    def forum_page(name):
         '''Makes a forum page of the given thread name.
         '''
         thread = threads[name]
@@ -69,7 +69,7 @@ def forum_generator(site, forum):
                             html_title=html_title,
                             posts=thread['posts'],
                             threaded=thread['threaded'],
-                            content=content)
+                            content=thread['content_type'])
 
     set_tags()
 
@@ -79,7 +79,7 @@ make_page = forum_generator('Zombie Raptor', 'Main Forum')
 
 @app.route('/')
 def index():
-    return make_page('front_page', 'blog')
+    return make_page('front_page')
 
 @app.route('/f/')
 def f():
@@ -87,7 +87,7 @@ def f():
 
 @app.route('/f/main/')
 def main_forum():
-    return make_page('main_forum', 'index')
+    return make_page('main_forum')
 
 @app.route('/f/main/post/')
 def post():
@@ -95,7 +95,7 @@ def post():
 
 @app.route('/f/main/post/1')
 def sample_post():
-    return make_page('sample', 'post')
+    return make_page('sample')
 
 
 @app.route('/night.css')

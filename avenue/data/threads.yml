@@ -2,6 +2,9 @@ main_forum:
   title:
     "Active Threads"
 
+  content_type:
+    "index"
+
   threaded:
     False
 
@@ -34,6 +37,9 @@ front_page:
   title:
     "Zombie Raptor Launches... at some point."
 
+  content_type:
+    "blog"
+
   threaded:
     False
 
@@ -46,6 +52,9 @@ front_page:
 sample:
   title:
     "This is a Sample Thread"
+
+  content_type:
+    "post"
 
   threaded:
     True
