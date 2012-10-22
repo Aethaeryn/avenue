@@ -11,14 +11,18 @@ from copy import copy
 import yaml
 from os import path
 
-def forum_generator(site_name, forum_name):
-    navbar_file = open(path.join(path.dirname(__file__), 'data', 'navbar.yml'))
-    navbar = yaml.load(navbar_file)
-    navbar_file.close()
+def read_data(filename):
+    filename = '%s.yml' % filename
 
-    tag_file = open(path.join(path.dirname(__file__), 'data', 'tags.yml'))
-    tags = yaml.load(tag_file)
-    tag_file.close()
+    data_file = open(path.join(path.dirname(__file__), 'data', filename))
+    data = yaml.load(data_file)
+    data_file.close()
+
+    return data
+
+def forum_generator(site_name, forum_name):
+    navbar = read_data('navbar')
+    tags = read_data('tags')
 
     def render_forum(thread_title='', main_title='', html_title='', posts=[], threaded=False, content=''):
         return render_template('forum.html',
@@ -32,9 +36,7 @@ def forum_generator(site_name, forum_name):
                                content=content)
 
     def forum_page(filename, content):
-        data = open(path.join(path.dirname(__file__), 'data', filename))
-        thread = yaml.load(data)
-        data.close()
+        thread = read_data(filename)
 
         html_title = '%s :: %s :: %s' % (thread['title'], forum_name, site_name)
         main_title = '%s -- %s' % (site_name, forum_name)
@@ -57,7 +59,7 @@ make_page = forum_generator('Zombie Raptor', 'Main Forum')
 
 @app.route('/')
 def index():
-    return make_page('front_page.yml', 'blog')
+    return make_page('front_page', 'blog')
 
 @app.route('/f/')
 def f():
@@ -65,7 +67,7 @@ def f():
 
 @app.route('/f/main/')
 def main_forum():
-    return make_page('main_forum.yml', 'index')
+    return make_page('main_forum', 'index')
 
 @app.route('/f/main/post/')
 def post():
@@ -73,14 +75,12 @@ def post():
 
 @app.route('/f/main/post/1')
 def sample_post():
-    return make_page('sample.yml', 'post')
+    return make_page('sample', 'post')
 
 
 @app.route('/night.css')
 def night():
-    conf = open(path.join(path.dirname(__file__), 'data', 'style.yml'))
-    style = yaml.load(conf)
-    conf.close()
+    style = read_data('style')
 
     response = make_response(render_template('main.css',
                                              text=style['text'],
