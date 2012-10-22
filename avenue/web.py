@@ -94,19 +94,32 @@ def url_generator():
     page. The scary lambdas convert the function, the text rule, and
     the URL into a form recognized by Flask.
     '''
-    def setup_url_rule(urls, action):
-        '''Sets up URL rules, given a dictionary of urls and a function
-        that they will act on.
-        '''
-        for url in urls:
-            app.add_url_rule(url, url, action(urls[url]))
-
     urls = read_data('urls')
 
     make_page = forum_generator('Zombie Raptor', 'Main Forum')
 
-    setup_url_rule(urls['redirect'], lambda x: lambda: redirect(x))
-    setup_url_rule(urls['forum_urls'], lambda x: lambda: make_page(x))
-    setup_url_rule(urls['css'], lambda x: lambda: make_css(x))
+    action_list = [('redirect', redirect),
+                   ('forum_urls', make_page),
+                   ('css', make_css)]
+
+    def setup_url_rule(url_subset, function):
+        '''Sets up URL rules, given a dictionary of urls and a function
+        that they will act on.
+        '''
+        url_group = urls[url_subset]
+
+        for url in url_group:
+            app.add_url_rule(url, url, function(url_group[url]))
+
+    def subset_conversion(subset_name, subset_function):
+        '''Feeds setup_url_rule the proper function that Flask looks
+        for. Each URL request will then be able to call the right
+        subset_function with the appropriate string and return the
+        right page.
+        '''
+        setup_url_rule(subset_name, lambda x: lambda: subset_function(x))
+
+    for action in action_list:
+        subset_conversion(action[0], action[1])
 
 url_generator()
