@@ -21,11 +21,9 @@ def forum_generator(site_name, forum_name):
                    'content' : 'Visit the main forum!',
                    'link'    : '/f/main'})
 
-    tags = { 'post'  : ['post', '#aabbcc', '/'],
-             'test'  : ['test', '#ffbb99', '/'],
-             'micro' : ['micro', '#aabbcc', '/'],
-             'link'  : ['link', '#aabbcc', '/'],
-             'news'  : ['news', '#bbeebb', '/']}
+    tag_file = open(path.join(path.dirname(__file__), 'data', 'tags.yml'))
+    tags = yaml.load(tag_file)
+    tag_file.close()
 
     def render_forum(thread_title='', main_title='', html_title='', posts=[], threaded=False, content=''):
         return render_template('forum.html',

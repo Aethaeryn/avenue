@@ -1,0 +1,24 @@
+post:
+  - 'post'
+  - '#aabbcc'
+  - '/'
+
+test:
+  - 'test'
+  - '#ffbb99'
+  - '/'
+
+micro:
+  - 'micro'
+  - '#aabbcc'
+  - '/'
+
+link:
+  - 'link'
+  - '#aabbcc'
+  - '/'
+
+news:
+  - 'news'
+  - '#bbeebb'
+  - '/'
