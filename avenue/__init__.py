@@ -14,6 +14,7 @@ app = Flask(__name__)
 
 from avenue import web
 
-#import federation
+web.url_generator()
 
+#import federation
 #app.register_blueprint(federation.app)

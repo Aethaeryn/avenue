@@ -106,5 +106,3 @@ def url_generator():
 
     for action in action_list:
         setup_url_rule(urls[action[0]], action[1])
-
-url_generator()
