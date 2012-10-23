@@ -10,7 +10,9 @@ def get_tables(metadata):
     table = {}
 
     def add_table(name, *columns):
-        table[name] = Table(name, metadata, *columns)
+        table[name] = Table(name, metadata,
+                            Column('id', Integer, primary_key=True),
+                            *columns)
 
     # TODO: posts, threads, users, urls, navbar, tags, styles
     # TODO: Work a per-forum karma system.
@@ -20,7 +22,6 @@ def get_tables(metadata):
 
     # TODO: Store parent/children/tags
     add_table('posts',
-              Column('id', Integer, primary_key=True),
               Column('author', ForeignKey('users.username')),
               Column('karma', Integer),
               Column('content', String),
@@ -29,30 +30,25 @@ def get_tables(metadata):
 
     # TODO: Store tags/threaded/author... read it from 'start' post.
     add_table('thread',
-              Column('id', Integer, primary_key=True),
               Column('start', ForeignKey('posts.id')),
               Column('title', String))
 
     add_table('users',
-              Column('id', Integer, primary_key=True),
               Column('username', String, unique=True),
               Column('joined', DateTime),
               Column('email', String))
 
     add_table('nav',
-              Column('id', Integer, primary_key=True),
               Column('visible', Boolean),
               Column('title', String),
               Column('text', String),
               Column('link', String))
 
     add_table('tags',
-              Column('id', Integer, primary_key=True),
               Column('text', String),
               Column('color', String))
 
     add_table('forums',
-              Column('id', Integer, primary_key=True),
               Column('name', String),
               Column('url', String))
 
