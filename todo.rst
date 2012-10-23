@@ -1,19 +1,23 @@
 Basic
 -----
 
-* Posts
+* Basic Post Data
 
-  * author(s)
+  * author
 
   * content
 
-  * karma
-
   * parent and children
 
-  * revisions
-
   * tags
+
+* Advanced Post Data
+
+  * karma
+
+  * multiple authors
+
+  * revisions
 
 * Basic Content Types
 
