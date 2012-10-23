@@ -30,6 +30,14 @@ def make_json(dictionary):
     response.mimetype = 'application/json'
     return response
 
+def make_css(theme):
+    '''Helper function that makes sure that the CSS served is
+    recognized by browsers as CSS.
+    '''
+    response = make_response(render_template('main.css', theme=theme))
+    response.mimetype = 'text/css'
+    return response
+
 def check_cookie():
     '''Checks the cookie for the appropriate user.
 

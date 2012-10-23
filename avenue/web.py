@@ -21,10 +21,7 @@ def url_generator():
         '''Reads style rules from a file and applies them to a css
         template to generate a css file.
         '''
-        response = make_response(render_template('main.css',
-                                                 theme=data['style'][theme]))
-        response.mimetype = 'text/css'
-        return response
+        return api.make_css(data['style'][theme])
 
     def forum_set_tags():
         '''Turns strings containing tag names into tag objects that
