@@ -17,12 +17,6 @@ def url_generator():
     data = api.read_data('forum')
     threads = data['threads']
 
-    def make_css(theme):
-        '''Reads style rules from a file and applies them to a css
-        template to generate a css file.
-        '''
-        return api.make_css(data['style'][theme])
-
     def forum_set_tags():
         '''Turns strings containing tag names into tag objects that
         can be used to generate HTML/CSS renderings of the tag.
@@ -75,7 +69,8 @@ def url_generator():
 
     action_list = [('redirect', redirect),
                    ('forum_urls', forum_page),
-                   ('css', make_css)]
+                   ('css', lambda theme:
+                        api.make_css(data['style'][theme]))]
 
     for action in action_list:
         setup_url_rule(data['urls'][action[0]], action[1])
