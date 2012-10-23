@@ -86,9 +86,6 @@ threads:
     title:
       "Active Threads"
 
-    content_type:
-      "index"
-
     threaded:
       False
 
@@ -121,9 +118,6 @@ threads:
     title:
       "Zombie Raptor Launches... at some point."
 
-    content_type:
-      "blog"
-
     threaded:
       False
 
@@ -139,9 +133,6 @@ threads:
   '1':
     title:
       "This is a Sample Thread"
-
-    content_type:
-      "post"
 
     threaded:
       True

@@ -4,7 +4,7 @@
   <h1><a href="/" class="title-heading">{{ main_title }}</a></h1>
 
   <article>
-  <h1> {{ thread_title }} <span class="content-type">({{ content }})</span></h1>
+  <h1> {{ thread_title }}</h1>
   {% for post in posts %}
     <div class="post level{{ post['level'] }}">
       <span class="author">  {% if threaded %}({{ post['level'] }}) {% endif %}{{ post['author'] }} :: <a href="/f">{{ post ['date'] }}</a> :: <a href="/f/main">(reply)</a> :: <a href="/">(rate)</a></span>

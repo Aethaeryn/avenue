@@ -59,8 +59,7 @@ def url_generator():
                                    thread_title=thread['title'],
                                    html_title=html_title,
                                    posts=thread['posts'],
-                                   threaded=thread['threaded'],
-                                   content=thread['content_type'])
+                                   threaded=thread['threaded'])
 
         set_tags()
 
