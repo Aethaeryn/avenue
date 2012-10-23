@@ -19,37 +19,37 @@ def get_tables(metadata):
     # tags specially as content type.
 
     # TODO: Store parent/children/tags
-    table['posts'] = Table('posts', metadata,
-                           Column('id', Integer, primary_key=True),
-                           Column('author', ForeignKey('users.username')),
-                           Column('karma', Integer),
-                           Column('content', String),
-                           Column('date', DateTime),
-                           Column('parent', ForeignKey('posts.id')))
+    add_table('posts',
+              Column('id', Integer, primary_key=True),
+              Column('author', ForeignKey('users.username')),
+              Column('karma', Integer),
+              Column('content', String),
+              Column('date', DateTime),
+              Column('parent', ForeignKey('posts.id')))
 
     # TODO: Store tags/threaded/author... read it from 'start' post.
-    table['thread'] = Table('thread', metadata,
-                            Column('id', Integer, primary_key=True),
-                            Column('start', ForeignKey('posts.id')),
-                            Column('title', String))
+    add_table('thread',
+              Column('id', Integer, primary_key=True),
+              Column('start', ForeignKey('posts.id')),
+              Column('title', String))
 
-    table['users'] = Table('users', metadata,
-                           Column('id', Integer, primary_key=True),
-                           Column('username', String, unique=True),
-                           Column('joined', DateTime),
-                           Column('email', String))
+    add_table('users',
+              Column('id', Integer, primary_key=True),
+              Column('username', String, unique=True),
+              Column('joined', DateTime),
+              Column('email', String))
 
-    table['nav'] = Table('nav', metadata,
-                         Column('id', Integer, primary_key=True),
-                         Column('visible', Boolean),
-                         Column('title', String),
-                         Column('text', String),
-                         Column('link', String))
+    add_table('nav',
+              Column('id', Integer, primary_key=True),
+              Column('visible', Boolean),
+              Column('title', String),
+              Column('text', String),
+              Column('link', String))
 
-    table['tags'] = Table('tags', metadata,
-                          Column('id', Integer, primary_key=True),
-                          Column('text', String),
-                          Column('color', String))
+    add_table('tags',
+              Column('id', Integer, primary_key=True),
+              Column('text', String),
+              Column('color', String))
 
     add_table('forums',
               Column('id', Integer, primary_key=True),
