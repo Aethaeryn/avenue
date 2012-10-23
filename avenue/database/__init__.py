@@ -18,8 +18,8 @@ connection = engine.connect()
 
 print table
 
-def debug():
-    ins = table['users'].insert().values(username='michael')
-    connection.execute(ins)
+# def debug():
+#     ins = table['users'].insert().values(username='michael')
+#     connection.execute(ins)
 
-debug()
+# debug()

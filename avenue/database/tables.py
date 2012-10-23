@@ -9,6 +9,9 @@ from sqlalchemy import Table, Integer, ForeignKey, DateTime, Column, String, Boo
 def get_tables(metadata):
     table = {}
 
+    def add_table(name, *columns):
+        table[name] = Table(name, metadata, *columns)
+
     # TODO: posts, threads, users, urls, navbar, tags, styles
     # TODO: Work a per-forum karma system.
 
@@ -48,9 +51,9 @@ def get_tables(metadata):
                           Column('text', String),
                           Column('color', String))
 
-    table['forums'] = Table('forums', metadata,
-                            Column('id', Integer, primary_key=True),
-                            Column('name', String),
-                            Column('url', String))
+    add_table('forums',
+              Column('id', Integer, primary_key=True),
+              Column('name', String),
+              Column('url', String))
 
     return table
