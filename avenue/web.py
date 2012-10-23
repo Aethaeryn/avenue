@@ -46,12 +46,14 @@ def url_generator():
 
         main_title = '%s -- %s' % (data['site'], data['forum'])
 
+        title = { 'html'   : html_title,
+                  'main'   : main_title,
+                  'thread' : thread['title'] }
+
         return render_template('forum.html',
                                style='night',
                                sidebar=data['navbar'],
-                               main_title=main_title,
-                               thread_title=thread['title'],
-                               html_title=html_title,
+                               title=title,
                                posts=thread['posts'],
                                threaded=thread['threaded'])
 
