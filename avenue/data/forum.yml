@@ -143,6 +143,9 @@ threads:
         content: "<p>The forums will go here eventually. I'm just testing things out now. As you can see, the first post in a thread gets special treatment.</p>"
         author: "John"
         date: "1 day ago"
+        tags:
+          - 'post'
+          - 'test'
 
       - level: 1
         content: "<p>Well, I could've just put a note explaining that this website is just full of static filler stuff as I finalize the design aspect of Avenue, but then I realized that this site's purpose is to render text. So, I can simply write that explanation here in a verbose way. That way, I can test out posts of all different sizes to see how the theme renders.</p>"
