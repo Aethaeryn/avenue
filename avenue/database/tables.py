@@ -43,4 +43,14 @@ def get_tables(metadata):
                          Column('text', String),
                          Column('link', String))
 
+    table['tags'] = Table('tags', metadata,
+                          Column('id', Integer, primary_key=True),
+                          Column('text', String),
+                          Column('color', String))
+
+    table['forums'] = Table('forums', metadata,
+                            Column('id', Integer, primary_key=True),
+                            Column('name', String),
+                            Column('url', String))
+
     return table
