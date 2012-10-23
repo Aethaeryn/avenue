@@ -10,7 +10,7 @@
       <span class="author">  {% if threaded %}({{ post['level'] }}) {% endif %}{{ post['author'] }} :: <a href="/f">{{ post ['date'] }}</a> :: <a href="/f/main">(reply)</a> :: <a href="/">(rate)</a></span>
       <div class="levelbox lbox{{ post['level'] }}"></div>
       {{  post["content"]|safe  }}
-      <div class="tags">&nbsp;{% for tag in post['tags'] %}<span class="tag-content" style="background-color:{{tag[1]}}">&nbsp;&nbsp;<a href="{{tag[2]}}">{{tag[0]}}</a>&nbsp;&nbsp;</span>&nbsp;{% endfor %}</div>
+      <div class="tags">&nbsp;{% for tag in post['tags'] %}<span class="tag-content" style="background-color:{{tag.color}}">&nbsp;&nbsp;<a href="{{tag.link}}">{{tag.text}}</a>&nbsp;&nbsp;</span>&nbsp;{% endfor %}</div>
     </div>
   {% endfor %}
   </article>
