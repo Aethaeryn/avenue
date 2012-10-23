@@ -1,10 +1,11 @@
 site: "Zombie Raptor"
 forum: "Main Forum"
+forum_url: "/f/main/"
 
 urls:
   redirect:
     '/f/': '/'
-    '/f/main/post/' : '/f/main/'
+    '/f/main/tag/post/' : '/f/main/'
 
   forum_urls:
     '/f/main/' : 'main'
@@ -27,32 +28,26 @@ tags:
   post:
     text: 'post'
     color: '#aabbcc'
-    link: '/f/main/tag/post'
 
   micro:
     text: 'micro'
     color: '#aabbcc'
-    link: '/f/main/tag/micro'
 
   link:
     text: 'link'
     color: '#aabbcc'
-    link: '/f/main/tag/link'
 
   blog:
     text: 'blog'
     color: '#aabbcc'
-    link: '/f/main/tag/blog'
 
   news:
     text: 'news'
     color: '#bbeebb'
-    link: '/f/main/tag/news'
 
   test:
     text: 'test'
     color: '#ffbb99'
-    link: '/f/main/tag/test'
 
 style:
   night:

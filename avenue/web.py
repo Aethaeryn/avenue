@@ -39,7 +39,8 @@ def url_generator():
 
         title = { 'html'   : html_title,
                   'main'   : main_title,
-                  'thread' : thread['title'] }
+                  'thread' : thread['title'],
+                  'url'    : data['forum_url'] }
 
         return render_template('forum.html',
                                style='night',
