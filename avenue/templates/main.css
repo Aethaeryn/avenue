@@ -56,11 +56,6 @@ h2 { font-size:16pt;
      margin: 0px;
    }
 
-.content-type { font-size:13pt;
-                font-family: "Yanone Kaffeesatz", sans-serif;
-                font-weight: normal;
-              }
-
 p { margin: 0px;
     padding-top: 3px;
     padding-bottom: 4px;
@@ -105,7 +100,6 @@ article { background-color: {{ theme.background.article }};
 .level5 { border-left: 7px solid {{ theme.post.level5 }};
           background: {{ theme.background.post_1 }};
         }
-
 
 .levelbox { height: 2px; }
 
@@ -181,12 +175,6 @@ a:hover { text-decoration: none;
 .navbox:visited { color: {{ theme.text.nav }}; }
 
 .navbox:hover { color: {{ theme.text.nav_hover }}; }
-
-.tile-navbox:link { color: {{ theme.text.nav }}; }
-
-.tile-navbox:visited { color: {{ theme.text.nav }}; }
-
-.tile-navbox:hover { color: {{ theme.text.nav_hover }}; }
 
 .author { font-size: 8pt; }
 
