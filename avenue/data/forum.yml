@@ -8,7 +8,7 @@ urls:
 
   forum_urls:
     '/f/main/' : 'main'
-    '/f/main/post/1' : '1'
+    '/f/main/1' : '1'
     '/' : 'front_page'
 
   css:
@@ -27,22 +27,22 @@ tags:
   post:
     text: 'post'
     color: '#aabbcc'
-    link: '/f/main/post'
+    link: '/f/main/tag/post'
 
   micro:
     text: 'micro'
     color: '#aabbcc'
-    link: '/f/main/micro'
+    link: '/f/main/tag/micro'
 
   link:
     text: 'link'
     color: '#aabbcc'
-    link: '/f/main/link'
+    link: '/f/main/tag/link'
 
   blog:
     text: 'blog'
     color: '#aabbcc'
-    link: '/f/main/blog'
+    link: '/f/main/tag/blog'
 
   news:
     text: 'news'
@@ -91,7 +91,7 @@ threads:
 
     posts:
       - level: 0
-        content: '<h1 class="post-link"><a href="/f/main/post/1">This is a Sample Thread</a></h1>'
+        content: '<h1 class="post-link"><a href="/f/main/1">This is a Sample Thread</a></h1>'
         author: 'John'
         date: '1 day ago'
         tags: 
