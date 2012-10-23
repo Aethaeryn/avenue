@@ -15,6 +15,7 @@ def url_generator():
     particular function to be used as the action for that group.
     '''
     data = api.read_data('forum')
+    threads = data['threads']
 
     def make_css(theme):
         '''Reads style rules from a file and applies them to a css
@@ -25,45 +26,34 @@ def url_generator():
         response.mimetype = 'text/css'
         return response
 
-    def forum_generator():
-        '''Reads in data files representing static forum states. Returns a
-        function that accesses forum pages.
+    def forum_set_tags():
+        '''Turns strings containing tag names into tag objects that
+        can be used to generate HTML/CSS renderings of the tag.
         '''
-        threads = data['threads']
+        for thread in threads:
+            for post in threads[thread]['posts']:
+                if 'tags' in post:
+                    for i in range(len(post['tags'])):
+                        post['tags'][i] = data['tags'][post['tags'][i]]
 
-        def set_tags():
-            '''Turns strings containing tag names into tag objects that
-            can be used to generate HTML/CSS renderings of the tag.
-            '''
-            for thread in threads:
-                for post in threads[thread]['posts']:
-                    if 'tags' in post:
-                        for i in range(len(post['tags'])):
-                            post['tags'][i] = data['tags'][post['tags'][i]]
+    def forum_page(name):
+        '''Makes a forum page of the given thread name.
+        '''
+        thread = threads[name]
 
-        def forum_page(name):
-            '''Makes a forum page of the given thread name.
-            '''
-            thread = threads[name]
+        html_title = '%s :: %s :: %s' % (thread['title'], data['forum'],
+                                         data['site'])
 
-            html_title = '%s :: %s :: %s' % (thread['title'],
-                                             data['forum'],
-                                             data['site'])
+        main_title = '%s -- %s' % (data['site'], data['forum'])
 
-            main_title = '%s -- %s' % (data['site'], data['forum'])
-
-            return render_template('forum.html',
-                                   style='night',
-                                   sidebar=data['navbar'],
-                                   main_title=main_title,
-                                   thread_title=thread['title'],
-                                   html_title=html_title,
-                                   posts=thread['posts'],
-                                   threaded=thread['threaded'])
-
-        set_tags()
-
-        return forum_page
+        return render_template('forum.html',
+                               style='night',
+                               sidebar=data['navbar'],
+                               main_title=main_title,
+                               thread_title=thread['title'],
+                               html_title=html_title,
+                               posts=thread['posts'],
+                               threaded=thread['threaded'])
 
     def setup_url_rule(urls, action):
         '''Sets up URL rules, given a dictionary of urls and a function
@@ -82,8 +72,10 @@ def url_generator():
         for url in urls:
             app.add_url_rule(url, url, url_page_function(urls[url]))
 
+    forum_set_tags()
+
     action_list = [('redirect', redirect),
-                   ('forum_urls', forum_generator()),
+                   ('forum_urls', forum_page),
                    ('css', make_css)]
 
     for action in action_list:
