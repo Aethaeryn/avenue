@@ -15,16 +15,7 @@ Basic
 
   * tags
 
-* Content
-
-  * pic
-
-    * Links to externally hosted pictures (and eventually uploaded
-      pictures).
-
-  * video
-
-    * Links to externally hosted videos.
+* Basic Content Types
 
   * post
 
@@ -44,6 +35,17 @@ Basic
     * Thread that is like a post, but with comments hidden by default
       like a wiki. Restricted to certain users or locations, and
       handled specially in the indexes.
+
+* Advanced Content Types
+
+  * pic
+
+    * Links to externally hosted pictures (and eventually uploaded
+      pictures).
+
+  * video
+
+    * Links to externally hosted videos.
 
   * wiki
 
@@ -134,17 +136,9 @@ URLS
     * Shows all content in a forum called forum_name with the tag
       called tag_name (e.g. economics, news).
 
-  * example.com/f/forum_name/content_type
+    * Multiple tags can be shown if in between each tag is a +
 
-    * Shows all content in a forum called forum_name of the content of
-      the type content_type (e.g. pic, link).
-
-  * example.com/f/forum_name/content_type/tag/tag_name
-
-    * Shows all content in a forum called forum_name of the content of
-      the type content_type with the tag called tag_name.
-
-  * example.com/f/forum_name/content_type/submission_id
+  * example.com/f/forum_name/submission_id
 
     * The full path to the submission of the ID submission_id
       (e.g. ac134ff1). Shows the submission at the top, followed by
@@ -164,19 +158,6 @@ URLS
       particular forum, so content here can be under the supervision
       of multiple different moderator sets. Thus, it needs to be
       clear which forum it is under.
-
-  * example.com/content_type
-
-    * Shows all content on all forums of a particular content type.
-
-    * This is also a meta-category (see above).
-
-  * example.com/content_type/tag/tag_name
-
-    * Shows all content on all forums of a particular content type and
-      tag.
-
-    * This is also a meta-category (see above).
 
   * example.com/f/forum_name/wiki/Article_Name
 
