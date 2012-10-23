@@ -1,14 +1,11 @@
 html { overflow-y: scroll; }
 
 @media all and (min-width:1060px) {
-    body {
-        position:absolute;
-        left:50px;
-    }
+    body { position:absolute;
+           left:50px;
+         }
 
-    article {
-        width: 717px;
-    }
+    article { width: 717px; }
 
     nav {
         position:absolute;
@@ -17,19 +14,13 @@ html { overflow-y: scroll; }
         width: 200px;
     }
 
-    .navbox {
-        width: 200px;
-    }
+    .navbox { width: 200px; }
 }
 
 @media all and (max-width:1059px) {
-    nav {
-        width: 100%;
-    }
+    nav { width: 100%; }
 
-    .navbox {
-        max-width: 1059px;
-    }
+    .navbox { max-width: 1059px; }
 
     article { max-width: 1059px; }
 }
