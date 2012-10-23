@@ -39,6 +39,11 @@ tags:
     - '#aabbcc'
     - '/f/main/link'
 
+  blog:
+    - 'blog'
+    - '#aabbcc'
+    - '/f/main/blog'
+
   news:
     - 'news'
     - '#bbeebb'
@@ -127,6 +132,9 @@ threads:
         content: "<p>Expect stuff from Zombie Raptor in the near future.</p>"
         author: "admin"
         date: "now"
+        tags:
+          - 'blog'
+          - 'news'
 
   '1':
     title:
