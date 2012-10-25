@@ -21,19 +21,19 @@ def get_tables(metadata):
     # tags specially as content type.
 
     # TODO: Store parent/children/tags
-    create_table('posts',
-                 Column('author', ForeignKey('users.username')),
+    create_table('post',
+                 Column('author', ForeignKey('user.username')),
                  Column('karma', Integer),
                  Column('content', String),
                  Column('date', DateTime),
-                 Column('parent', ForeignKey('posts.id')))
+                 Column('parent', ForeignKey('post.id')))
 
     # TODO: Store tags/threaded/author... read it from 'start' post.
     create_table('thread',
-                 Column('start', ForeignKey('posts.id')),
+                 Column('start', ForeignKey('post.id')),
                  Column('title', String))
 
-    create_table('users',
+    create_table('user',
                  Column('username', String, unique=True),
                  Column('joined', DateTime),
                  Column('email', String))
@@ -44,11 +44,11 @@ def get_tables(metadata):
                  Column('text', String),
                  Column('link', String))
 
-    create_table('tags',
+    create_table('tag',
                  Column('text', String),
                  Column('color', String))
 
-    create_table('forums',
+    create_table('forum',
                  Column('name', String),
                  Column('url', String))
 
