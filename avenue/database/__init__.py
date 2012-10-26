@@ -7,19 +7,11 @@
 from sqlalchemy import create_engine, MetaData
 from avenue.database.tables import get_tables
 
-LOCATION = 'sqlite:///:memory:'
-#LOCATION = 'sqlite:////home/mbabich/foo.sqlite'
+# LOCATION = 'sqlite:///:memory:'
+LOCATION = 'sqlite:////home/mbabich/foo.sqlite'
 
 engine = create_engine(LOCATION, echo=True)
 metadata = MetaData()
 table = get_tables(metadata)
 metadata.create_all(engine)
 connection = engine.connect()
-
-print table
-
-# def debug():
-#     ins = table['users'].insert().values(username='michael')
-#     connection.execute(ins)
-
-# debug()
