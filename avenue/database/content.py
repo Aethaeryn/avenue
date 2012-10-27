@@ -4,8 +4,8 @@
 '''Loads content into the database.
 '''
 
-from api import read_data
-from database import table, connection
+from avenue.api import read_data
+from avenue.database import table, connection
 
 def import_data():
     data = read_data('forum')
@@ -17,9 +17,9 @@ def insert_data():
 
     actions = []
 
-    actions.append(table['text_theme'].insert().values(**data['night']['text']))
-    actions.append(table['background_theme'].insert().values(**data['night']['background']))
-    actions.append(table['post_theme'].insert().values(**data['night']['post']))
+    actions.append(table['theme_text'].insert().values(**data['night']['text']))
+    actions.append(table['theme_background'].insert().values(**data['night']['background']))
+    actions.append(table['theme_post'].insert().values(**data['night']['post']))
 
     for action in actions:
         connection.execute(action)

@@ -10,7 +10,7 @@ from avenue.database.tables import get_tables
 # LOCATION = 'sqlite:///:memory:'
 LOCATION = 'sqlite:////home/mbabich/foo.sqlite'
 
-engine = create_engine(LOCATION, echo=True)
+engine = create_engine(LOCATION, echo=False)
 metadata = MetaData()
 table = get_tables(metadata)
 metadata.create_all(engine)

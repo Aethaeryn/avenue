@@ -52,7 +52,7 @@ def get_tables(metadata):
                  Column('name', String),
                  Column('url', String))
 
-    create_table('text_theme',
+    create_table('theme_text',
                  Column('name', String, unique=True),
                  Column('plain', String),
                  Column('link', String),
@@ -62,7 +62,7 @@ def get_tables(metadata):
                  Column('nav', String),
                  Column('nav_hover', String))
 
-    create_table('background_theme',
+    create_table('theme_background',
                  Column('name', String, unique=True),
                  Column('plain', String),
                  Column('article', String),
@@ -71,7 +71,7 @@ def get_tables(metadata):
                  Column('box1', String),
                  Column('box2', String))
 
-    create_table('post_theme',
+    create_table('theme_post',
                  Column('name', String, unique=True),
                  Column('level0', String),
                  Column('level1', String),
@@ -82,8 +82,8 @@ def get_tables(metadata):
 
     create_table('theme',
                  Column('name', String, unique=True),
-                 Column('text', ForeignKey('text_theme.id')),
-                 Column('background', ForeignKey('background_theme.id')),
-                 Column('post', ForeignKey('post_theme.id')))
+                 Column('text', ForeignKey('theme_text.id')),
+                 Column('background', ForeignKey('theme_background.id')),
+                 Column('post', ForeignKey('theme_post.id')))
 
     return table
