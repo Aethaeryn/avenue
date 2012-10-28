@@ -84,7 +84,7 @@ def get_theme():
 
             for i in range(len(keys)):
                 if keys[i] in foreign:
-                    row_dict[keys[i]] = (row[i], foreign[keys[i]])
+                    row_dict[keys[i]] = (row[i], foreign[keys[i]].split('.'))
 
                 elif keys[i] == 'name':
                     name = row[i]
@@ -94,13 +94,24 @@ def get_theme():
 
         return themes
 
+    def make_dict2(database, id):
+        '''Makes a dictionary of themes from a SQL table.
+        '''
+        dictionary = {}
+
+        keys, row = read_database(database, first=True, id=id)
+
+        for i in range(len(keys)):
+            dictionary[keys[i]] = row[i]
+
+        return dictionary
+
     keys, rows = read_database('theme')
 
     print make_dict(keys, rows)
 
-    keys, row = read_database('theme_post', first=True, id=1)
+    print make_dict2('theme_post', 1)
 
-    print keys, row
 
 insert_data()
 get_theme()
