@@ -6,6 +6,7 @@
 the rest of the application.
 '''
 from avenue import app, api
+from avenue.database import content
 from flask import render_template, make_response, redirect
 
 def url_generator():
@@ -16,6 +17,8 @@ def url_generator():
     '''
     data = api.read_data('forum')
     threads = data['threads']
+    content.insert_data()
+    style = content.get_theme()
 
     def forum_set_tags():
         '''Turns strings containing tag names into tag objects that
@@ -69,7 +72,7 @@ def url_generator():
     action_list = [('redirect', redirect),
                    ('forum_urls', forum_page),
                    ('css', lambda theme:
-                        api.make_css(data['style'][theme]))]
+                        api.make_css(style[theme]))]
 
     for action in action_list:
         setup_url_rule(data['urls'][action[0]], action[1])

@@ -111,6 +111,3 @@ def get_theme():
         return dictionary
 
     return theme_dict()
-
-insert_data()
-get_theme()
