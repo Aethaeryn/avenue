@@ -47,14 +47,25 @@ def get_theme():
 
         return foreign
 
-    # This executes a join. Not ideal for the data structure we want because the keys aren't a set (i.e. some titles are duplicates).
-    print connection.execute(table['theme'].join(table['theme_post']).join(table['theme_background']).join(table['theme_text']).select()).keys()
+    themes = connection.execute(table['theme'].select())
+    keys = themes.keys()
+    rows = themes.fetchall()
+    themes.close()
+    foreign = get_foreign('theme')
 
-    # This is just the table itself.
-    print connection.execute(table['theme'].select())
+    themes_dict = {}
 
-    # These are the foreign columns.
-    print get_foreign('theme')
+    for row in rows:
+        row_dict = {}
+
+        for i in range(len(keys)):
+            if keys[i] in foreign:
+                print keys[i], row[i], foreign[keys[i]]
+
+            else:
+                row_dict[keys[i]] = row[i]
+
+        print row_dict
 
 insert_data()
 get_theme()
