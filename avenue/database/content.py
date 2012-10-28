@@ -97,8 +97,8 @@ def get_theme():
                 elif keys[i] == 'name':
                     name = row[i]
 
-        if name:
-            themes[name] = row_dict
+            if name:
+                themes[name] = row_dict
 
         return themes
 
