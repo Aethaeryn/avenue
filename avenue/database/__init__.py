@@ -7,8 +7,8 @@
 from sqlalchemy import create_engine, MetaData
 from avenue.database.tables import get_tables
 
-# LOCATION = 'sqlite:///:memory:'
-LOCATION = 'sqlite:////home/mbabich/foo.sqlite'
+LOCATION = 'sqlite:///:memory:'
+# LOCATION = 'sqlite:////home/mbabich/foo.sqlite'
 
 engine = create_engine(LOCATION, echo=False)
 metadata = MetaData()
