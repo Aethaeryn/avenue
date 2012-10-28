@@ -7,7 +7,7 @@ urls:
     '/f/': '/'
     '/f/main/tag/post/' : '/f/main/'
 
-  forum_urls:
+  forum:
     '/f/main/' : 'main'
     '/f/main/1' : '1'
     '/' : 'front_page'

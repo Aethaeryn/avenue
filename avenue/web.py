@@ -72,7 +72,7 @@ def url_generator():
     forum_set_tags()
 
     action_list = [('redirect', redirect),
-                   ('forum_urls', forum_page),
+                   ('forum', forum_page),
                    ('css', lambda theme:
                         api.make_css(themes[theme]))]
 
