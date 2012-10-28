@@ -7,17 +7,17 @@
 from avenue.api import read_data
 from avenue.database import table, connection
 
-def import_data():
+def import_data(filename):
     '''Imports data from a data file to be used in the database.
     '''
-    data = read_data('forum')
-    return data['style']
+    data = read_data(filename)
+    return data
 
 
 def insert_data():
     '''Inserts static data from a data file into the database.
     '''
-    data = import_data()
+    data = import_data('themes')
 
     actions = []
 

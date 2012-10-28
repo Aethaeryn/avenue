@@ -49,37 +49,6 @@ tags:
     text: 'test'
     color: '#ffbb99'
 
-style:
-  - name: 'night'
-
-    text:
-      name       : 'night'
-      plain      : '#000000'
-      link       : '#0438a0'
-      hover      : '#0853e1'
-      heading    : '#ff7f24'
-      head_hover : '#df4f14'
-      nav        : '#d6d9d9'
-      nav_hover  : '#aaaaaa'
-
-    background:
-      name    : 'night'
-      plain   : '#000000'
-      article : '#dfdfc6'
-      post_1  : '#dfdfcd'
-      post_2  : '#dfdfbe'
-      box1    : '#1a1123'
-      box2    : '#a6a9a9'
-
-    post:
-      name   : 'night'
-      level0 : '#dfdfc6'
-      level1 : '#bdad00'
-      level2 : '#d59100'
-      level3 : '#ed7500'
-      level4 : '#da3a00'
-      level5 : '#c70000'
-
 threads:
   main:
     title:
