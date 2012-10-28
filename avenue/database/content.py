@@ -47,14 +47,15 @@ def get_theme():
 
         return foreign
 
-    def read_database(name, first=False, id=False):
+    def read_database(name, first=False, search=False):
         '''Reads a table from a database and returns the keys and rows
         or row. If first is true, it only returns the first match. If
-        id is defined, it filters for that id. Result is either one
-        row or multiple rows, depending on if first is true or not.
+        the list 'search' is defined, it looks for search[0] in the
+        entry search[1]. Result is either one row or multiple rows,
+        depending on if first is true or not.
         '''
-        if id:
-            sql = table[name].select().where('id = %i' % id)
+        if search:
+            sql = table[name].select().where('%s == %i' % (search[1], search[0]))
         else:
             sql = table[name].select()
 
@@ -71,10 +72,12 @@ def get_theme():
 
         return keys, result
 
-    def make_dict(keys, rows):
+    def make_dict():
         '''Makes a dictionary of themes from a SQL table.
         '''
         themes = {}
+
+        keys, rows = read_database('theme')
 
         foreign = get_foreign('theme')
 
@@ -84,7 +87,8 @@ def get_theme():
 
             for i in range(len(keys)):
                 if keys[i] in foreign:
-                    row_dict[keys[i]] = (row[i], foreign[keys[i]].split('.'))
+                    query = (row[i], foreign[keys[i]].split('.'))
+                    row_dict[keys[i]] = make_dict2(query[1][0], (query[0], query[1][1]))
 
                 elif keys[i] == 'name':
                     name = row[i]
@@ -94,24 +98,19 @@ def get_theme():
 
         return themes
 
-    def make_dict2(database, id):
+    def make_dict2(database, search):
         '''Makes a dictionary of themes from a SQL table.
         '''
         dictionary = {}
 
-        keys, row = read_database(database, first=True, id=id)
+        keys, row = read_database(database, first=True, search=search)
 
         for i in range(len(keys)):
             dictionary[keys[i]] = row[i]
 
         return dictionary
 
-    keys, rows = read_database('theme')
-
-    print make_dict(keys, rows)
-
-    print make_dict2('theme_post', 1)
-
+    print make_dict()
 
 insert_data()
 get_theme()
