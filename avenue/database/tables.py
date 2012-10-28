@@ -82,8 +82,8 @@ def get_tables(metadata):
 
     create_table('theme',
                  Column('name', String, unique=True),
-                 Column('text', ForeignKey('theme_text.id')),
-                 Column('background', ForeignKey('theme_background.id')),
-                 Column('post', ForeignKey('theme_post.id')))
+                 Column('text', ForeignKey('theme_text.name')),
+                 Column('background', ForeignKey('theme_background.name')),
+                 Column('post', ForeignKey('theme_post.name')))
 
     return table

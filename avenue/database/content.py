@@ -24,7 +24,7 @@ def insert_data():
     actions.append(table['theme_text'].insert().values(**data[0]['text']))
     actions.append(table['theme_background'].insert().values(**data[0]['background']))
     actions.append(table['theme_post'].insert().values(**data[0]['post']))
-    actions.append(table['theme'].insert().values(name=data[0]['name'], text=1, post=1, background=1))
+    actions.append(table['theme'].insert().values(name=data[0]['name'], text='night', post='night', background='night'))
 
     for action in actions:
         connection.execute(action)
@@ -54,7 +54,7 @@ def get_theme():
         multiple rows, depending on if first is true or not.
         '''
         if search:
-            sql = table[name].select().where('%s == %i' % (search[1], search[0]))
+            sql = table[name].select().where('%s == "%s"' % (search[1], search[0]))
         else:
             sql = table[name].select()
 
@@ -87,6 +87,8 @@ def get_theme():
             for i in range(len(keys)):
                 if keys[i] in foreign:
                     query = (row[i], foreign[keys[i]].split('.'))
+
+                    print query
                     row_dict[keys[i]] = subtheme_dict(query[1][0], (query[0], query[1][1]))
 
                 elif keys[i] == 'name':
