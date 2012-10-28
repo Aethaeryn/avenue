@@ -20,8 +20,7 @@ def url_generator():
     content.insert_data()
     themes = content.get_themes()
     nav = content.get_nav()
-
-    print nav
+    tags = content.get_tags()
 
     def forum_set_tags():
         '''Turns strings containing tag names into tag objects that
@@ -31,7 +30,7 @@ def url_generator():
             for post in threads[thread]['posts']:
                 if 'tags' in post:
                     for i in range(len(post['tags'])):
-                        post['tags'][i] = data['tags'][post['tags'][i]]
+                        post['tags'][i] = tags[post['tags'][i]]
 
     def forum_page(name):
         '''Makes a forum page of the given thread name.

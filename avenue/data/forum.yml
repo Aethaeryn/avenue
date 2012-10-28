@@ -27,29 +27,23 @@ nav:
     link: '/f/main'
     visible: True
 
-tags:
-  post:
-    text: 'post'
+tag:
+  - text: 'post'
     color: '#aabbcc'
 
-  micro:
-    text: 'micro'
+  - text: 'micro'
     color: '#aabbcc'
 
-  link:
-    text: 'link'
+  - text: 'link'
     color: '#aabbcc'
 
-  blog:
-    text: 'blog'
+  - text: 'blog'
     color: '#aabbcc'
 
-  news:
-    text: 'news'
+  - text: 'news'
     color: '#bbeebb'
 
-  test:
-    text: 'test'
+  - text: 'test'
     color: '#ffbb99'
 
 threads:

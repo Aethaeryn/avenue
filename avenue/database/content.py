@@ -32,20 +32,27 @@ def insert_data():
                 actions.append(table['theme'].insert().values(**entry))
 
     def nav():
-        '''Inserts the navbar from forum.yml into the database.
+        '''Inserts the nav from forum.yml into the database.
         '''
         data = forum_data['nav']
 
         for entry in data:
             actions.append(table['nav'].insert().values(**entry))
 
-        print data
+    def tags():
+        '''Inserts the tags from forum.yml into the database.
+        '''
+        data = forum_data['tag']
+
+        for entry in data:
+            actions.append(table['tag'].insert().values(**entry))
 
     actions = []
     forum_data = import_data('forum')
 
     themes()
     nav()
+    tags()
 
     for action in actions:
         connection.execute(action)
@@ -144,3 +151,20 @@ def get_nav():
         nav.append(dictionary)
 
     return nav
+
+def get_tags():
+    '''Retrieves the tags from the database.
+    '''
+    keys, rows = _read_database('tag')
+
+    tags = {}
+
+    for row in rows:
+        dictionary = {}
+
+        for i in range(len(keys)):
+            dictionary[keys[i]] = row[i]
+
+        tags[dictionary['text']] = dictionary
+
+    return tags
