@@ -14,6 +14,7 @@ urls:
 
   css:
     '/night.css' : 'night'
+    '/test.css'  : 'test'
 
 navbar:
   - title: 'Zombie Raptor Blog'

@@ -44,7 +44,7 @@ def url_generator():
                   'url'    : data['forum_url'] }
 
         return render_template('forum.html',
-                               style='night',
+                               style='test',
                                sidebar=data['navbar'],
                                title=title,
                                posts=thread['posts'],
