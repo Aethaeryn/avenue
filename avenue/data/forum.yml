@@ -2,19 +2,29 @@ site: "Zombie Raptor"
 forum: "Main Forum"
 forum_url: "/f/main/"
 
-urls:
-  redirect:
-    '/f/': '/'
-    '/f/main/tag/post/' : '/f/main/'
+url_redirect:
+  - url: '/f/'
+    action: '/'
 
-  forum:
-    '/f/main/' : 'main'
-    '/f/main/1' : '1'
-    '/' : 'front_page'
+  - url: '/f/main/tag/post/'
+    action: '/f/main/'
 
-  css:
-    '/night.css' : 'night'
-    '/test.css'  : 'test'
+url_forum:
+  - url: '/f/main/'
+    action: 'main'
+
+  - url: '/f/main/1'
+    action: '1'
+
+  - url: '/'
+    action: 'front_page'
+
+url_css:
+  - url: '/night.css'
+    action: 'night'
+
+  - url: '/test.css'
+    action: 'test'
 
 nav:
   - title: 'Zombie Raptor Blog'

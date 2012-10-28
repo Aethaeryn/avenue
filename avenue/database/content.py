@@ -6,19 +6,13 @@
 from avenue.api import read_data
 from avenue.database import table, connection
 
-def import_data(filename):
-    '''Imports data from a data file to be used in the database.
-    '''
-    data = read_data(filename)
-    return data
-
 def insert_data():
     '''Inserts static data from a data file into the database.
     '''
     def themes():
         '''Inserts the themes from themes.yml into the database.
         '''
-        data = import_data('themes')
+        data = read_data('themes')
 
         subtheme = set(['text', 'background', 'post'])
 
@@ -47,12 +41,24 @@ def insert_data():
         for entry in data:
             actions.append(table['tag'].insert().values(**entry))
 
+    def urls():
+        '''Inserts the url rules from forum.yml into the database.
+        '''
+        urls = ['url_redirect', 'url_forum', 'url_css']
+
+        for url_group in urls:
+            data = forum_data[url_group]
+
+            for entry in data:
+                actions.append(table[url_group].insert().values(**entry))
+
     actions = []
-    forum_data = import_data('forum')
+    forum_data = read_data('forum')
 
     themes()
     nav()
     tags()
+    urls()
 
     for action in actions:
         connection.execute(action)
@@ -168,3 +174,21 @@ def get_tags():
         tags[dictionary['text']] = dictionary
 
     return tags
+
+def get_urls():
+    '''Retrieves the urls from the database.
+    '''
+    urls = ['url_redirect', 'url_forum', 'url_css']
+    url_dict = {}
+
+    for url_group in urls:
+        keys, rows = _read_database(url_group)
+
+        dictionary = {}
+
+        for row in rows:
+            dictionary[row[1]] = row[2]
+
+        url_dict[url_group.split('_')[1]] = dictionary
+
+    return url_dict

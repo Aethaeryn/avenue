@@ -21,6 +21,7 @@ def url_generator():
     themes = content.get_themes()
     nav = content.get_nav()
     tags = content.get_tags()
+    urls = content.get_urls()
 
     def forum_set_tags():
         '''Turns strings containing tag names into tag objects that
@@ -77,4 +78,4 @@ def url_generator():
                         api.make_css(themes[theme]))]
 
     for action in action_list:
-        setup_url_rule(data['urls'][action[0]], action[1])
+        setup_url_rule(urls[action[0]], action[1])
