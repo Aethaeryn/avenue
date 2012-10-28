@@ -3,7 +3,6 @@
 
 '''Loads content into the database.
 '''
-
 from avenue.api import read_data
 from avenue.database import table, connection
 
@@ -13,23 +12,28 @@ def import_data(filename):
     data = read_data(filename)
     return data
 
-
 def insert_data():
     '''Inserts static data from a data file into the database.
     '''
-    data = import_data('themes')
+    def themes():
+        '''Inserts the themes from themes.yml into the database.
+        '''
+        data = import_data('themes')
+
+        subtheme = set(['text', 'background', 'post'])
+
+        for entry in data:
+            entry_type = entry.pop('type')
+
+            if entry_type in subtheme:
+                actions.append(table['theme_%s' % entry_type].insert().values(**entry))
+
+            else:
+                actions.append(table['theme'].insert().values(**entry))
 
     actions = []
-    subtheme = set(['text', 'background', 'post'])
 
-    for entry in data:
-        entry_type = entry.pop('type')
-
-        if entry_type in subtheme:
-            actions.append(table['theme_%s' % entry_type].insert().values(**entry))
-
-        else:
-            actions.append(table['theme'].insert().values(**entry))
+    themes()
 
     for action in actions:
         connection.execute(action)
