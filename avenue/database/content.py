@@ -50,7 +50,8 @@ def get_theme():
     def read_database(name, first=False, id=False):
         '''Reads a table from a database and returns the keys and rows
         or row. If first is true, it only returns the first match. If
-        id is defined, it filters for that id.
+        id is defined, it filters for that id. Result is either one
+        row or multiple rows, depending on if first is true or not.
         '''
         if id:
             sql = table[name].select().where('id = %i' % id)
@@ -62,13 +63,13 @@ def get_theme():
         keys = in_table.keys()
 
         if first:
-            rows = in_table.first()
+            result = in_table.first()
         else:
-            rows = in_table.fetchall()
+            result = in_table.fetchall()
 
         in_table.close()
 
-        return keys, rows
+        return keys, result
 
     def make_dict(keys, rows):
         '''Makes a dictionary of themes from a SQL table.
@@ -97,9 +98,9 @@ def get_theme():
 
     print make_dict(keys, rows)
 
-    keys, rows = read_database('theme_post')
+    keys, row = read_database('theme_post', first=True, id=1)
 
-    print keys, rows
+    print keys, row
 
 insert_data()
 get_theme()
