@@ -47,29 +47,36 @@ def get_theme():
 
         return foreign
 
+    def make_dict(keys, rows):
+        '''Makes a dictionary of themes from a SQL table.
+        '''
+        themes = {}
+
+        for row in rows:
+            row_dict = {}
+            name = False
+
+            for i in range(len(keys)):
+                if keys[i] in foreign:
+                    row_dict[keys[i]] = (row[i], foreign[keys[i]])
+
+                elif keys[i] == 'name':
+                    name = row[i]
+
+        if name:
+            themes[name] = row_dict
+
+        return themes
+
+
     themes = connection.execute(table['theme'].select())
     keys = themes.keys()
     rows = themes.fetchall()
     themes.close()
     foreign = get_foreign('theme')
 
-    themes = {}
+    print make_dict(keys, rows)
 
-    for row in rows:
-        row_dict = {}
-        name = False
-
-        for i in range(len(keys)):
-            if keys[i] in foreign:
-                row_dict[keys[i]] = (row[i], foreign[keys[i]])
-
-            elif keys[i] == 'name':
-                name = row[i]
-
-        if name:
-            themes[name] = row_dict
-
-    print themes
 
 insert_data()
 get_theme()
