@@ -16,14 +16,16 @@ urls:
     '/night.css' : 'night'
     '/test.css'  : 'test'
 
-navbar:
+nav:
   - title: 'Zombie Raptor Blog'
     text: 'Read new updates from the Zombie Raptor team!'
     link: '/'
+    visible: True
 
   - title: 'Main Forum'
     text: 'Visit the main forum!'
     link: '/f/main'
+    visible: True
 
 tags:
   post:

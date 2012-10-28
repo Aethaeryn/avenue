@@ -31,15 +31,48 @@ def insert_data():
             else:
                 actions.append(table['theme'].insert().values(**entry))
 
+    def nav():
+        '''Inserts the navbar from forum.yml into the database.
+        '''
+        data = forum_data['nav']
+
+        for entry in data:
+            actions.append(table['nav'].insert().values(**entry))
+
+        print data
+
     actions = []
+    forum_data = import_data('forum')
 
     themes()
+    nav()
 
     for action in actions:
         connection.execute(action)
 
-def get_theme():
-    '''Retrieves a theme from the database.
+def _read_database(name, first=False, search=False):
+    '''Reads a table from a database and returns the keys and rows
+    or row. If the list 'search' is defined, it looks for
+    search[0] in the entry search[1]. Result is either one row or
+    multiple rows, depending on if first is true or not.
+    '''
+    if search:
+        condition = '%s == "%s"' % (search[1], search[0])
+        sql = table[name].select().where(condition)
+
+    else:
+        sql = table[name].select()
+
+    in_table = connection.execute(sql)
+    keys = in_table.keys()
+    result = in_table.first() if first else in_table.fetchall()
+
+    in_table.close()
+
+    return keys, result
+
+def get_themes():
+    '''Retrieves the themes from the database.
     '''
     def get_foreign(table_name):
         '''Retrieves the foreign key information for columns in a
@@ -56,37 +89,24 @@ def get_theme():
 
         return foreign
 
-    def read_database(name, first=False, search=False):
-        '''Reads a table from a database and returns the keys and rows
-        or row. If the list 'search' is defined, it looks for
-        search[0] in the entry search[1]. Result is either one row or
-        multiple rows, depending on if first is true or not.
+    def subtheme_dict(database, search):
+        '''Makes a dictionary of subthemes (text, background, or post)
+        from a SQL table.
         '''
-        if search:
-            sql = table[name].select().where('%s == "%s"' % (search[1], search[0]))
-        else:
-            sql = table[name].select()
+        dictionary = {}
 
-        in_table = connection.execute(sql)
+        keys, row = _read_database(database, first=True, search=search)
 
-        keys = in_table.keys()
+        for i in range(len(keys)):
+            dictionary[keys[i]] = row[i]
 
-        if first:
-            result = in_table.first()
-        else:
-            result = in_table.fetchall()
-
-        in_table.close()
-
-        return keys, result
+        return dictionary
 
     def theme_dict():
         '''Makes a dictionary of themes from a SQL table.
         '''
         themes = {}
-
-        keys, rows = read_database('theme')
-
+        keys, rows = _read_database('theme')
         foreign = get_foreign('theme')
 
         for row in rows:
@@ -106,17 +126,21 @@ def get_theme():
 
         return themes
 
-    def subtheme_dict(database, search):
-        '''Makes a dictionary of subthemes (text, background, or post)
-        from a SQL table.
-        '''
-        dictionary = {}
+    return theme_dict()
 
-        keys, row = read_database(database, first=True, search=search)
+def get_nav():
+    '''Retrives the nav from the database.
+    '''
+    keys, rows = _read_database('nav')
+
+    nav = []
+
+    for row in rows:
+        dictionary = {}
 
         for i in range(len(keys)):
             dictionary[keys[i]] = row[i]
 
-        return dictionary
+        nav.append(dictionary)
 
-    return theme_dict()
+    return nav
