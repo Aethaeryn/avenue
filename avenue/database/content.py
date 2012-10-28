@@ -47,10 +47,35 @@ def get_theme():
 
         return foreign
 
+    def read_database(name, first=False, id=False):
+        '''Reads a table from a database and returns the keys and rows
+        or row. If first is true, it only returns the first match. If
+        id is defined, it filters for that id.
+        '''
+        if id:
+            sql = table[name].select().where('id = %i' % id)
+        else:
+            sql = table[name].select()
+
+        in_table = connection.execute(sql)
+
+        keys = in_table.keys()
+
+        if first:
+            rows = in_table.first()
+        else:
+            rows = in_table.fetchall()
+
+        in_table.close()
+
+        return keys, rows
+
     def make_dict(keys, rows):
         '''Makes a dictionary of themes from a SQL table.
         '''
         themes = {}
+
+        foreign = get_foreign('theme')
 
         for row in rows:
             row_dict = {}
@@ -68,19 +93,13 @@ def get_theme():
 
         return themes
 
-    foreign = get_foreign('theme')
-
-    themes = connection.execute(table['theme'].select())
-    keys = themes.keys()
-    rows = themes.fetchall()
-    themes.close()
+    keys, rows = read_database('theme')
 
     print make_dict(keys, rows)
 
-    post = connection.execute(table['theme_post'].select().where('id == %i' % 1))
-    keys = post.keys()
-    rows = post.first()
-    post.close()
+    keys, rows = read_database('theme_post')
+
+    print keys, rows
 
 insert_data()
 get_theme()
