@@ -68,15 +68,19 @@ def get_theme():
 
         return themes
 
+    foreign = get_foreign('theme')
 
     themes = connection.execute(table['theme'].select())
     keys = themes.keys()
     rows = themes.fetchall()
     themes.close()
-    foreign = get_foreign('theme')
 
     print make_dict(keys, rows)
 
+    post = connection.execute(table['theme_post'].select().where('id == %i' % 1))
+    keys = post.keys()
+    rows = post.first()
+    post.close()
 
 insert_data()
 get_theme()
