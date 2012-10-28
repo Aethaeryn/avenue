@@ -50,7 +50,8 @@ tags:
     color: '#ffbb99'
 
 style:
-  night:
+  - name: 'night'
+
     text:
       name       : 'night'
       plain      : '#000000'

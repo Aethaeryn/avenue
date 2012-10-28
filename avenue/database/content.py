@@ -21,10 +21,10 @@ def insert_data():
 
     actions = []
 
-    actions.append(table['theme_text'].insert().values(**data['night']['text']))
-    actions.append(table['theme_background'].insert().values(**data['night']['background']))
-    actions.append(table['theme_post'].insert().values(**data['night']['post']))
-    actions.append(table['theme'].insert().values(name='night', text=1, post=1, background=1))
+    actions.append(table['theme_text'].insert().values(**data[0]['text']))
+    actions.append(table['theme_background'].insert().values(**data[0]['background']))
+    actions.append(table['theme_post'].insert().values(**data[0]['post']))
+    actions.append(table['theme'].insert().values(name=data[0]['name'], text=1, post=1, background=1))
 
     for action in actions:
         connection.execute(action)
