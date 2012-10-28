@@ -53,19 +53,23 @@ def get_theme():
     themes.close()
     foreign = get_foreign('theme')
 
-    themes_dict = {}
+    themes = {}
 
     for row in rows:
         row_dict = {}
+        name = False
 
         for i in range(len(keys)):
             if keys[i] in foreign:
-                print keys[i], row[i], foreign[keys[i]]
+                row_dict[keys[i]] = (row[i], foreign[keys[i]])
 
-            else:
-                row_dict[keys[i]] = row[i]
+            elif keys[i] == 'name':
+                name = row[i]
 
-        print row_dict
+        if name:
+            themes[name] = row_dict
+
+    print themes
 
 insert_data()
 get_theme()
