@@ -20,11 +20,16 @@ def insert_data():
     data = import_data('themes')
 
     actions = []
+    subtheme = set(['text', 'background', 'post'])
 
-    actions.append(table['theme_text'].insert().values(**data[0]['text']))
-    actions.append(table['theme_background'].insert().values(**data[0]['background']))
-    actions.append(table['theme_post'].insert().values(**data[0]['post']))
-    actions.append(table['theme'].insert().values(name=data[0]['name'], text='night', post='night', background='night'))
+    for entry in data:
+        entry_type = entry.pop('type')
+
+        if entry_type in subtheme:
+            actions.append(table['theme_%s' % entry_type].insert().values(**entry))
+
+        else:
+            actions.append(table['theme'].insert().values(**entry))
 
     for action in actions:
         connection.execute(action)
@@ -87,8 +92,6 @@ def get_theme():
             for i in range(len(keys)):
                 if keys[i] in foreign:
                     query = (row[i], foreign[keys[i]].split('.'))
-
-                    print query
                     row_dict[keys[i]] = subtheme_dict(query[1][0], (query[0], query[1][1]))
 
                 elif keys[i] == 'name':
