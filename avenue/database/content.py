@@ -49,10 +49,9 @@ def get_theme():
 
     def read_database(name, first=False, search=False):
         '''Reads a table from a database and returns the keys and rows
-        or row. If first is true, it only returns the first match. If
-        the list 'search' is defined, it looks for search[0] in the
-        entry search[1]. Result is either one row or multiple rows,
-        depending on if first is true or not.
+        or row. If the list 'search' is defined, it looks for
+        search[0] in the entry search[1]. Result is either one row or
+        multiple rows, depending on if first is true or not.
         '''
         if search:
             sql = table[name].select().where('%s == %i' % (search[1], search[0]))
@@ -72,7 +71,7 @@ def get_theme():
 
         return keys, result
 
-    def make_dict():
+    def theme_dict():
         '''Makes a dictionary of themes from a SQL table.
         '''
         themes = {}
@@ -88,7 +87,7 @@ def get_theme():
             for i in range(len(keys)):
                 if keys[i] in foreign:
                     query = (row[i], foreign[keys[i]].split('.'))
-                    row_dict[keys[i]] = make_dict2(query[1][0], (query[0], query[1][1]))
+                    row_dict[keys[i]] = subtheme_dict(query[1][0], (query[0], query[1][1]))
 
                 elif keys[i] == 'name':
                     name = row[i]
@@ -98,8 +97,9 @@ def get_theme():
 
         return themes
 
-    def make_dict2(database, search):
-        '''Makes a dictionary of themes from a SQL table.
+    def subtheme_dict(database, search):
+        '''Makes a dictionary of subthemes (text, background, or post)
+        from a SQL table.
         '''
         dictionary = {}
 
@@ -110,7 +110,7 @@ def get_theme():
 
         return dictionary
 
-    print make_dict()
+    return theme_dict()
 
 insert_data()
 get_theme()
