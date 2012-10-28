@@ -32,13 +32,11 @@ def url_generator():
         '''
         thread = threads[name]
 
-        html_title = '%s :: %s :: %s' % (thread['title'], data['forum'],
-                                         data['site'])
+        html = '%s :: %s :: %s' % (thread['title'], data['forum'], data['site'])
+        main = '%s -- %s' % (data['site'], data['forum'])
 
-        main_title = '%s -- %s' % (data['site'], data['forum'])
-
-        title = { 'html'   : html_title,
-                  'main'   : main_title,
+        title = { 'html'   : html,
+                  'main'   : main,
                   'thread' : thread['title'],
                   'url'    : data['forum_url'] }
 
