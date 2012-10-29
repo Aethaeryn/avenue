@@ -18,14 +18,11 @@ def url_generator():
     data = api.read_data('forum')
     threads = data['threads']
     content.insert_data()
+
     themes = content.get_themes()
     nav = content.get_nav()
     tags = content.get_tags()
     redirects = content.get_urls()
-    css = {}
-
-    for theme in themes:
-        css[themes[theme]['url']] = theme
 
     def forum_set_tags():
         '''Turns strings containing tag names into tag objects that
@@ -71,8 +68,11 @@ def url_generator():
 
     forum_set_tags()
 
-    setup_url_rule(redirects, redirect)
-    setup_url_rule(css, lambda theme:
-                       api.make_css(themes[theme]))
+    css = {}
 
+    for theme in themes:
+        css[themes[theme]['url']] = theme
+
+    setup_url_rule(redirects, redirect)
+    setup_url_rule(css, lambda theme: api.make_css(themes[theme]))
     setup_url_rule(threads.keys(), forum_page)
