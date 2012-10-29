@@ -67,14 +67,12 @@ def url_generator():
             '''
             return lambda: action(text)
 
+        is_dict = type(urls) == dict
+
         for url in urls:
-            if type(urls) == dict:
-                function_call = url_page_function(urls[url])
+            call_text = urls[url] if is_dict else url
 
-            else:
-                function_call = url_page_function(url)
-
-            app.add_url_rule(url, url, function_call)
+            app.add_url_rule(url, url, url_page_function(call_text))
 
     forum_set_tags()
 
