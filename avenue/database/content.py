@@ -25,21 +25,13 @@ def insert_data():
             else:
                 actions.append(table['theme'].insert().values(**entry))
 
-    def nav():
-        '''Inserts the nav from forum.yml into the database.
+    def forum_import(subsection):
+        '''Inserts data from a forum subsection into the database.
         '''
-        data = forum_data['nav']
+        data = forum_data[subsection]
 
         for entry in data:
-            actions.append(table['nav'].insert().values(**entry))
-
-    def tags():
-        '''Inserts the tags from forum.yml into the database.
-        '''
-        data = forum_data['tag']
-
-        for entry in data:
-            actions.append(table['tag'].insert().values(**entry))
+            actions.append(table[subsection].insert().values(**entry))
 
     def urls():
         '''Inserts the url rules from forum.yml into the database.
@@ -47,17 +39,14 @@ def insert_data():
         urls = ['url_redirect', 'url_forum', 'url_css']
 
         for url_group in urls:
-            data = forum_data[url_group]
-
-            for entry in data:
-                actions.append(table[url_group].insert().values(**entry))
+            forum_import(url_group)
 
     actions = []
     forum_data = read_data('forum')
 
     themes()
-    nav()
-    tags()
+    forum_import('nav')
+    forum_import('tag')
     urls()
 
     for action in actions:
