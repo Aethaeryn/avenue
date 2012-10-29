@@ -23,11 +23,6 @@ def url_generator():
     tags = content.get_tags()
     urls = content.get_urls()
 
-    forum_urls = {}
-
-    for url in threads.keys():
-        forum_urls[url] = url
-
     def forum_set_tags():
         '''Turns strings containing tag names into tag objects that
         can be used to generate HTML/CSS renderings of the tag.
@@ -73,7 +68,13 @@ def url_generator():
             return lambda: action(text)
 
         for url in urls:
-            app.add_url_rule(url, url, url_page_function(urls[url]))
+            if type(urls) == dict:
+                function_call = url_page_function(urls[url])
+
+            else:
+                function_call = url_page_function(url)
+
+            app.add_url_rule(url, url, function_call)
 
     forum_set_tags()
 
@@ -84,4 +85,4 @@ def url_generator():
     for action in action_list:
         setup_url_rule(urls[action[0]], action[1])
 
-    setup_url_rule(forum_urls, forum_page)
+    setup_url_rule(threads.keys(), forum_page)
