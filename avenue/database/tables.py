@@ -42,10 +42,6 @@ def get_tables(metadata):
                  Column('url', String),
                  Column('action', String))
 
-    create_table('url_forum',
-                 Column('url', String),
-                 Column('action', String))
-
     create_table('url_css',
                  Column('url', String),
                  Column('action', String))

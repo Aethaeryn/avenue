@@ -9,16 +9,6 @@ url_redirect:
   - url: '/f/main/tag/post/'
     action: '/f/main/'
 
-url_forum:
-  - url: '/f/main/'
-    action: 'main'
-
-  - url: '/f/main/1'
-    action: '1'
-
-  - url: '/'
-    action: 'front_page'
-
 url_css:
   - url: '/night.css'
     action: 'night'
@@ -57,7 +47,7 @@ tag:
     color: '#ffbb99'
 
 threads:
-  main:
+  '/f/main/':
     title:
       "Active Threads"
 
@@ -89,7 +79,7 @@ threads:
           - 'link'
           - 'news'
 
-  front_page:
+  '/':
     title:
       "Zombie Raptor Launches... at some point."
 
@@ -105,7 +95,7 @@ threads:
           - 'blog'
           - 'news'
 
-  '1':
+  '/f/main/1':
     title:
       "This is a Sample Thread"
 

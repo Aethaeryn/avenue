@@ -36,7 +36,7 @@ def insert_data():
     def urls():
         '''Inserts the url rules from forum.yml into the database.
         '''
-        urls = ['url_redirect', 'url_forum', 'url_css']
+        urls = ['url_redirect', 'url_css']
 
         for url_group in urls:
             forum_import(url_group)
@@ -167,7 +167,7 @@ def get_tags():
 def get_urls():
     '''Retrieves the urls from the database.
     '''
-    urls = ['url_redirect', 'url_forum', 'url_css']
+    urls = ['url_redirect', 'url_css']
     url_dict = {}
 
     for url_group in urls:
