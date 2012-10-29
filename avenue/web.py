@@ -58,25 +58,16 @@ def url_generator():
                                threaded=thread['threaded'])
 
     def setup_url_rule(urls, action):
-        '''Sets up URL rules, given a dictionary of urls and a function
-        that they will act on.
+        '''Sets up URL rules, given a dictionary of urls and a
+        function that they will act on. It passes an anonymous
+        function to add_url_rule that always does a particular action
+        to a particular string when that URL is accessed.
         '''
-        def url_page_function(text):
-            '''Returns a function that is associated with the URL
-            page. This function is called when the URL page is
-            requested. The anonymous (lambda) function does a
-            particular action given a particular string, text. It's
-            set up this way because the text fed into the action
-            function is always the same for a particular web page.
-            '''
-            return lambda: action(text)
-
         is_dict = type(urls) == dict
 
         for url in urls:
-            call_text = urls[url] if is_dict else url
-
-            app.add_url_rule(url, url, url_page_function(call_text))
+            text = urls[url] if is_dict else url
+            app.add_url_rule(url, url, lambda text: lambda: action(text))
 
     forum_set_tags()
 
