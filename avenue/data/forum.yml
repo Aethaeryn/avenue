@@ -9,13 +9,6 @@ url_redirect:
   - url: '/f/main/tag/post/'
     action: '/f/main/'
 
-url_css:
-  - url: '/night.css'
-    action: 'night'
-
-  - url: '/test.css'
-    action: 'test'
-
 nav:
   - title: 'Zombie Raptor Blog'
     text: 'Read new updates from the Zombie Raptor team!'

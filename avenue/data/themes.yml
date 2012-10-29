@@ -1,4 +1,5 @@
 - type       : 'theme'
+  url        : '/night.css'
   name       : 'night'
   text       : 'night'
   post       : 'night'
@@ -33,6 +34,7 @@
   level5 : '#c70000'
 
 - type       : 'theme'
+  url        : '/test.css'
   name       : 'test'
   text       : 'night'
   post       : 'night'

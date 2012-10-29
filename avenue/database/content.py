@@ -33,21 +33,13 @@ def insert_data():
         for entry in data:
             actions.append(table[subsection].insert().values(**entry))
 
-    def urls():
-        '''Inserts the url rules from forum.yml into the database.
-        '''
-        urls = ['url_redirect', 'url_css']
-
-        for url_group in urls:
-            forum_import(url_group)
-
     actions = []
     forum_data = read_data('forum')
 
     themes()
     forum_import('nav')
     forum_import('tag')
-    urls()
+    forum_import('url_redirect')
 
     for action in actions:
         connection.execute(action)
@@ -123,6 +115,9 @@ def get_themes():
                 elif keys[i] == 'name':
                     name = row[i]
 
+                elif keys[i] == 'url':
+                    row_dict[keys[i]] = row[i]
+
             if name:
                 themes[name] = row_dict
 
@@ -165,19 +160,13 @@ def get_tags():
     return tags
 
 def get_urls():
-    '''Retrieves the urls from the database.
+    '''Retrieves the redirect urls from the database.
     '''
-    urls = ['url_redirect', 'url_css']
-    url_dict = {}
+    keys, rows = _read_database('url_redirect')
 
-    for url_group in urls:
-        keys, rows = _read_database(url_group)
+    dictionary = {}
 
-        dictionary = {}
+    for row in rows:
+        dictionary[row[1]] = row[2]
 
-        for row in rows:
-            dictionary[row[1]] = row[2]
-
-        url_dict[url_group.split('_')[1]] = dictionary
-
-    return url_dict
+    return dictionary

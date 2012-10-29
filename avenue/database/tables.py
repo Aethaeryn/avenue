@@ -42,10 +42,6 @@ def get_tables(metadata):
                  Column('url', String),
                  Column('action', String))
 
-    create_table('url_css',
-                 Column('url', String),
-                 Column('action', String))
-
     create_table('nav',
                  Column('visible', Boolean),
                  Column('title', String),
@@ -90,6 +86,7 @@ def get_tables(metadata):
 
     create_table('theme',
                  Column('name', String, unique=True),
+                 Column('url', String, unique=True),
                  Column('text', ForeignKey('theme_text.name')),
                  Column('background', ForeignKey('theme_background.name')),
                  Column('post', ForeignKey('theme_post.name')))
