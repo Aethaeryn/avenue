@@ -64,7 +64,7 @@ def url_generator():
 
         for url in urls:
             text = urls[url] if is_dict else url
-            app.add_url_rule(url, url, lambda text: lambda: action(text))
+            app.add_url_rule(url, url, (lambda x: lambda: action(x))(text))
 
     forum_set_tags()
 
