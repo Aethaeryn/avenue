@@ -1,6 +1,6 @@
 '''Loads content into the database.
 '''
-from avenue.api import read_data
+from avenue.web import read_data
 from avenue.database import table, connection
 
 def insert_data():
