@@ -1,6 +1,3 @@
-# Copyricht (c) 2012 Michael Babich
-# See LICENSE.txt or http://opensource.org/licenses/MIT
-
 '''Defines the tables used by the database.
 '''
 

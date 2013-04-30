@@ -1,6 +1,3 @@
-# Copyright (c) 2012 Michael Babich
-# See LICENSE.txt or http://opensource.org/licenses/MIT
-
 '''This file does all of the actions necessary to set up Avenue before
 running it for the first time.
 '''

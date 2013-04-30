@@ -1,6 +1,3 @@
-# Copyright (c) 2012 Michael Babich
-# See LICENSE.txt or http://opensource.org/licenses/MIT
-
 '''Loads content into the database.
 '''
 from avenue.api import read_data

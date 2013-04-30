@@ -1,6 +1,3 @@
-# Copyright (c) 2012 Michael Babich
-# See LICENSE.txt or http://opensource.org/licenses/MIT
-
 '''Uses difflib to create a revision system of text files so that only
 the most recent revision is saved in complete form, using a diff for
 the older revisions.

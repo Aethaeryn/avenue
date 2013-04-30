@@ -1,6 +1,3 @@
-# Copyright (c) 2012 Michael Babich
-# See LICENSE.txt or http://opensource.org/licenses/MIT
-
 '''The avenue package contains everything that is necessary to run an
 Avenue server.
 

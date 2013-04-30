@@ -1,6 +1,3 @@
-# Copyright (c) 2011, 2012 Michael Babich
-# See LICENSE.txt or http://opensource.org/licenses/MIT
-
 '''Currently, this is very messy code. Basically, you import this into
 things that Avenue imports (e.g. Federation) so that they use the same
 Flask instance as Avenue.

@@ -1,6 +1,3 @@
-# Copyright (c) 2012 Michael Babich
-# See LICENSE.txt or http://opensource.org/licenses/MIT
-
 '''Runs a test server locally on port 8080 via Flask's built in server
 functionality. Do *NOT* use this in a production environment. Instead
 of executing the avenue module directly, point a wsgi-compatible
