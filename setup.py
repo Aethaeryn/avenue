@@ -5,8 +5,6 @@
 running it for the first time.
 '''
 from os import path, listdir, mkdir
-import requests
-import Image
 
 def location(*args):
     '''Turns a string that is a relative directory location into a
@@ -25,51 +23,10 @@ def static_setup():
     if 'static' not in listdir(location('avenue')):
         mkdir(location('avenue', 'static'))
 
-    if 'dl' not in listdir(location('avenue', 'static')):
-        mkdir(location('avenue', 'static', 'dl'))
-
-def get_icons():
-    '''Gets browser icons if they don't already exist.
-    '''
-    icons = { 'firefox' : {'filename' : 'Mozilla_Firefox_3.5_logo_256.png',
-                           'location' : 'commons'},
-
-              'chrome'  : {'filename' : 'Google_Chrome_2011_computer_icon.svg',
-                           'location' : 'en'},
-
-              'safari'  : {'filename' : 'Apple_Safari.png',
-                           'location' : 'en'},
-
-              'opera'   : {'filename' : 'Opera_O.svg',
-                           'location' : 'commons'}}
-
-    for browser in icons:
-        stats = ('upload.wikimedia.org/wikipedia/',
-                 icons[browser]['location'],
-                 icons[browser]['filename'],
-                 icons[browser]['filename'])
-
-        url = 'http://%s%s/thumb/f/fa/%s/128px-%s' % stats
-
-        loc      = location('avenue', 'static', 'dl', browser + '.png')
-        loc_gray = location('avenue', 'static', 'dl', browser + '-g' + '.png')
-
-        if browser + '.png' not in listdir((location('avenue', 'static', 'dl'))):
-            img = requests.get(url).content
-
-            destination = open(loc, 'w')
-            destination.write(img)
-            destination.close()
-
-            # This 'magic' line saves a grayscale copy of the
-            # downloaded image to the same directory.
-            Image.open(loc).convert('LA').save(loc_gray)
-
 def main():
     '''Sets up various things that are required for running Avenue.
     '''
     static_setup()
-    get_icons()
 
 if __name__ == '__main__':
     main()
