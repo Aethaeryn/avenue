@@ -1,9 +1,31 @@
 '''Acts as an interface between what Flask serves and what goes on in
 the rest of the application.
 '''
-from avenue import app, api
+from avenue import app
 from avenue.database import content
 from flask import render_template, make_response, redirect
+from os import path
+import yaml
+
+def read_data(filename):
+    '''Reads in data from a given YML file and returns it in a form
+    usable by Python.
+    '''
+    filename = '%s.yml' % filename
+
+    data_file = open(path.join(path.dirname(__file__), 'data', filename))
+    data = yaml.load(data_file)
+    data_file.close()
+
+    return data
+
+def make_css(theme):
+    '''Helper function that makes sure that the CSS served is
+    recognized by browsers as CSS.
+    '''
+    response = make_response(render_template('main.css', theme=theme))
+    response.mimetype = 'text/css'
+    return response
 
 def url_generator():
     '''This function acts on a list of URLs, a text rule for each URL,
@@ -11,7 +33,7 @@ def url_generator():
     page. The action_list associates a subset of URLs with a
     particular function to be used as the action for that group.
     '''
-    data = api.read_data('forum')
+    data = read_data('forum')
     threads = data['threads']
     content.insert_data()
 
@@ -70,5 +92,5 @@ def url_generator():
         css[themes[theme]['url']] = theme
 
     setup_url_rule(redirects, redirect)
-    setup_url_rule(css, lambda theme: api.make_css(themes[theme]))
+    setup_url_rule(css, lambda theme: make_css(themes[theme]))
     setup_url_rule(threads.keys(), forum_page)
